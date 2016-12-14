@@ -28,6 +28,7 @@ public class CommandVanish implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    //Test
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -61,7 +62,7 @@ public class CommandVanish implements CommandExecutor {
                             player.showPlayer((Player) sender);
                             player.sendMessage(EssentialCommands.message(Constants.PLAYER_FAKE_JOIN_FORMAT, sender.getName()));
                         } else {
-                            player.sendMessage(EssentialCommands.message(Constants.PLAYER_LEFT_VANISH, sender.getName()));
+                            player.sendMessage(EssentialCommands.message(Constants.PLAYER_LEFT_VANISH_FORMAT, sender.getName()));
                         }
                     }
                     modYMLManager.remVanish(sender.getName());

@@ -1,7 +1,11 @@
 package de.fenmore.tobiasThirolf.selfmadeEssentials.events;
 
+import de.fenmore.tobiasThirolf.selfmadeEssentials.commands.EssentialCommands;
+import de.fenmore.tobiasThirolf.selfmadeEssentials.essentials.Constants;
 import de.fenmore.tobiasThirolf.selfmadeEssentials.essentials.Essentials;
 import de.fenmore.tobiasThirolf.selfmadeEssentials.files.ModYMLManager;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -26,6 +30,11 @@ public class EventPlayerQuit implements Listener{
             event.setQuitMessage(null);
             if(Essentials.board.getTeam("vanishVisible").getEntries().contains(event.getPlayer().getName())) {
                 Essentials.board.getTeam("vanishVisible").removeEntry(event.getPlayer().getName());
+            }
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                if(p.hasPermission("selfmadeEssentials.vanish")) {
+                    p.sendMessage(EssentialCommands.message(Constants.PLAYER_LEFT_VANISH_FORMAT, event.getPlayer().getName()));
+                }
             }
         }
     }
