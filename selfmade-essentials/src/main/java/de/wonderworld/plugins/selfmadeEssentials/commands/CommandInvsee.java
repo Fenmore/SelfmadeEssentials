@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 public class CommandInvsee implements CommandExecutor {
 
     private Essentials plugin;
+
     public CommandInvsee(Essentials plugin) {
         this.plugin = plugin;
     }
@@ -18,16 +19,16 @@ public class CommandInvsee implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if(!(sender instanceof Player)) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
-        if(args.length == 0)
+        if (args.length == 0)
             return false;
 
         Player p = plugin.getServer().getPlayer(args[0]);
-        if(p == null) {
+        if (p == null) {
             sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[0]));
             return true;
         }

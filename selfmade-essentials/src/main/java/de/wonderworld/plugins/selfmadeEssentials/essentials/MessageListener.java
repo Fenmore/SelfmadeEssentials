@@ -13,7 +13,6 @@ import java.io.DataInputStream;
 public class MessageListener implements PluginMessageListener {
 
 
-
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         System.out.println(channel + "   " + message);
@@ -24,18 +23,17 @@ public class MessageListener implements PluginMessageListener {
             DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
             String command = in.readUTF();
 
-            if(command.equals("VanishPermission")) {
+            if (command.equals("VanishPermission")) {
                 final String name = in.readUTF();
                 final int count = in.readInt();
                 Bukkit.broadcastMessage(message.toString());
             }
 
-            if(command.equals("PlayerList")) {
+            if (command.equals("PlayerList")) {
                 final String server = in.readUTF();
                 String[] playerArray = in.readUTF().split(", ");
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
 
         }
     }

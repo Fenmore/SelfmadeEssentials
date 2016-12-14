@@ -32,11 +32,10 @@ public class UuidYMLManager {
 
     public static void checkState(String uuid, String name) {
         YamlConfiguration cfg = loadCfg();
-        if(cfg.getString(uuid) == null) {
+        if (cfg.getString(uuid) == null) {
             cfg.set(uuid, name);
             safeFile(cfg);
-        }
-        else if(!cfg.getString(uuid).equals(name)) {
+        } else if (!cfg.getString(uuid).equals(name)) {
             new ModYMLManager().handlePlayerNameChange(cfg.getString(uuid), name);
             new PlayerYMLManager().handlePlayerNameChange(cfg.getString(uuid), name);
             cfg.set(uuid, name);
@@ -47,7 +46,7 @@ public class UuidYMLManager {
     private static boolean isKnown(Player p) {
         YamlConfiguration cfg = loadCfg();
         Set<String> set = cfg.getKeys(false);
-        if(set.contains(p.getUniqueId().toString()))
+        if (set.contains(p.getUniqueId().toString()))
             return true;
         else
             return false;

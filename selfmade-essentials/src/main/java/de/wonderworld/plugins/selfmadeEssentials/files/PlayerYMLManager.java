@@ -29,7 +29,7 @@ public class PlayerYMLManager {
 
     public void handlePlayerNameChange(String playerBefore, String playerNow) {
         File file = getPlayerFile(playerBefore);
-        if(file.exists()) {
+        if (file.exists()) {
             file.renameTo(getPlayerFile(playerNow));
         }
     }
@@ -62,7 +62,7 @@ public class PlayerYMLManager {
 
     public boolean hasPtime(String name) {
         YamlConfiguration cfg = loadCfg(name);
-        if(cfg.get("ptimeTicks") == null)
+        if (cfg.get("ptimeTicks") == null)
             return false;
         else
             return true;

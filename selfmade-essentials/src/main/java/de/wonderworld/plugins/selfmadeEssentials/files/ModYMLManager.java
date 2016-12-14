@@ -31,8 +31,8 @@ public class ModYMLManager {
      */
     public void handlePlayerNameChange(String playerBefore, String playerNow) {
         YamlConfiguration cfg = loadCfg();
-        for(String key : cfg.getKeys(false)) {
-            if(cfg.getStringList(key).contains(playerBefore)) {
+        for (String key : cfg.getKeys(false)) {
+            if (cfg.getStringList(key).contains(playerBefore)) {
                 List<String> list = cfg.getStringList(key);
                 list.remove(playerBefore);
                 list.add(playerNow);
@@ -42,13 +42,12 @@ public class ModYMLManager {
     }
 
 
-
     public void toggleSocialSpy(String playerName) {
         YamlConfiguration cfg = loadCfg();
         List<String> socialSpyList = cfg.getStringList("socialspy");
-        if(socialSpyList == null)
+        if (socialSpyList == null)
             socialSpyList = new ArrayList<>();
-        if(socialSpyList.contains(playerName))
+        if (socialSpyList.contains(playerName))
             socialSpyList.remove(playerName);
         else
             socialSpyList.add(playerName);
@@ -59,7 +58,7 @@ public class ModYMLManager {
     public boolean socialSpyIsActive(String playerName) {
         YamlConfiguration cfg = loadCfg();
         List<String> socialSpyList = cfg.getStringList("socialspy");
-        if(socialSpyList.contains(playerName))
+        if (socialSpyList.contains(playerName))
             return true;
         else
             return false;
@@ -68,7 +67,7 @@ public class ModYMLManager {
     public List<String> getSocialSpyList() {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("socialspy");
-        if(list == null)
+        if (list == null)
             list = new ArrayList<>();
         return list;
     }
@@ -76,7 +75,7 @@ public class ModYMLManager {
     public List<String> getVanishVisibleList() {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("vanishVisible");
-        if(list == null)
+        if (list == null)
             list = new ArrayList<>();
         return list;
     }
@@ -84,7 +83,7 @@ public class ModYMLManager {
     public List<String> getVanishActiveList() {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("vanish");
-        if(list == null)
+        if (list == null)
             list = new ArrayList<>();
         return list;
     }
@@ -92,7 +91,7 @@ public class ModYMLManager {
     public void setVanish(String name) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("vanish");
-        if(list == null)
+        if (list == null)
             list = new ArrayList<>();
         list.add(name);
         cfg.set("vanish", list);
@@ -102,7 +101,7 @@ public class ModYMLManager {
     public void remVanish(String name) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("vanish");
-        if(list == null)
+        if (list == null)
             return;
         list.remove(name);
         cfg.set("vanish", list);

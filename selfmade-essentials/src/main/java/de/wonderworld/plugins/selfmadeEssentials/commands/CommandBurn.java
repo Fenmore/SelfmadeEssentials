@@ -16,6 +16,7 @@ import java.util.List;
 public class CommandBurn implements CommandExecutor {
 
     private Essentials plugin;
+
     public CommandBurn(Essentials essentials) {
         this.plugin = essentials;
     }

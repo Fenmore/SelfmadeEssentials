@@ -1,20 +1,16 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
-import org.bukkit.material.MaterialData;
-import org.bukkit.util.Vector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Fenmore on 02.12.2016.
@@ -23,6 +19,7 @@ import java.util.*;
 public class CommandFb implements CommandExecutor {
 
     private Essentials plugin;
+
     public CommandFb(Essentials plugin) {
         this.plugin = plugin;
     }
@@ -46,7 +43,7 @@ public class CommandFb implements CommandExecutor {
 
         List<Block> sightList = EssentialCommands.getLineOfSight(((Player) sender));
         Block startBlock = sightList.get(sightList.size() - 1);
-        if(startBlock.getType().equals(Material.LOG)) {
+        if (startBlock.getType().equals(Material.LOG)) {
             plugin.getServer().getScheduler().runTask(plugin, new Runnable() {
                 @Override
                 public void run() {
@@ -77,7 +74,7 @@ public class CommandFb implements CommandExecutor {
                         blockToTestList.clear();
                     }
                     while (!blockToDoList.isEmpty());
-                    for(Block block : blockDoneList) {
+                    for (Block block : blockDoneList) {
                         block.setType(Material.AIR);
                     }
                 }

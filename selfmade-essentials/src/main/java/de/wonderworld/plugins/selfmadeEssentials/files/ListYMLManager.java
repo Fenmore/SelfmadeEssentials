@@ -20,10 +20,9 @@ public class ListYMLManager {
 
     public ListYMLManager(File dirStats, Essentials plugin) {
         this.dirStats = dirStats;
-        for(String command : plugin.getDescription().getCommands().keySet())
+        for (String command : plugin.getDescription().getCommands().keySet())
             setCommand(command);
     }
-
 
 
     private File getListFile() {
@@ -43,10 +42,9 @@ public class ListYMLManager {
     }
 
 
-
     private void setCommand(String command) {
         YamlConfiguration cfg = loadCfg();
-        if(cfg.get("actualCommands." + command) == null)
+        if (cfg.get("actualCommands." + command) == null)
             cfg.set("actualCommands." + command + ".stage", "alpha");
         safeFile(cfg);
     }
@@ -58,14 +56,13 @@ public class ListYMLManager {
         ConfigurationSection section = cfg.getConfigurationSection("actualCommands");
         Map<String, Object> sectionValues = section.getValues(true);
         String command = "";
-        for(String key : sectionValues.keySet()) {
-            if(!key.contains(".")) {
-                if(!command.equals(""))
+        for (String key : sectionValues.keySet()) {
+            if (!key.contains(".")) {
+                if (!command.equals(""))
                     map1.put(command, map2);
                 command = key;
                 map2 = new HashMap<>();
-            }
-            else {
+            } else {
                 map2.put(key.substring(command.length() + 1), sectionValues.get(key));
             }
         }
@@ -82,9 +79,9 @@ public class ListYMLManager {
     public void addComment(String comment, String command) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("actualCommands." + command + ".comments");
-        if(list == null)
+        if (list == null)
             list = new ArrayList<>();
-        if(!list.contains(comment)) {
+        if (!list.contains(comment)) {
             list.add(comment);
             cfg.set("actualCommands." + command + ".comments", list);
             safeFile(cfg);

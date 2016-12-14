@@ -22,36 +22,33 @@ public class CommandEffect implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 
-        if(args.length == 1) {
-            if(!(sender instanceof Player)) {
+        if (args.length == 1) {
+            if (!(sender instanceof Player)) {
                 sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
                 return true;
             }
 
             List<String> effectTypeList = new ArrayList<>();
             boolean firstRun = true;
-            for(PotionEffectType type : PotionEffectType.values()) {
-                if(firstRun) {
+            for (PotionEffectType type : PotionEffectType.values()) {
+                if (firstRun) {
                     firstRun = false;
-                }
-                else {
+                } else {
                     effectTypeList.add(type.getName());
                 }
             }
 
-            if(args[0].equalsIgnoreCase("list")) {
+            if (args[0].equalsIgnoreCase("list")) {
                 sender.sendMessage(effectTypeList.toString());
                 return true;
-            }
-            else if(args[0].equalsIgnoreCase("remove")) {
+            } else if (args[0].equalsIgnoreCase("remove")) {
 
             }
 
-            if(!effectTypeList.contains(args[0].toUpperCase())) {
+            if (!effectTypeList.contains(args[0].toUpperCase())) {
                 sender.sendMessage(EssentialCommands.message(Constants.EFFECT_NOT_FOUND_FORMAT, args[0]));
                 return true;
-            }
-            else {
+            } else {
                 ((Player) sender).addPotionEffect(PotionEffectType.getByName(args[0].toUpperCase()).createEffect(Integer.MAX_VALUE, 10));
                 sender.sendMessage(EssentialCommands.message(Constants.EFFECT_GAINED_FORMAT, args[0]));
                 return true;

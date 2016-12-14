@@ -22,7 +22,7 @@ public class CommandFeed implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 
-        if(!(sender instanceof Player)) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
             return true;
         }
@@ -33,7 +33,6 @@ public class CommandFeed implements CommandExecutor {
             ((Player) sender).setExhaustion(0);
             return true;
         }
-
 
 
         for (String name : args) {

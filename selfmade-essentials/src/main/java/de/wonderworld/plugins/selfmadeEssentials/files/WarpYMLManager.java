@@ -42,7 +42,7 @@ public class WarpYMLManager {
         YamlConfiguration cfg = loadCfg();
         Location warp = null;
         String warpStr = str.toLowerCase();
-        if(cfg.getString(warpStr + ".world") != null) {
+        if (cfg.getString(warpStr + ".world") != null) {
             warp = new Location(plugin.getServer().getWorld(cfg.getString(warpStr + ".world")), cfg.getDouble(warpStr + ".x"), cfg.getDouble(warpStr + ".y"), cfg.getDouble(warpStr + ".z"));
             List<Float> directions = cfg.getFloatList(warpStr + ".direction");
             warp.setYaw(directions.get(0));
