@@ -29,7 +29,7 @@ public class Constants {
     public static final String PLAYER_FAKE_QUIT_FORMAT = "&e%s left the game";
     public static final String PLAYER_FAKE_JOIN_FORMAT = "&e%s joined the game";
     public static final String PLAYER_ENTERED_VANISH = "&6The player &f%s &centered &6vanish mode.";
-    public static final String PLAYER_LEFT_VANISH = "&6The player &f%s &aleft &6vanish mode.";
+    public static final String PLAYER_LEFT_VANISH_FORMAT = "&6The player &f%s &aleft &6vanish mode.";
     public static final String SOCIALSPY_MSG_SENDER_ME = "&6[&a%s&6] => [&ame&6]: &f%s";
     public static final String SOCIALSPY_MSG_ME_SENDER = "&6[&ame&6] => [&a%s&6]: &f%s";
     public static final String SOCIALSPY_MSG_SENDER_RECIEVER = "&8[&a%s&8] => [&a%s&8]: &f%s";
