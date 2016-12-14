@@ -1,0 +1,24 @@
+Wonderland Plugin:
+- Permission Plugin
+    - Verwaltung der Permissions für jeden Spieler
+        - Hinzufügen
+        - Entfernen
+        - Auflisten
+        - Observerliste für Permissionänderungen
+
+- Essentials
+    - General Befehle für Minecraft
+    - Mederationsbefehle
+    - Cheat Befehle
+    - Teleportationsbefehle
+
+- Timber
+    - Umfallenden Baum animieren bei Entfernen des unteren Blocks
+
+- Minigames
+    - Spleef
+    - Hungergames
+    - Racing
+
+- Haustiere
+    - Entities als "Haustiere" definieren
