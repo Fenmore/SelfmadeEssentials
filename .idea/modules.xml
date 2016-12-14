@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SelfmadeEssentials.iml" filepath="$PROJECT_DIR$/SelfmadeEssentials.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfmade-essentials/selfmade-essentials.iml" filepath="$PROJECT_DIR$/selfmade-essentials/selfmade-essentials.iml" />
+      <module fileurl="file://$PROJECT_DIR$/selfmade-essentials/selfmade-essentials.iml" filepath="$PROJECT_DIR$/selfmade-essentials/selfmade-essentials.iml" />
     </modules>
   </component>
 </project>

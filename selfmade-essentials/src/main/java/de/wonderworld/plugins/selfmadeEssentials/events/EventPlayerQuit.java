@@ -4,6 +4,8 @@ import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.commands.EssentialCommands;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
