@@ -3,7 +3,7 @@
     <output-path>D:/Games/Minecraft Spigot 1.11/plugins</output-path>
     <root id="archive" name="SelfmadeEssentials.jar">
       <element id="module-output" name="SelfmadeEssentials" />
-      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/selfmade-essentials/src/main/resources/plugin.yml" />
     </root>
   </artifact>
 </component>

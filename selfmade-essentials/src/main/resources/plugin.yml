@@ -1,0 +1,278 @@
+name: SelfmadeEssentials
+version: 0.1
+authors: [Fenmore, QUADRO11]
+
+main: de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials
+
+permissions:
+  selfmadeEssentials.warplist:
+    description: Allows you to see all available warps.
+    default: true
+  selfmadeEssentials.delwarp:
+    description: Allows you to delete a warp.
+    default: false
+  selfmadeEssentials.setwarp:
+    description: Allows you to set a warp.
+    default: false
+  selfmadeEssentials.warp:
+    description: Allows you to warp to the specific location.
+    default: true
+  selfmadeEssentials.msg:
+    description: Allows you to write someone private.
+    default: true
+  selfmadeEssentials.list:
+    description: Allows you to see all commands.
+    default: true
+  selfmadeEssentials.fb:
+    description: Allows you to do nothing.
+    default: false
+  selfmadeEssentials.bigtree:
+    description: Allows you to set a tree.
+    default: false
+  selfmadeEssentials.vanish:
+    description: Allows you to vanish yourself.
+    default: false
+  selfmadeEssentials.sudo:
+    description: Allows you to perform a command.
+    default: false
+  selfmadeEssentials.spawnmob:
+    description: Allows you to spawn mobs.
+    default: false
+  selfmadeEssentials.socialspy:
+    description: Allows you to see private messages going around.
+    default: false
+  selfmadeEssentials.invsee:
+    description: Allows you to get a players inventory.
+    default: false
+  selfmadeEssentials.enderchest:
+    description: Allows you to get a players enderchest.
+    default: false
+  selfmadeEssentials.clearinventory:
+    description: Allows you to clear your inventory.
+    default: false
+  selfmadeEssentials.burn:
+    description: Allows you to burn someone till he die.
+    default: false
+  selfmadeEssentials.killmob:
+    description: Allows you to remove mobs next to you.
+    default: false
+  selfmadeEssentials.feed:
+    description: Allows you to set feed level to maximum.
+    default: false
+  selfmadeEssentials.fly:
+    description: Allows you to fly.
+    default: false
+  selfmadeEssentials.heal:
+    description: Allows you to heal yourself.
+    default: false
+  selfmadeEssentials.ptime:
+    description: Allows you to toggle your player time.
+    default: false
+  selfmadeEssentials.workbench:
+    description: Allows you to open up a workbench.
+    default: false
+  selfmadeEssentials.tp:
+    description: Allows you to use tp.
+    default: false
+  selfmadeEssentials.effect:
+    description: Allows you to recieve an effect.
+    default: false
+
+commands:
+#General
+  list: #DONE
+    usage: /list <command> <stage|comment>
+    description: List all available commands
+    permission: selfmadeEssentials.list
+  ignore:
+    usage: /ignore|mute <Player>
+    description: Ignore a specific player
+  msg: #DONE
+    usage: /msg <Player> <Message>
+    description: Send a message to the specific player
+    permission: selfmadeEssentials.msg
+  r:
+    usage: /r <Message>
+    description: Send a message to the last player who wrote you
+  recipe:
+    usage: /recipe (Unknown)
+    description: Like NIE
+  rules:
+    usage: /rules
+    description: List the rules
+  seen:
+    usage: /seen <Player>
+    description: Return the time when the player last logged off
+  spawner:
+    usage: /spawner <Mob> [delay]
+    description: Change the mob type of a spawner
+  suicide:
+    usage: /suicide
+    description: Commit suicide
+  #Teleport
+  warp: #DONE
+    usage: /warp <warp name>
+    description: Warps you to a pre-set location
+    permission: selfmadeEssentials.warp
+  setwarp: #DONE
+    usage: /setwarp <warp name>
+    description: Defines a new warp location
+    permission: selfmadeEssentials.setwarp
+  delwarp: #DONE
+    usage: /delwarp <warp name>
+    description: Removes a warp location by warp name
+    permission: selfmadeEssentials.delwarp
+  warplist: #DONE
+    usage: /warplist
+    description: List all set warps
+    permission: selfmadeEssentials.warplist
+  tp:
+    usage: /tp <Player> [Player]
+    description: Teleport you or a given player
+    permission: selfmadeEssentials.tp
+  tphere:
+    usage: /<command> <player to teleport to YOUR SELF>
+    description: Teleport player directly to you
+  #tpall:
+  #  usage: /<command> [player]
+  #  description: Teleports all connected players.
+  top:
+    usage: /<command>
+    description: Teleports you to the highest block at your current location
+  home:
+    usage: /<command> [name]
+    description: Teleports you home
+  sethome:
+    usage: /<command> [name]
+    description: Sets your home location
+  delhome:
+    usage: /<command> <name>
+    description: Removes a home
+  spawn:
+    usage: /<command> [player]
+    description: Teleports you to spawn
+  setspawn:
+    usage: /<command> [group]
+    description: Sets the spawn location
+  back:
+    usage: /<command>
+    description: Returns you to your last position from a prior teleport
+  
+#Moderator
+  fb:
+    usage:
+    description:
+    permission: selfmadeEssentials.fb
+  bigtree: #In work
+    usage: /bigtree <treetype>
+    description: Spawns a tree
+    permission: selfmadeEssentials.bigtree
+  vanish: #DONE
+    usage: /vanish
+    description: Hide yourself from other players
+    permission: selfmadeEssentials.vanish
+  sudo: #DONE
+    usage: /sudo <player> <command [args]>
+    description: Make another user perform a command
+    permission: selfmadeEssentials.sudo
+  spawnmob: #In work
+    usage: /spawnmob <mob>:<data> <amount>
+    description: Allows you to spawn a specified mob with an optional mount
+    permission: selfmadeEssentials.spawnmob
+  socialspy: #DONE
+    usage: /spy <player>
+    description: See other players private messages
+    aliases: [spy]
+    permission: selfmadeEssentials.socialspy
+  remove:
+    usage: /<command> <all|drops|xp> [radius|world]
+    description: Removes entities in your world
+  mute:
+    usage: /<command> <player name> [time]
+    description: Mutes or un-mutes a specified player
+  invsee: #DONE
+    usage: /iv <player>
+    description: See the inventory of other players
+    aliases: [iv]
+    permission: selfmadeEssentials.invsee
+  ext:
+    usage: /ext <player name>
+    description: Extinguish a player
+  essentials:
+    usage: /<command> [reload|debug] (/<command> [reset] [player])
+    description: Returns Essentials Version, and reload config
+  enderchest: #DONE
+    usage: /ec <player>
+    description: Lets you see inside an enderchest
+    aliases: [ec]
+    permission: selfmadeEssentials.enderchest
+  clearinventory: #DONE
+    usage: /ci <player>
+    description: Clear a players inventory
+    aliases: [ci, clear]
+    permission: selfmadeEssentials.clearinventory
+  burn: #DONE
+    usage: /burn <player1> <player2> ...
+    description: Set players on fire
+    permission: selfmadeEssentials.burn
+  killmob: #DONE
+    usage: /killmob <creature>
+    description: Kill all given entities
+    permission: selfmadeEssentials.killmob
+  effect:
+    usage: /effect <effectType>
+    description: Recieve the given effect.
+    permission: selfmadeEssentials.effect
+  
+  
+#Cheat
+  
+  break:
+    usage: /break
+    description: Break the block you are looking at
+  exp:
+    usage: /exp <show|set|give> <Player> <amount>
+    description: Give, set or look at a players exp
+  feed: #DONE
+    usage: /feed
+    description: Satisfy the hunger
+    permission: selfmadeEssentials.feed
+  fly: #In work
+    usage: /fly <Player> #Für David
+    description: Set fly mode
+    permission: selfmadeEssentials.fly
+  god:
+    usage: /god |<player>
+    description: Toggle god mode
+  heal: #DONE
+    usage: /h <player1> <plyer2> ...
+    description: Heal the players
+    aliases: [h]
+    permission: selfmadeEssentials.heal
+  item:
+    usage: /item <item|item:damage value> [amount [enchant:level...]]
+    description: Give an item to yourself
+  kit:
+    usage: /kit <kitname> <Player>
+    description: Give the player a specified kit
+  more:
+    usage: /more 
+    description: Fill the itemstack in your hand to maximum
+  ptime: #DONE
+    usage: /ptime [list|reset|day|night|dawn|17:30|4pm|4000ticks] <player|*>
+    description: Change the time specificaly for the player
+    permission: selfmadeEssentials.ptime
+  repair:
+    usage: /repair [hand|all]
+    description: Repair the durability of all or one item
+  speed:
+    usage: /speed <speed> [player]
+    description: Change your speed limits
+  unlimited:
+    usage: /unlimited <list|item|clear> [player]
+    description: Allows the unlimited placing of items
+  workbench: #DONE
+    usage: /workbench
+    description: Open up a workbench
+    aliases: [wb]
+    permission: selfmadeEssentials.workbench
