@@ -32,8 +32,8 @@ public class EssentialCommands {
         return bldr.toString();
     }
 
-    public static String message(String string, String arg1, String arg2, String arg3) {
-        return ChatColor.translateAlternateColorCodes('&', String.format(string, arg1, arg2, arg3));
+    public static String message(String string, Object... args) {
+        return ChatColor.translateAlternateColorCodes('&', String.format(string, args));
     }
 
     public static String message(String string, String arg1, String arg2) {
