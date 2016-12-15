@@ -13,8 +13,8 @@ public class EssentialCommands {
 
     public static boolean validPlayerName(String name) {
         final StringBuilder nameBldr = new StringBuilder(name);
-        for(int i = 0; i < nameBldr.length(); i++) {
-            if(Constants.AVAILABLE_CHARS_IN_NAME.indexOf(nameBldr.charAt(i)) < 0) {
+        for (int i = 0; i < nameBldr.length(); i++) {
+            if (Constants.AVAILABLE_CHARS_IN_NAME.indexOf(nameBldr.charAt(i)) < 0) {
                 return false;
             }
         }
@@ -34,22 +34,6 @@ public class EssentialCommands {
 
     public static String message(String string, Object... args) {
         return ChatColor.translateAlternateColorCodes('&', String.format(string, args));
-    }
-
-    public static String message(String string, String arg1, String arg2) {
-        return ChatColor.translateAlternateColorCodes('&', String.format(string, arg1, arg2));
-    }
-
-    public static String message(String string, long arg) {
-        return ChatColor.translateAlternateColorCodes('&', String.format(string, arg));
-    }
-
-    public static String message(String string, String arg) {
-        return ChatColor.translateAlternateColorCodes('&', String.format(string, arg));
-    }
-
-    public static String message(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
     }
 
     public static List<Block> getLineOfSight(Player player) {
