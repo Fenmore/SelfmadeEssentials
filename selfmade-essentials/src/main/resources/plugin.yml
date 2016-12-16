@@ -77,6 +77,9 @@ permissions:
   selfmadeEssentials.effect:
     description: Allows you to recieve an effect.
     default: false
+  selfmadeEssentials.gamemode:
+    description: Allows you to change gamemodes.
+    default: false
 
 commands:
 #General
@@ -273,3 +276,8 @@ commands:
     description: Open up a workbench
     aliases: [wb]
     permission: selfmadeEssentials.workbench
+  gamemode:
+    usage: /gm <Mode> <Player>
+    description: Set the gamemode.
+    aliases: [gm]
+    permission: selfmadeEssentials.gamemode
