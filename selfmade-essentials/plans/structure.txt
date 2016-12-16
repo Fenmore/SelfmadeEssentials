@@ -1,24 +1,110 @@
 Wonderland Plugin:
-- Permission Plugin
+- Permission Plugin (Tobi)
     - Verwaltung der Permissions für jeden Spieler
         - Hinzufügen
+            + Verbindung zu Essentials, vanish status updaten
         - Entfernen
+            + Verbindung zu Essentials, vanish status updaten
         - Auflisten
         - Observerliste für Permissionänderungen
 
 - Essentials
-    - General Befehle für Minecraft
-    - Mederationsbefehle
-    - Cheat Befehle
-    - Teleportationsbefehle
+    - Befehle
+        - General Befehle für Minecraft
+            - /list , um Status aller aktuell funktionierende Essentials Befehle zu sehen, sowie Anmerkungen setzen
+            + /ignore , um einen Spieler zu ignorieren, dazu zählt:
+                + keine Chat/msg Nachrichten Empfangen
+            - /msg , um anderen Spielern private Nachrichten zu senden
+            + /r , um schnell direkt antworten zu können
+            + /recipe , um wie NEI eine klare Übersicht aller crafting rezepte zu haben
+            + /rules , um Regeln auf dem Server anzuzeigen
+            + /seen , um zu sehen, wann eine Person zuletzt online war
+            + /spawner , um den Mob Typ eines Spawners zu ändern
+            + /suicide , um Selbstmord zu begehen
+        - Mederationsbefehle
+            - /fb , Testbefehl für Plugin Timber
+            - /bigtree , um einen Baum auf Location in Sicht zu spawnen, nach Typ bestimmbar
+                + Bei manchen transparenten Blöcke in Sicht diese überspringen
+            - /vanish , um sich vor allen Spielern ohne Permission auf diesen Befehl zu verstecken
+                - Spieler mit Permission sehen versteckte Spieler transparent
+                - Liste von aktiven Vanish Spielern
+            - /sudo , um einen anderen Spieler einen Befehl ausführen zu lassen
+                + Chatbefehle wie /msg, /r für diese Funktion sperren
+            - /spawnmob , um auf Location in Sicht bis zu 20 angegebener Creatures zu spawnen
+            - /socialspy , um /msg Nachrichten sehen zu können
+            + /remove , um andere Entities als Creaturen zu entfernen
+            + /mute , um einen Spieler für alle Spieler zu muten
+                + Chat/Msg Nachrichten
+            - /invsee , um das Inventar eines anderen Spieler zu öffnen
+            + /ext , um einen brennenden Spieler zu löschen
+            - /enderchest , um das Endertruheninventar eines Spielers zu öffnen
+            - /clearinventory , um das eigene Inventar zu leeren
+            - /burn , um einen Spieler anzuzünden, bis er stirbt
+            - /killmob , um alle Mobs in einem Radius von 25 Blöcken zu entfernen
+            - /effect , um Potion Effect zu verwalten
+                + bei allen Spielern
+                - Effekt hinzufügen
+                + Effekt entfernen
+                + Alle Effekte entfernen
+                + Wenn /vanish aktiv keine Invisibility entfernen
+        - Cheat Befehle
+            + /exp , um Experience der Spieler zu verwalten
+                + Exp hinzufügen
+                + Exp entfernen
+                + Exp setzen
+            - /feed , um Hunger voll aufzufüllen
+            - /fly , um Flugmodus zu de-/aktivieren
+                + Flugmodus für andere Spieler ändern (David)
+            + /god , um Spieler unsterblich zu machen
+            - /heal , um Leben voll aufzufüllen
+            + /item , um beliebige Items zu cheaten
+            + /kit , um vergefertigte Kits zu laden
+            + /more , um Item in der Hand zum Maximum zu füllen
+            - /ptime , um Zeit in der Welt clientside zu ändern
+                - Tag unverändert
+                - Nacht unverändert
+                - Morgen unverändert
+                - Dämmerung unverändert
+                - Zeit beliebig einstellen
+                - Zeit zurücksetzen auf Serverzeit
+                - Liste aller Möglichkeiten
+            + /repair , um Items mit Durability zu reparieren
+            + /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
+            + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können
+            - /workbench , um ein Workbenchinventar zu öffnen
+        - Teleportationsbefehle
+            - /warp , um zu einer zuvor gesetzen Location zu gelangen
+                + aktuelle Location für /back bereitstellen
+            - /setwarp , um einen Warp auf aktuelle Position zu setzen
+            - /delwarp , um einen Warp zu entfernen
+            - /warplist , um alle aktiven Warps aufzulisten
+            - /tp , um zu ...
+                - ... einem Spieler zu teleportieren
+                    + aktuelle Location für /back bereitstellen
+                - ... einer Koordinate zu teleportieren
+                    + aktuelle Location für /back bereitstellen
+            + /tphere , um einen anderen Spieler zu sich zu teleportieren
+                + aktuelle Location von anderem Spieler für /back bereitstellen
+            + /top , um zum nächsten, höchsten Block über sich zu teleportieren
+            + /home , um zu einer zuvor gesetzten privaten Location zu gelangen
+                + aktuelle Location für /back bereitstellen
+            + /sethome , um einen privaten Warp auf aktuelle Position zu setzen
+            + /delhome , um privaten Warp zu entfernen
+            + /spawn , um zum gesetzten Spawn zu kommen
+                + aktuelle Location für /back bereitstellen
+            + /setspawn , um Location für Spawnbefehl zu setzen
+            + /back , um zur letzten Location zu kommen, von der man sich wegteleportiert hat
 
-- Timber
-    - Umfallenden Baum animieren bei Entfernen des unteren Blocks
++ Currency Plugin
 
-- Minigames
-    - Spleef
-    - Hungergames
-    - Racing
++ Timber
+    + Umfallenden Baum animieren bei Entfernen des unteren Blocks
 
-- Haustiere
-    - Entities als "Haustiere" definieren
++ Minigames
+    + Skyblock
+    + Spleef
+    + Hungergames
+    + Racing
+
++ Haustiere
+    + Creatures als "Haustiere" definieren

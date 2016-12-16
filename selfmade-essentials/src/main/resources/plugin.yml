@@ -131,31 +131,31 @@ commands:
     description: Teleport you or a given player
     permission: selfmadeEssentials.tp
   tphere:
-    usage: /<command> <player to teleport to YOUR SELF>
+    usage: /tphere <player to teleport to YOUR SELF>
     description: Teleport player directly to you
   #tpall:
   #  usage: /<command> [player]
   #  description: Teleports all connected players.
   top:
-    usage: /<command>
+    usage: /top
     description: Teleports you to the highest block at your current location
   home:
-    usage: /<command> [name]
+    usage: /home [name]
     description: Teleports you home
   sethome:
-    usage: /<command> [name]
+    usage: /sethome [name]
     description: Sets your home location
   delhome:
-    usage: /<command> <name>
+    usage: /delhome <name>
     description: Removes a home
   spawn:
-    usage: /<command> [player]
+    usage: /spawn [player]
     description: Teleports you to spawn
   setspawn:
-    usage: /<command> [group]
+    usage: /setspawn [group]
     description: Sets the spawn location
   back:
-    usage: /<command>
+    usage: /back
     description: Returns you to your last position from a prior teleport
   
 #Moderator
@@ -185,10 +185,10 @@ commands:
     aliases: [spy]
     permission: selfmadeEssentials.socialspy
   remove:
-    usage: /<command> <all|drops|xp> [radius|world]
+    usage: /remove <all|drops|xp> [radius|world]
     description: Removes entities in your world
   mute:
-    usage: /<command> <player name> [time]
+    usage: /mute <player name> [time]
     description: Mutes or un-mutes a specified player
   invsee: #DONE
     usage: /iv <player>
@@ -199,7 +199,7 @@ commands:
     usage: /ext <player name>
     description: Extinguish a player
   essentials:
-    usage: /<command> [reload|debug] (/<command> [reset] [player])
+    usage: /essentials [reload|debug] (/<command> [reset] [player])
     description: Returns Essentials Version, and reload config
   enderchest: #DONE
     usage: /ec <player>
@@ -226,10 +226,7 @@ commands:
   
   
 #Cheat
-  
-  break:
-    usage: /break
-    description: Break the block you are looking at
+
   exp:
     usage: /exp <show|set|give> <Player> <amount>
     description: Give, set or look at a players exp
