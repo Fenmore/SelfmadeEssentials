@@ -72,6 +72,9 @@ Wonderland Plugin:
             + /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
             + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können
             - /workbench , um ein Workbenchinventar zu öffnen
+            + /gamemode , um seinen Gamemode zu verändern
+                + Kein Argument -> switch zwischen gamemode 0 und 1
+                + Gamemode für andere Spieler setzen
         - Teleportationsbefehle
             - /warp , um zu einer zuvor gesetzen Location zu gelangen
                 + aktuelle Location für /back bereitstellen
@@ -94,6 +97,14 @@ Wonderland Plugin:
                 + aktuelle Location für /back bereitstellen
             + /setspawn , um Location für Spawnbefehl zu setzen
             + /back , um zur letzten Location zu kommen, von der man sich wegteleportiert hat
+
++ Chat Plugin
+    + Verwaltung jeglichen Chats
+    + Chat Reichweite?
+    + Verschiedene Chat Bereiche
+        + lokal
+        + worldwide
+        + serverwide
 
 + Currency Plugin
 
