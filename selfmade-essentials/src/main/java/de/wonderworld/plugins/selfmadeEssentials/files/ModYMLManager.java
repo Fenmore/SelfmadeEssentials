@@ -128,7 +128,7 @@ public class ModYMLManager {
         safeFile(cfg);
     }*/
 
-    public boolean getGodmode(String name) {
+    public boolean isGodmodeActive(String name) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("godmode");
         if (list == null)
