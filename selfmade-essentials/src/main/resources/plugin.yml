@@ -80,6 +80,9 @@ permissions:
   selfmadeEssentials.gamemode:
     description: Allows you to change gamemodes.
     default: false
+  selfmadeEssentials.god:
+      description: Allows you to toogle godmode.
+      default: false
 
 commands:
 #General
@@ -244,6 +247,7 @@ commands:
   god:
     usage: /god |<player>
     description: Toggle god mode
+    #permission: selfmadeEssentials.god
   heal: #DONE
     usage: /h <player1> <plyer2> ...
     description: Heal the players

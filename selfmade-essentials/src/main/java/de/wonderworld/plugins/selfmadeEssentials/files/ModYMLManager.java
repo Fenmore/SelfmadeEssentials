@@ -141,18 +141,18 @@ public class ModYMLManager {
         }
     }
 
-    public void setGodmode(String name, boolean active) {
+    public void toggleGodmode(String name) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("godmode");
-        if(active) {
-            if (list == null)
-                list = new ArrayList<>();
+        if (list == null) {
+            list = new ArrayList<>();
             list.add(name);
         }
         else {
-            if (list == null)
-                return;
-            list.remove(name);
+            if(list.contains(name))
+                list.remove(name);
+            else
+                list.add(name);
         }
         cfg.set("godmode", list);
         safeFile(cfg);

@@ -54,4 +54,6 @@ public class Constants {
     public static final String GAMEMODE_SET_FORMAT = "&6Your gamemode has been set to &f%s&6.";
     public static final String SUDO_COMMAND_NOT_ALLOWED = "&cYou can't perform messaging commands through sudo.";
     public static final String ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT = "&cThe argument &f%s &chas to be a number or the gamemode is missing.";
+    public static final String GODMODE_IS_NOW_ON = "&6Your godmode is now &aon&6.";
+    public static final String GODMODE_IS_NOW_OFF = "&6Your godmode is now &coff&6.";
 }

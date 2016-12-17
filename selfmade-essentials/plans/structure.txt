@@ -56,7 +56,7 @@ Wonderland Plugin:
             - /feed , um Hunger voll aufzufüllen
             - /fly , um Flugmodus zu de-/aktivieren
                 - Flugmodus für andere Spieler ändern
-            + /god , um Spieler unsterblich zu machen
+            - /god , um Spieler unsterblich zu machen
             - /heal , um Leben voll aufzufüllen
             + /item , um beliebige Items zu cheaten
             + /kit , um vergefertigte Kits zu laden
