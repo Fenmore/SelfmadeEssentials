@@ -41,6 +41,29 @@ public class CommandGamemode implements CommandExecutor {
                         break;
                 }
             }
+            else {
+                int modeInt;
+                try{
+                    modeInt = Integer.valueOf(args[0]);
+                    switch (modeInt) {
+                        case 0:
+                            mode = GameMode.SURVIVAL;
+                            break;
+                        case 1:
+                            mode = GameMode.CREATIVE;
+                            break;
+                        case 2:
+                            mode = GameMode.ADVENTURE;
+                            break;
+                        case 3:
+                            mode = GameMode.SPECTATOR;
+                            break;
+                    }
+                }
+                catch (NumberFormatException e) {
+                    sender.sendMessage(EssentialCommands.message(Constants.ARGUMENT_HAS_TO_BE_INTEGER_FORMAT, args[0]));
+                }
+            }
         }
         else {
             int modeInt;

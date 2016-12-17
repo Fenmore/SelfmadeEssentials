@@ -272,7 +272,7 @@ commands:
     usage: /unlimited <list|item|clear> [player]
     description: Allows the unlimited placing of items
   workbench: #DONE
-    usage: /workbench
+    usage: /wb
     description: Open up a workbench
     aliases: [wb]
     permission: selfmadeEssentials.workbench
