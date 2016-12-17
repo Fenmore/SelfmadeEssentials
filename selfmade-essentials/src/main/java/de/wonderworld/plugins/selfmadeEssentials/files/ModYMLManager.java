@@ -127,4 +127,12 @@ public class ModYMLManager {
         cfg.set("vanishVisible", list);
         safeFile(cfg);
     }*/
+
+    public boolean getGodmode(String name) {
+        return false;
+    }
+
+    public void setGodmode(String name, boolean godmode) {
+
+    }
 }
