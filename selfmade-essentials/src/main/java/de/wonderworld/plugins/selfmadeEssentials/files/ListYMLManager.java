@@ -92,4 +92,10 @@ public class ListYMLManager {
         YamlConfiguration cfg = loadCfg();
         return cfg.getStringList("actualCommands." + command + ".comments");
     }
+
+    public void removeCommand(String command) {
+        YamlConfiguration cfg = loadCfg();
+        cfg.set("actualCommands." + command, null);
+        safeFile(cfg);
+    }
 }

@@ -30,24 +30,29 @@ public class CommandList implements CommandExecutor{
         if(args.length == 0) {
             JsonWrapper json = new JsonWrapper().wrapJsonTellraw(sender.getName());
             for (String key1 : sortedCommands) {
-                String comments = "";
-                for(String comment : listYMLManager.getComments(key1)) {
-                    comments += "\n- " + comment;
+                try {
+                    String comments = "";
+                    for (String comment : listYMLManager.getComments(key1)) {
+                        comments += "\n- " + comment;
+                    }
+                    if (commandMap.get(key1).get("stage").toString().equals("stable")) {
+                        json.addText(key1, JsonColor.GREEN, JsonFormat.UNDERLINED)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
+                    } else if (commandMap.get(key1).get("stage").toString().equals("beta")) {
+                        json.addText(key1, JsonColor.YELLOW, JsonFormat.UNDERLINED)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
+                    } else if (commandMap.get(key1).get("stage").toString().equals("alpha")) {
+                        json.addText(key1, JsonColor.RED, JsonFormat.UNDERLINED)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
+                    }
+                    json.addText(" ");
                 }
-                if (commandMap.get(key1).get("stage").toString().equals("stable")) {
-                    json.addText(key1, JsonColor.GREEN, JsonFormat.UNDERLINED)
-                            .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
-                            .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
-                } else if (commandMap.get(key1).get("stage").toString().equals("beta")) {
-                    json.addText(key1, JsonColor.YELLOW, JsonFormat.UNDERLINED)
-                            .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
-                            .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
-                } else if (commandMap.get(key1).get("stage").toString().equals("alpha")) {
-                    json.addText(key1, JsonColor.RED, JsonFormat.UNDERLINED)
-                            .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
-                            .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
+                catch (NullPointerException e) {
+                    listYMLManager.removeCommand(key1);
                 }
-                json.addText(" ");
             }
             plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), json.toString());
             return true;
