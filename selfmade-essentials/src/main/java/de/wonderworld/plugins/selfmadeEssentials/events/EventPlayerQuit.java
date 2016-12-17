@@ -12,9 +12,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.List;
 
-/**
- * Created by Fenmore on 24.11.2016.
- */
 public class EventPlayerQuit implements Listener {
 
     private ModYMLManager modYMLManager;

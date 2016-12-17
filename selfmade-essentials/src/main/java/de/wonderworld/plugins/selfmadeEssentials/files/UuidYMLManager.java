@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * Created by Fenmore on 03.12.2016.
- */
 public class UuidYMLManager {
 
     private static File getUuidFile() {

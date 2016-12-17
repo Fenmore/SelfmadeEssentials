@@ -11,9 +11,6 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Fenmore on 11.12.2016.
- */
 public class CommandEffect implements CommandExecutor {
 
     private ModYMLManager modYMLManager;

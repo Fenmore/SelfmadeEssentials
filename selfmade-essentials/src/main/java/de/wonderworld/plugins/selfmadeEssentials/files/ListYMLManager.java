@@ -11,9 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Fenmore on 22.11.2016.
- */
 public class ListYMLManager {
 
     private File dirStats;

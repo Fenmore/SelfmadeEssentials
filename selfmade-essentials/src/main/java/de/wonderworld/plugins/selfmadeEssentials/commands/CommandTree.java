@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Fenmore on 21.11.2016.
- */
 public class CommandTree implements CommandExecutor{
 
 

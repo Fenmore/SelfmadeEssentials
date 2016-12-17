@@ -7,9 +7,6 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-/**
- * Created by Fenmore on 12.12.2016.
- */
 public class MessageListener implements PluginMessageListener {
 
 

@@ -5,9 +5,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
-/**
- * Created by Fenmore on 03.12.2016.
- */
 public class EventAsyncPlayerPreLogin implements Listener {
 
     @EventHandler

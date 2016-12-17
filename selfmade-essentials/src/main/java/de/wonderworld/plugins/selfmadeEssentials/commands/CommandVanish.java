@@ -15,9 +15,6 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Fenmore on 24.11.2016.
- */
 public class CommandVanish implements CommandExecutor {
 
     private ModYMLManager modYMLManager;

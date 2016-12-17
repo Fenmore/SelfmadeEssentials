@@ -13,9 +13,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.List;
 
-/**
- * Created by Fenmore on 24.11.2016.
- */
 public class EventPlayerJoin implements Listener {
 
     private ModYMLManager modYMLManager;

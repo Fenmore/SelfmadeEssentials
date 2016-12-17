@@ -11,9 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 import org.bukkit.util.Vector;
 
-/**
- * Created by Fenmore on 29.11.2016.
- */
 public class CommandWorkbench implements CommandExecutor {
 
 

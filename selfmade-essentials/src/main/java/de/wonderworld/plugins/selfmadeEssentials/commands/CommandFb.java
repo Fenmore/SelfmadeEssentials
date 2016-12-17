@@ -12,10 +12,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Fenmore on 02.12.2016.
- */
-
 public class CommandFb implements CommandExecutor {
 
     private Essentials plugin;

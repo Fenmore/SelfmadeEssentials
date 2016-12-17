@@ -10,9 +10,6 @@ import org.bukkit.command.CommandSender;
 
 import java.util.*;
 
-/**
- * Created by Fenmore on 21.11.2016.
- */
 public class CommandList implements CommandExecutor{
 
     private Essentials plugin;

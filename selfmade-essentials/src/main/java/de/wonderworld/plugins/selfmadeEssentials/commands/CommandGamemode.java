@@ -1,6 +1,5 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

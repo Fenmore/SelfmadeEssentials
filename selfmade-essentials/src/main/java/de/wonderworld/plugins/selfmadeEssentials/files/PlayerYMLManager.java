@@ -6,9 +6,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Fenmore on 03.12.2016.
- */
 public class PlayerYMLManager {
 
     private File getPlayerFile(String name) {

@@ -10,9 +10,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://hub.spigotmc.org/javadocs/bukkit/     setFireTicks
- */
 public class CommandBurn implements CommandExecutor {
 
     private Essentials plugin;

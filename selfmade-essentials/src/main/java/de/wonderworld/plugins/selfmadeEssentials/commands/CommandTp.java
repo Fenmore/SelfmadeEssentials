@@ -9,10 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by Fenmore on 30.11.2016.
- */
-
 public class CommandTp implements CommandExecutor {
 
 

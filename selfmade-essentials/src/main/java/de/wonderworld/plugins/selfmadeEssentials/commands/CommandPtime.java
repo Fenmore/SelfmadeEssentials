@@ -11,9 +11,6 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
-/**
- * Created by Fenmore on 29.11.2016.
- */
 public class CommandPtime implements CommandExecutor {
 
 
