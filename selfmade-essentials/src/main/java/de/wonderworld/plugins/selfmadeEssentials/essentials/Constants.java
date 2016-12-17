@@ -52,4 +52,5 @@ public class Constants {
     public static final String VANISH_LIST_INTRO = "&6The following currently online players have the ability to see you:";
     public static final String GAMEMODE_BIGGER_3 = "&cGamemode value has to be less than 4.";
     public static final String GAMEMODE_SET_FORMAT = "&6Your gamemode has been set to &f%s&6.";
+    public static final String SUDO_COMMAND_NOT_ALLOWED = "&cYou can't perform messaging commands through sudo.";
 }

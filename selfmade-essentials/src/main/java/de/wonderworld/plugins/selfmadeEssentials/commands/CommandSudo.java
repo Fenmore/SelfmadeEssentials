@@ -26,6 +26,11 @@ public class CommandSudo implements CommandExecutor{
             return true;
         }
 
+        if(args[1].equalsIgnoreCase("msg") || args[1].equalsIgnoreCase("r")) {
+            sender.sendMessage(EssentialCommands.message(Constants.SUDO_COMMAND_NOT_ALLOWED));
+            return true;
+        }
+
         String command = EssentialCommands.mergeArgs(args, 1);
         p.performCommand(command);
 
