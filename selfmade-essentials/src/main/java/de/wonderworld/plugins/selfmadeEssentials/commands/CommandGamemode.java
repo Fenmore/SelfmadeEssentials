@@ -9,9 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by David on 16.12.2016.
- */
 public class CommandGamemode implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -68,20 +65,20 @@ public class CommandGamemode implements CommandExecutor {
         else {
             int modeInt;
             try{
+                modeInt = Integer.valueOf(args[0]);
                 p = Bukkit.getServer().getPlayer(args[1]);
                 if(p == null ){
                     sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[1]));
                     return true;
                 }
-                modeInt = Integer.valueOf(args[0]);
             }
             catch (NumberFormatException e) {
+                modeInt = Integer.valueOf(args[1]);
                 p = Bukkit.getServer().getPlayer(args[0]);
                 if(p == null ){
                     sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[0]));
                     return true;
                 }
-                modeInt = Integer.valueOf(args[1]);
             }
             switch (modeInt) {
                 case 0:
@@ -96,10 +93,14 @@ public class CommandGamemode implements CommandExecutor {
                 case 3:
                     mode = GameMode.SPECTATOR;
                     break;
+                default:
+                    sender.sendMessage(EssentialCommands.message(Constants.GAMEMODE_BIGGER_3, args[0]));
+                    return true;
             }
         }
 
         p.setGameMode(mode);
+        p.sendMessage(EssentialCommands.message(Constants.GAMEMODE_SET_FORMAT, mode.toString()));
 
         return true;
     }
