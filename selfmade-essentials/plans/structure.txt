@@ -16,7 +16,7 @@ Wonderland Plugin:
                 + keine Chat/msg Nachrichten Empfangen
             - /msg , um anderen Spielern private Nachrichten zu senden
             + /r , um schnell direkt antworten zu können
-            + /recipe , um wie NEI eine klare Übersicht aller crafting rezepte zu haben
+            + /recipe , um wie NEI eine klare Übersicht aller crafting Rezepte zu haben
             + /rules , um Regeln auf dem Server anzuzeigen
             + /seen , um zu sehen, wann eine Person zuletzt online war
             + /spawner , um den Mob Typ eines Spawners zu ändern

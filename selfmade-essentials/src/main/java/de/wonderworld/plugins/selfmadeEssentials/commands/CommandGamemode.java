@@ -61,7 +61,7 @@ public class CommandGamemode implements CommandExecutor {
                     }
                 }
                 catch (NumberFormatException e) {
-                    sender.sendMessage(EssentialCommands.message(Constants.ARGUMENT_HAS_TO_BE_INTEGER_FORMAT, args[0]));
+                    sender.sendMessage(EssentialCommands.message(Constants.ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT, args[0]));
                 }
             }
         }
