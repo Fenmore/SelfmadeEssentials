@@ -129,10 +129,34 @@ public class ModYMLManager {
     }*/
 
     public boolean getGodmode(String name) {
-        return false;
+        YamlConfiguration cfg = loadCfg();
+        List<String> list = cfg.getStringList("godmode");
+        if (list == null)
+            return false;
+        else {
+            if (list.contains(name))
+                return true;
+            else
+                return false;
+        }
     }
 
-    public void setGodmode(String name, boolean godmode) {
-
+    public void setGodmode(String name, boolean active) {
+        YamlConfiguration cfg = loadCfg();
+        List<String> list = cfg.getStringList("godmode");
+        if(active) {
+            if (list == null)
+                list = new ArrayList<>();
+            list.add(name);
+            cfg.set("godmode", list);
+            safeFile(cfg);
+        }
+        else {
+            if (list == null)
+                return;
+            list.remove(name);
+            cfg.set("godmode", list);
+            safeFile(cfg);
+        }
     }
 }
