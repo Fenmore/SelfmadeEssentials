@@ -148,15 +148,13 @@ public class ModYMLManager {
             if (list == null)
                 list = new ArrayList<>();
             list.add(name);
-            cfg.set("godmode", list);
-            safeFile(cfg);
         }
         else {
             if (list == null)
                 return;
             list.remove(name);
-            cfg.set("godmode", list);
-            safeFile(cfg);
         }
+        cfg.set("godmode", list);
+        safeFile(cfg);
     }
 }
