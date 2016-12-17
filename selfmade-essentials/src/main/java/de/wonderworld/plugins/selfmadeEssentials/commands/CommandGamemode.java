@@ -54,6 +54,10 @@ public class CommandGamemode implements CommandExecutor {
                         case 3:
                             mode = GameMode.SPECTATOR;
                             break;
+                        default: {
+                            sender.sendMessage(EssentialCommands.message(Constants.GAMEMODE_BIGGER_3, args[0]));
+                            return true;
+                        }
                     }
                 }
                 catch (NumberFormatException e) {
@@ -92,9 +96,11 @@ public class CommandGamemode implements CommandExecutor {
                 case 3:
                     mode = GameMode.SPECTATOR;
                     break;
-                default:
+                default: {
                     sender.sendMessage(EssentialCommands.message(Constants.GAMEMODE_BIGGER_3, args[0]));
                     return true;
+                }
+
             }
         }
 

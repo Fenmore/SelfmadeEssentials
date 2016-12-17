@@ -72,10 +72,9 @@ Wonderland Plugin:
             + /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
             + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können
             - /workbench , um ein Workbenchinventar zu öffnen
-            + /gamemode , um seinen Gamemode zu verändern
+            - /gamemode , um seinen Gamemode zu verändern
                 - Kein Argument -> switch zwischen gamemode 0 und 1
-                + Gamemode für andere Spieler setzen (wenn der Spieler Name zuerst kommt dan gibt er aus "Player wasn`t found")
-                    (und bei zahlen größer 3 gibt er auch einen Fehlermeldung raus.)
+                - Gamemode für andere Spieler setzen
         - Teleportationsbefehle
             - /warp , um zu einer zuvor gesetzen Location zu gelangen
                 + aktuelle Location für /back bereitstellen
