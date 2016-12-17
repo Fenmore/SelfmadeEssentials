@@ -28,8 +28,9 @@ Wonderland Plugin:
             - /vanish , um sich vor allen Spielern ohne Permission auf diesen Befehl zu verstecken
                 - Spieler mit Permission sehen versteckte Spieler transparent
                 - Liste von aktiven Vanish Spielern
+                + Chatnachrichten in vanish nur für Spieler mit vanish Permission sichtbar machen
             - /sudo , um einen anderen Spieler einen Befehl ausführen zu lassen
-                + Chatbefehle wie /msg, /r für diese Funktion sperren
+                - Chatbefehle wie /msg, /r für diese Funktion sperren
             - /spawnmob , um auf Location in Sicht bis zu 20 angegebener Creatures zu spawnen
             - /socialspy , um /msg Nachrichten sehen zu können
             + /remove , um andere Entities als Creaturen zu entfernen
