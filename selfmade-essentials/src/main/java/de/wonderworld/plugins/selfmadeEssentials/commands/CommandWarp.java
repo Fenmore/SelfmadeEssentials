@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -33,8 +34,10 @@ public class CommandWarp implements CommandExecutor{
             return true;
         }
 
-        if(warp.getWorld() != null)
+        if(warp.getWorld() != null) {
+            new PlayerYMLManager().setBackLocation(sender.getName(), ((Player) sender).getLocation());
             ((Player) sender).teleport(warp);
+        }
         else
             sender.sendMessage(EssentialCommands.message(Constants.WARP_WORLD_NOT_LOADED));
 

@@ -1,6 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.files;
 
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -63,5 +65,28 @@ public class PlayerYMLManager {
             return false;
         else
             return true;
+    }
+
+    public Location getBackLocation(String name) {
+        YamlConfiguration cfg = loadCfg(name);
+        String world = "";
+        if(cfg.getString("back.world") != null)
+            world = cfg.getString("back.world");
+        return new Location(Bukkit.getWorld(world), cfg.getDouble("back.x"), cfg.getDouble("back.y"), cfg.getDouble("back.z"));
+    }
+
+    public void setBackLocation(String name, Location location) {
+        YamlConfiguration cfg = loadCfg(name);
+        cfg.set("back.world", location.getWorld().getName());
+        cfg.set("back.x", location.getX());
+        cfg.set("back.y", location.getY());
+        cfg.set("back.z", location.getZ());
+        safeFile(cfg, name);
+    }
+
+    public void remBackLocation(String name) {
+        YamlConfiguration cfg = loadCfg(name);
+        cfg.set("back", null);
+        safeFile(cfg, name);
     }
 }

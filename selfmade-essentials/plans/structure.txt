@@ -79,15 +79,15 @@ Wonderland Plugin:
                 - Gamemode für andere Spieler setzen
         - Teleportationsbefehle
             - /warp , um zu einer zuvor gesetzen Location zu gelangen
-                + aktuelle Location für /back bereitstellen
+                - aktuelle Location für /back bereitstellen
             - /setwarp , um einen Warp auf aktuelle Position zu setzen
             - /delwarp , um einen Warp zu entfernen
             - /warplist , um alle aktiven Warps aufzulisten
             - /tp , um zu ...
                 - ... einem Spieler zu teleportieren
-                    + aktuelle Location für /back bereitstellen
+                    - aktuelle Location für /back bereitstellen
                 - ... einer Koordinate zu teleportieren
-                    + aktuelle Location für /back bereitstellen
+                    - aktuelle Location für /back bereitstellen
             + /tphere , um einen anderen Spieler zu sich zu teleportieren
                 + aktuelle Location von anderem Spieler für /back bereitstellen
             - /top , um zum nächsten, sicheren Block über sich zu teleportieren
@@ -98,7 +98,7 @@ Wonderland Plugin:
             + /spawn , um zum gesetzten Spawn zu kommen
                 + aktuelle Location für /back bereitstellen
             + /setspawn , um Location für Spawnbefehl zu setzen
-            + /back , um zur letzten Location zu kommen, von der man sich wegteleportiert hat
+            - /back , um zur letzten Location zu kommen, von der man sich wegteleportiert hat
 
 + Chat Plugin
     + Verwaltung jeglichen Chats

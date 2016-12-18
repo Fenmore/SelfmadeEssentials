@@ -51,6 +51,7 @@ public class Essentials extends JavaPlugin {
     private CommandSuicide commandSuicide;
     private CommandGod commandGod;
     private CommandTop commandTop;
+    private CommandBack commandBack;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -106,6 +107,7 @@ public class Essentials extends JavaPlugin {
         commandSpeed = new CommandSpeed();
         commandGod = new CommandGod(modYMLManager);
         commandTop = new CommandTop();
+        commandBack = new CommandBack();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
@@ -151,6 +153,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("speed").setExecutor(commandSpeed);
         this.getCommand("god").setExecutor(commandGod);
         this.getCommand("top").setExecutor(commandTop);
+        this.getCommand("back").setExecutor(commandBack);
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "SimplePermission", messageListener);
         fillBoard();
         fillUuid();
