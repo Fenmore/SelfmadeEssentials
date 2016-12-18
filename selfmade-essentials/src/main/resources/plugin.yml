@@ -118,6 +118,7 @@ commands:
   suicide:
     usage: /suicide
     description: Commit suicide
+    #permission:  selfmadeEssentials.suicide
   #Teleport
   warp: #DONE
     usage: /warp <warp name>

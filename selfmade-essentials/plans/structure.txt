@@ -106,7 +106,7 @@ Wonderland Plugin:
     + Verschiedene Chat Bereiche
         + lokal
         + worldwide
-        + serverwid e
+        + serverwide
 
 + Currency Plugin
 
