@@ -42,6 +42,7 @@ public class Essentials extends JavaPlugin {
     private CommandPtime commandPtime;
     private CommandWorkbench commandWorkbench;
     private CommandTp commandTp;
+    private CommandExtinguish commandExtinguish;
     private CommandFb commandFb;
     private CommandEffect commandEffect;
     private CommandGamemode commandGamemode;
@@ -99,6 +100,7 @@ public class Essentials extends JavaPlugin {
         commandFb = new CommandFb(this);
         commandEffect = new CommandEffect();
         commandGamemode = new CommandGamemode();
+        commandExtinguish = new CommandExtinguish();
         commandSpeed = new CommandSpeed();
         commandGod = new CommandGod(modYMLManager);
         eventWeatherChange = new EventWeatherChange();
@@ -139,6 +141,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("ptime").setExecutor(commandPtime);
         this.getCommand("workbench").setExecutor(commandWorkbench);
         this.getCommand("suicide").setExecutor(commandSuicide);
+        this.getCommand("extinguish").setExecutor(commandExtinguish);
         this.getCommand("tp").setExecutor(commandTp);
         this.getCommand("fb").setExecutor(commandFb);
         this.getCommand("effect").setExecutor(commandEffect);

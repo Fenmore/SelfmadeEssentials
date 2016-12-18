@@ -206,9 +206,10 @@ commands:
     description: See the inventory of other players
     aliases: [iv]
     permission: selfmadeEssentials.invsee
-  ext:
+  extinguish:
     usage: /ext <player name>
     description: Extinguish a player
+    aliases: [ext]
   essentials:
     usage: /essentials [reload|debug] (/<command> [reset] [player])
     description: Returns Essentials Version, and reload config
