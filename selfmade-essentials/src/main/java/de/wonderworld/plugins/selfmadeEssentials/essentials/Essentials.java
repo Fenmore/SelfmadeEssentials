@@ -7,7 +7,6 @@ import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.UuidYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -53,6 +52,7 @@ public class Essentials extends JavaPlugin {
     private CommandTop commandTop;
     private CommandBack commandBack;
     private CommandTphere commandTphere;
+    private CommandSpawn commandSpawn;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -74,7 +74,7 @@ public class Essentials extends JavaPlugin {
             dirPlayer.mkdir();
         }
         modYMLManager = new ModYMLManager();
-        warpYMLManager = new WarpYMLManager(this);
+        warpYMLManager = new WarpYMLManager();
         listYMLManager = new ListYMLManager(getDataFolder(), this);
         commandMsg = new CommandMsg(this, modYMLManager);
         commandHeal = new CommandHeal(this);
@@ -108,6 +108,7 @@ public class Essentials extends JavaPlugin {
         commandTop = new CommandTop();
         commandBack = new CommandBack();
         commandTphere = new CommandTphere();
+        commandSpawn = new CommandSpawn(warpYMLManager);
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
@@ -155,6 +156,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("top").setExecutor(commandTop);
         this.getCommand("back").setExecutor(commandBack);
         this.getCommand("tphere").setExecutor(commandTphere);
+        this.getCommand("spawn").setExecutor(commandSpawn);
         fillBoard();
         fillUuid();
     }

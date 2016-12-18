@@ -88,16 +88,15 @@ Wonderland Plugin:
                     - aktuelle Location für /back bereitstellen
                 - ... einer Koordinate zu teleportieren
                     - aktuelle Location für /back bereitstellen
-            + /tphere , um einen anderen Spieler zu sich zu teleportieren
-                + aktuelle Location von anderem Spieler für /back bereitstellen
+            - /tphere , um einen anderen Spieler zu sich zu teleportieren
+                - aktuelle Location von anderem Spieler für /back bereitstellen
             - /top , um zum nächsten, sicheren Block über sich zu teleportieren
             + /home , um zu einer zuvor gesetzten privaten Location zu gelangen
                 + aktuelle Location für /back bereitstellen
             + /sethome , um einen privaten Warp auf aktuelle Position zu setzen
             + /delhome , um privaten Warp zu entfernen
-            + /spawn , um zum gesetzten Spawn zu kommen
-                + aktuelle Location für /back bereitstellen
-            + /setspawn , um Location für Spawnbefehl zu setzen
+            - /spawn , um zum gesetzten Spawn zu kommen
+                - aktuelle Location für /back bereitstellen
             - /back , um zur letzten Location zu kommen, von der man sich wegteleportiert hat
 
 + Chat Plugin

@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.files;
 
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -12,17 +13,8 @@ import java.util.Set;
 
 public class WarpYMLManager {
 
-    private File dirStats;
-    private Essentials plugin;
-
-    public WarpYMLManager(Essentials plugin) {
-        this.dirStats = Essentials.dirStats;
-        this.plugin = plugin;
-    }
-
-
     private File getWarpFile() {
-        return new File(dirStats.toString() + "\\Warps.yml");
+        return new File(Essentials.dirStats.toString() + "\\Warps.yml");
     }
 
     private YamlConfiguration loadCfg() {
@@ -43,7 +35,7 @@ public class WarpYMLManager {
         Location warp = null;
         String warpStr = str.toLowerCase();
         if (cfg.getString(warpStr + ".world") != null) {
-            warp = new Location(plugin.getServer().getWorld(cfg.getString(warpStr + ".world")), cfg.getDouble(warpStr + ".x"), cfg.getDouble(warpStr + ".y"), cfg.getDouble(warpStr + ".z"));
+            warp = new Location(Bukkit.getWorld(cfg.getString(warpStr + ".world")), cfg.getDouble(warpStr + ".x"), cfg.getDouble(warpStr + ".y"), cfg.getDouble(warpStr + ".z"));
             List<Float> directions = cfg.getFloatList(warpStr + ".direction");
             warp.setYaw(directions.get(0));
             warp.setPitch(directions.get(1));
@@ -74,4 +66,5 @@ public class WarpYMLManager {
     public Set<String> getWarpList() {
         return loadCfg().getKeys(false);
     }
+
 }
