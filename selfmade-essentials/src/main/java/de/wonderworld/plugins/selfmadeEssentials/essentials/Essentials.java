@@ -1,10 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.essentials;
 
 import de.wonderworld.plugins.selfmadeEssentials.commands.*;
-import de.wonderworld.plugins.selfmadeEssentials.events.EventAsyncPlayerPreLogin;
-import de.wonderworld.plugins.selfmadeEssentials.events.EventPlayerJoin;
-import de.wonderworld.plugins.selfmadeEssentials.events.EventPlayerQuit;
-import de.wonderworld.plugins.selfmadeEssentials.events.EventWeatherChange;
+import de.wonderworld.plugins.selfmadeEssentials.events.*;
 import de.wonderworld.plugins.selfmadeEssentials.files.ListYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.UuidYMLManager;
@@ -49,6 +46,7 @@ public class Essentials extends JavaPlugin {
     private CommandEffect commandEffect;
     private CommandGamemode commandGamemode;
     private CommandSpeed commandSpeed;
+    private CommandGod commandGod;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -57,6 +55,8 @@ public class Essentials extends JavaPlugin {
     private WarpYMLManager warpYMLManager;
     private ListYMLManager listYMLManager;
     private MessageListener messageListener;
+    private EventEntityDamage eventEntityDamage;
+
 
     public Essentials() {
         messageListener = new MessageListener();
@@ -98,11 +98,12 @@ public class Essentials extends JavaPlugin {
         commandEffect = new CommandEffect();
         commandGamemode = new CommandGamemode();
         commandSpeed = new CommandSpeed();
+        commandGod = new CommandGod(modYMLManager);
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
-
+        eventEntityDamage = new EventEntityDamage(modYMLManager);
 
     }
 
@@ -113,6 +114,7 @@ public class Essentials extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(eventPlayerJoin, this);
         this.getServer().getPluginManager().registerEvents(eventPlayerQuit, this);
         this.getServer().getPluginManager().registerEvents(eventAsyncPlayerPreLogin, this);
+        this.getServer().getPluginManager().registerEvents(eventEntityDamage, this);
         this.getCommand("msg").setExecutor(commandMsg);
         this.getCommand("heal").setExecutor(commandHeal);
         this.getCommand("feed").setExecutor(commandFeed);
@@ -139,6 +141,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("effect").setExecutor(commandEffect);
         this.getCommand("gamemode").setExecutor(commandGamemode);
         this.getCommand("speed").setExecutor(commandSpeed);
+        this.getCommand("god").setExecutor(commandGod);
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "SimplePermission", messageListener);
         fillBoard();
         fillUuid();

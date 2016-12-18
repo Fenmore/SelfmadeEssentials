@@ -60,4 +60,6 @@ public class Constants {
     public static final String SPEED_FLY_SET_FORMAT = "&6Your fly speed has been set to &f%s&6.";
     public static final String SPEED_WALK_SET_FORMAT = "&6Your walk speed has been set to &f%s&6.";
     public static final String SPEED_RESET = "&6Your walk and fly speed has been reset to &f0.1&6 and &f0.2&6.";
+    public static final String GODMODE_IS_NOW_ON = "&6Your godmode is now &aon&6.";
+    public static final String GODMODE_IS_NOW_OFF = "&6Your godmode is now &coff&6.";
 }
