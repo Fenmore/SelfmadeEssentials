@@ -2,6 +2,7 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -41,5 +42,19 @@ public class EssentialCommands {
         Block lastBlock = list.get(list.size() - 1);
         //if(lastBlock.getType().equals(Material.GRASS) || lastBlock.getType().equals(Material.VINE) || lastBlock.getType().equals(Material.GRASS))
         return list;
+    }
+
+    public static Location getSafeLocation(Location loc) {
+        while (true) {
+            if (loc.getWorld().getBlockAt(loc).getType().isSolid() || loc.getWorld().getBlockAt(loc).getType().equals(Material.STATIONARY_WATER) ||
+                    loc.getWorld().getBlockAt(loc).getType().equals(Material.STATIONARY_LAVA) || loc.getWorld().getBlockAt(loc).getType().equals(Material.WATER) ||
+                    loc.getWorld().getBlockAt(loc).getType().equals(Material.LAVA)) {
+                loc.setY(loc.getBlockY() + 1);
+                break;
+            }
+            loc.setY(loc.getBlockY() - 1);
+
+        }
+        return loc;
     }
 }

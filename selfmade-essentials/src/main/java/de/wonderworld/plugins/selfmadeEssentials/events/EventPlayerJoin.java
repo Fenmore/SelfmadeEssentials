@@ -23,6 +23,8 @@ public class EventPlayerJoin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+
+
         List<String> vanishActiveList = modYMLManager.getVanishActiveList();
         //List<String> vanishVisibleList = modYMLManager.getVanishVisibleList();
         if (!event.getPlayer().hasPermission("selfmadeEssentials.vanish")) {
@@ -52,6 +54,10 @@ public class EventPlayerJoin implements Listener {
                 event.setJoinMessage(null);
             }
         }
+
+
+
+
         PlayerYMLManager pym = new PlayerYMLManager();
         if (pym.hasPtime(event.getPlayer().getName()))
             event.getPlayer().setPlayerTime(pym.getPtimeTicks(event.getPlayer().getName()), pym.getPtimeState(event.getPlayer().getName()));

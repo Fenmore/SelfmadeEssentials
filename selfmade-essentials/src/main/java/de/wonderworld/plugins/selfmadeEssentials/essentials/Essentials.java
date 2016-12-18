@@ -52,6 +52,7 @@ public class Essentials extends JavaPlugin {
     private CommandGod commandGod;
     private CommandTop commandTop;
     private CommandBack commandBack;
+    private CommandTphere commandTphere;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -59,12 +60,10 @@ public class Essentials extends JavaPlugin {
     private ModYMLManager modYMLManager;
     private WarpYMLManager warpYMLManager;
     private ListYMLManager listYMLManager;
-    private MessageListener messageListener;
     private EventEntityDamage eventEntityDamage;
 
 
     public Essentials() {
-        messageListener = new MessageListener();
         dir = new File(getDataFolder().toString());
         dirStats = new File(getDataFolder(), "Stats");
         dirPlayer = new File(dirStats, "Player");
@@ -108,6 +107,7 @@ public class Essentials extends JavaPlugin {
         commandGod = new CommandGod(modYMLManager);
         commandTop = new CommandTop();
         commandBack = new CommandBack();
+        commandTphere = new CommandTphere();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
@@ -154,7 +154,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("god").setExecutor(commandGod);
         this.getCommand("top").setExecutor(commandTop);
         this.getCommand("back").setExecutor(commandBack);
-        Bukkit.getMessenger().registerIncomingPluginChannel(this, "SimplePermission", messageListener);
+        this.getCommand("tphere").setExecutor(commandTphere);
         fillBoard();
         fillUuid();
     }
