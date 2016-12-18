@@ -48,6 +48,7 @@ public class Essentials extends JavaPlugin {
     private CommandFb commandFb;
     private CommandEffect commandEffect;
     private CommandGamemode commandGamemode;
+    private CommandSpeed commandSpeed;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -96,6 +97,7 @@ public class Essentials extends JavaPlugin {
         commandFb = new CommandFb(this);
         commandEffect = new CommandEffect();
         commandGamemode = new CommandGamemode();
+        commandSpeed = new CommandSpeed();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
@@ -136,6 +138,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("fb").setExecutor(commandFb);
         this.getCommand("effect").setExecutor(commandEffect);
         this.getCommand("gamemode").setExecutor(commandGamemode);
+        this.getCommand("speed").setExecutor(commandSpeed);
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "SimplePermission", messageListener);
         fillBoard();
         fillUuid();

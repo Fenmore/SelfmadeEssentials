@@ -54,4 +54,10 @@ public class Constants {
     public static final String GAMEMODE_SET_FORMAT = "&6Your gamemode has been set to &f%s&6.";
     public static final String SUDO_COMMAND_NOT_ALLOWED = "&cYou can't perform messaging commands through sudo.";
     public static final String ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT = "&cThe argument &f%s &chas to be a number or the gamemode is missing.";
+    public static final String SPEED_INFO_FORMAT = "&6Your walk speed is &f%s&6 and your fly speed is &f%s&6.";
+    public static final String SPEED_WRONG_ARGUMENT_FORMAT = "&cThe argument &f%s &chas to be a number till 100.";
+    public static final String SPEED_WALK_FLY_SET_FORMAT = "&6Your walk and fly speed has been set to &f%s&6.";
+    public static final String SPEED_FLY_SET_FORMAT = "&6Your fly speed has been set to &f%s&6.";
+    public static final String SPEED_WALK_SET_FORMAT = "&6Your walk speed has been set to &f%s&6.";
+    public static final String SPEED_RESET = "&6Your walk and fly speed has been reset to &f0.1&6 and &f0.2&6.";
 }

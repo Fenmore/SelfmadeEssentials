@@ -21,7 +21,7 @@ Wonderland Plugin:
             + /seen , um zu sehen, wann eine Person zuletzt online war
             + /spawner , um den Mob Typ eines Spawners zu ändern
             + /suicide , um Selbstmord zu begehen
-        - Mederationsbefehle
+        - Moderationsbefehle
             - /fb , Testbefehl für Plugin Timber
             - /bigtree , um einen Baum auf Location in Sicht zu spawnen, nach Typ bestimmbar
                 + Bei manchen transparenten Blöcke in Sicht diese überspringen
@@ -69,6 +69,7 @@ Wonderland Plugin:
                 - Zeit beliebig einstellen
                 - Zeit zurücksetzen auf Serverzeit
                 - Liste aller Möglichkeiten
+            + /pweather , um das Wetter clientside zu ändern
             + /repair , um Items mit Durability zu reparieren
             + /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
             + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können

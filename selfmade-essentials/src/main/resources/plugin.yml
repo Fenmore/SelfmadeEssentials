@@ -80,6 +80,9 @@ permissions:
   selfmadeEssentials.gamemode:
     description: Allows you to change gamemodes.
     default: false
+  selfmadeEssentials.speed:
+      description: Allows you to change speed.
+      default: false
 
 commands:
 #General
@@ -266,8 +269,9 @@ commands:
     usage: /repair [hand|all]
     description: Repair the durability of all or one item
   speed:
-    usage: /speed <speed> [player]
+    usage: /speed [walk/fly/reset] <speed in %>
     description: Change your speed limits
+    permission: selfmadeEssentials.speed
   unlimited:
     usage: /unlimited <list|item|clear> [player]
     description: Allows the unlimited placing of items
