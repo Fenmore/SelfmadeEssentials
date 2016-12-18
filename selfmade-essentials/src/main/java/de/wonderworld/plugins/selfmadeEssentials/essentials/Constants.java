@@ -9,6 +9,7 @@ public class Constants {
     public static final String PLAYER_NOT_FOUND_FORMAT = "&cThe player &f%s &cwasn't found.";
     public static final String MOB_NOT_FOUND_FORMAT = "&cThe mob &f%s &cwasn't found.";
     public static final String FLY_MODE_ON = "&6Your fly mode is now &aon&6.";
+    public static final String PLAYER_KILLED_HIM_SELFE_FORMAT="&c%s &6committed suicide.";
     public static final String FLY_MODE_OFF = "&6Your fly mode is now &coff&6.";
     public static final String WARP_SET_FORMAT = "&aThe warp &f%s &ahas been set to your current location.";
     public static final String WARP_REMOVED_FORMAT = "&aThe warp &f%s &ahas been removed.";

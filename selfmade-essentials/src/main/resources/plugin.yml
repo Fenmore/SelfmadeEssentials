@@ -118,7 +118,7 @@ commands:
   suicide:
     usage: /suicide
     description: Commit suicide
-    #permission:  selfmadeEssentials.suicide
+    permission:  selfmadeEssentials.suicide
   #Teleport
   warp: #DONE
     usage: /warp <warp name>
@@ -251,7 +251,8 @@ commands:
   god:
     usage: /god |<player>
     description: Toggle god mode
-    #permission: selfmadeEssentials.god
+    aliases: [harakiri]
+    permission: selfmadeEssentials.god
   heal: #DONE
     usage: /h <player1> <plyer2> ...
     description: Heal the players
