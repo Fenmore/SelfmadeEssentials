@@ -7,6 +7,7 @@ import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.UuidYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -49,6 +50,7 @@ public class Essentials extends JavaPlugin {
     private CommandSpeed commandSpeed;
     private CommandSuicide commandSuicide;
     private CommandGod commandGod;
+    private CommandTop commandTop;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -103,12 +105,12 @@ public class Essentials extends JavaPlugin {
         commandExtinguish = new CommandExtinguish();
         commandSpeed = new CommandSpeed();
         commandGod = new CommandGod(modYMLManager);
+        commandTop = new CommandTop();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
         eventEntityDamage = new EventEntityDamage(modYMLManager);
-
     }
 
     @Override
@@ -148,11 +150,10 @@ public class Essentials extends JavaPlugin {
         this.getCommand("gamemode").setExecutor(commandGamemode);
         this.getCommand("speed").setExecutor(commandSpeed);
         this.getCommand("god").setExecutor(commandGod);
+        this.getCommand("top").setExecutor(commandTop);
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "SimplePermission", messageListener);
         fillBoard();
         fillUuid();
-
-
     }
 
 

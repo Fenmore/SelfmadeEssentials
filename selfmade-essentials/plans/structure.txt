@@ -59,7 +59,7 @@ Wonderland Plugin:
             - /god , um Spieler unsterblich zu machen
             - /heal , um Leben voll aufzufüllen
             + /item , um beliebige Items zu cheaten
-            + /kit , um vergefertigte Kits zu laden
+            + /kit , um vorgefertigte Kits zu laden
             + /more , um Item in der Hand zum Maximum zu füllen
             - /ptime , um Zeit in der Welt clientside zu ändern
                 - Tag unverändert
@@ -90,7 +90,7 @@ Wonderland Plugin:
                     + aktuelle Location für /back bereitstellen
             + /tphere , um einen anderen Spieler zu sich zu teleportieren
                 + aktuelle Location von anderem Spieler für /back bereitstellen
-            + /top , um zum nächsten, höchsten Block über sich zu teleportieren
+            - /top , um zum nächsten, sicheren Block über sich zu teleportieren
             + /home , um zu einer zuvor gesetzten privaten Location zu gelangen
                 + aktuelle Location für /back bereitstellen
             + /sethome , um einen privaten Warp auf aktuelle Position zu setzen
