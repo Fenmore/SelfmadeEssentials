@@ -3,10 +3,14 @@ package de.wonderworld.plugins.selfmadeEssentials.files;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class PlayerYMLManager {
 
@@ -88,5 +92,39 @@ public class PlayerYMLManager {
         YamlConfiguration cfg = loadCfg(name);
         cfg.set("back", null);
         safeFile(cfg, name);
+    }
+
+    public void setHomeLocation(String name, Location location, String home) {
+        YamlConfiguration cfg = loadCfg(name);
+        cfg.set("homes." + home + ".world", location.getWorld().getName());
+        cfg.set("homes." + home + ".x", location.getX());
+        cfg.set("homes." + home + ".y", location.getY());
+        cfg.set("homes." + home + ".z", location.getZ());
+        safeFile(cfg, name);
+    }
+
+    public void remHomeLocation(String name, String home) {
+        YamlConfiguration cfg = loadCfg(name);
+        cfg.set("homes." + home, null);
+        return;
+    }
+
+    public List<String> getHomeList(String name) {
+        YamlConfiguration cfg = loadCfg(name);
+        ConfigurationSection section = cfg.getConfigurationSection("homes");
+        Map<String, Object> sectionValues = section.getValues(false);
+        List<String> list = new ArrayList<>();
+        for(String key : sectionValues.keySet()) {
+            list.add(key);
+        }
+        return list;
+    }
+
+    public Location getHome(String name, String home) {
+        YamlConfiguration cfg = loadCfg(name);
+        String world = "";
+        if(cfg.getString("homes." + home + ".world") != null)
+            world = cfg.getString("homes." + home + ".world");
+        return new Location(Bukkit.getWorld(world), cfg.getDouble("homes." + home + ".x"), cfg.getDouble("homes." + home + ".y"), cfg.getDouble("homes." + home + ".z"));
     }
 }

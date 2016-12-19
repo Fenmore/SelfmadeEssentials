@@ -53,6 +53,9 @@ public class Essentials extends JavaPlugin {
     private CommandBack commandBack;
     private CommandTphere commandTphere;
     private CommandSpawn commandSpawn;
+    private CommandHome commandHome;
+    private CommandSethome commandSethome;
+    private CommandDelhome commandDelhome;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -109,6 +112,9 @@ public class Essentials extends JavaPlugin {
         commandBack = new CommandBack();
         commandTphere = new CommandTphere();
         commandSpawn = new CommandSpawn(warpYMLManager);
+        commandHome = new CommandHome();
+        commandSethome = new CommandSethome();
+        commandDelhome = new CommandDelhome();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager);
         eventPlayerQuit = new EventPlayerQuit(modYMLManager);
@@ -157,6 +163,9 @@ public class Essentials extends JavaPlugin {
         this.getCommand("back").setExecutor(commandBack);
         this.getCommand("tphere").setExecutor(commandTphere);
         this.getCommand("spawn").setExecutor(commandSpawn);
+        this.getCommand("home").setExecutor(commandHome);
+        this.getCommand("sethome").setExecutor(commandSethome);
+        this.getCommand("delhome").setExecutor(commandDelhome);
         fillBoard();
         fillUuid();
     }

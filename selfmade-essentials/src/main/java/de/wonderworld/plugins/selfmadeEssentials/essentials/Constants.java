@@ -63,4 +63,9 @@ public class Constants {
     public static final String SPEED_RESET = "&6Your walk and fly speed has been reset to &f0.1&6 and &f0.2&6.";
     public static final String GODMODE_IS_NOW_ON = "&6Your godmode is now &aon&6.";
     public static final String GODMODE_IS_NOW_OFF = "&6Your godmode is now &coff&6.";
+    public static final String HOME_SET_FORMAT = "&6Your home: &f%s &6has been set.";
+    public static final String DELHOME_INFO = "&6Your following homes are able to get deleted:";
+    public static final String DELHOME_SUCCESS_FORMAT = "&6Your home &f%s &6has been &adeleted.";
+    public static final String HOME_NOT_FOUND_FORMAT = "&cYour home &f%s &cwas not found.";
+    public static final String HOME_WORLD_NOT_LOADED = "&cThe world this home is refering to is currently not loaded.";
 }
