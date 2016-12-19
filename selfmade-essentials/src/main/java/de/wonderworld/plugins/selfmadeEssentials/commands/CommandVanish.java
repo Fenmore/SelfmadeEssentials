@@ -20,8 +20,8 @@ public class CommandVanish implements CommandExecutor {
     private ModYMLManager modYMLManager;
     private Essentials plugin;
 
-    public CommandVanish(ModYMLManager modYMLManager, Essentials plugin) {
-        this.modYMLManager = modYMLManager;
+    public CommandVanish(Essentials plugin) {
+        this.modYMLManager = new ModYMLManager();
         this.plugin = plugin;
     }
 

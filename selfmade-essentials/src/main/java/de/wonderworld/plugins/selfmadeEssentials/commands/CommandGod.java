@@ -12,8 +12,8 @@ public class CommandGod implements CommandExecutor {
 
     private ModYMLManager modYMLManager;
 
-    public CommandGod(ModYMLManager modYMLManager) {
-        this.modYMLManager = modYMLManager;
+    public CommandGod() {
+        this.modYMLManager = new ModYMLManager();
     }
 
     @Override

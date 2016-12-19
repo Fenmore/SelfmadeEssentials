@@ -11,8 +11,8 @@ public class CommandSocialspy implements CommandExecutor {
 
     private ModYMLManager modYMLManager;
 
-    public CommandSocialspy(ModYMLManager modYMLManager) {
-        this.modYMLManager = modYMLManager;
+    public CommandSocialspy() {
+        this.modYMLManager = new ModYMLManager();
     }
 
     @Override

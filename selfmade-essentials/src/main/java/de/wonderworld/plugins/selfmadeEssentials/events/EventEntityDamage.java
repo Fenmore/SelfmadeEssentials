@@ -9,8 +9,8 @@ public class EventEntityDamage implements Listener {
 
     private ModYMLManager modYMLManager;
 
-    public EventEntityDamage(ModYMLManager modYMLManager) {
-        this.modYMLManager = modYMLManager;
+    public EventEntityDamage() {
+        this.modYMLManager = new ModYMLManager();
     }
 
 

@@ -13,17 +13,15 @@ import java.util.Map;
 
 public class ListYMLManager {
 
-    private File dirStats;
 
-    public ListYMLManager(File dirStats, Essentials plugin) {
-        this.dirStats = dirStats;
+    public ListYMLManager(Essentials plugin) {
         for (String command : plugin.getDescription().getCommands().keySet())
             setCommand(command);
     }
 
 
     private File getListFile() {
-        return new File(dirStats.toString() + "\\Commands.yml");
+        return new File(Essentials.dir.toString() + "\\Commands.yml");
     }
 
     private YamlConfiguration loadCfg() {

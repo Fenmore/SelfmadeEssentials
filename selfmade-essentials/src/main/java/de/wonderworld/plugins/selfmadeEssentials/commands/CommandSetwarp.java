@@ -10,8 +10,8 @@ import org.bukkit.entity.Player;
 public class CommandSetwarp implements CommandExecutor{
 
     private WarpYMLManager warpYMLManager;
-    public CommandSetwarp(WarpYMLManager warpYMLManager) {
-        this.warpYMLManager = warpYMLManager;
+    public CommandSetwarp() {
+        this.warpYMLManager = new WarpYMLManager();
     }
 
     @Override

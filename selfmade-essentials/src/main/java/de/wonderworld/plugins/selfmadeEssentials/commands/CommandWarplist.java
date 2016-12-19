@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 public class CommandWarplist implements CommandExecutor{
 
     private WarpYMLManager warpYMLManager;
-    public CommandWarplist(WarpYMLManager warpYMLManager) {
-        this.warpYMLManager = warpYMLManager;
+    public CommandWarplist() {
+        this.warpYMLManager = new WarpYMLManager();
     }
 
 

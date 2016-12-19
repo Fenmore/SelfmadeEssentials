@@ -10,8 +10,8 @@ public class CommandDelwarp implements CommandExecutor {
 
     private WarpYMLManager warpYMLManager;
 
-    public CommandDelwarp(WarpYMLManager warpYMLManager) {
-        this.warpYMLManager = warpYMLManager;
+    public CommandDelwarp() {
+        this.warpYMLManager = new WarpYMLManager();
     }
 
     @Override

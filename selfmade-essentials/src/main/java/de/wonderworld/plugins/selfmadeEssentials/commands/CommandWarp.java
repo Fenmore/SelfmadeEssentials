@@ -12,8 +12,8 @@ import org.bukkit.entity.Player;
 public class CommandWarp implements CommandExecutor{
 
     private WarpYMLManager warpYMLManager;
-    public CommandWarp(WarpYMLManager warpYMLManager) {
-        this.warpYMLManager = warpYMLManager;
+    public CommandWarp() {
+        this.warpYMLManager = new WarpYMLManager();
     }
 
 

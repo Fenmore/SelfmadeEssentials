@@ -13,8 +13,8 @@ public class CommandSpawn implements CommandExecutor {
 
     private WarpYMLManager warpYMLManager;
 
-    public CommandSpawn(WarpYMLManager warpYMLManager) {
-        this.warpYMLManager = warpYMLManager;
+    public CommandSpawn() {
+        this.warpYMLManager = new WarpYMLManager();
     }
 
     @Override

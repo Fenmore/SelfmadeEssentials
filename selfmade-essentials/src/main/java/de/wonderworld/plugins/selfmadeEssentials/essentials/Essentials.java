@@ -60,8 +60,6 @@ public class Essentials extends JavaPlugin {
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
     private EventAsyncPlayerPreLogin eventAsyncPlayerPreLogin;
-    private ModYMLManager modYMLManager;
-    private WarpYMLManager warpYMLManager;
     private ListYMLManager listYMLManager;
     private EventEntityDamage eventEntityDamage;
 
@@ -76,27 +74,25 @@ public class Essentials extends JavaPlugin {
         if (!(dirPlayer.exists())) {
             dirPlayer.mkdir();
         }
-        modYMLManager = new ModYMLManager();
-        warpYMLManager = new WarpYMLManager();
-        listYMLManager = new ListYMLManager(getDataFolder(), this);
-        commandMsg = new CommandMsg(this, modYMLManager);
+        listYMLManager = new ListYMLManager(this);
+        commandMsg = new CommandMsg();
         commandHeal = new CommandHeal(this);
         commandFeed = new CommandFeed(this);
-        commandSocialspy = new CommandSocialspy(modYMLManager);
+        commandSocialspy = new CommandSocialspy();
         commandKillmob = new CommandKillmob();
         commandSpawnmob = new CommandSpawnmob(this);
         commandClearinventory = new CommandClearinventory();
         commandFly = new CommandFly();
         commandInvsee = new CommandInvsee(this);
-        commandWarp = new CommandWarp(warpYMLManager);
-        commandSetwarp = new CommandSetwarp(warpYMLManager);
-        commandDelwarp = new CommandDelwarp(warpYMLManager);
-        commandWarplist = new CommandWarplist(warpYMLManager);
+        commandWarp = new CommandWarp();
+        commandSetwarp = new CommandSetwarp();
+        commandDelwarp = new CommandDelwarp();
+        commandWarplist = new CommandWarplist();
         commandSudo = new CommandSudo(this);
         commandEnderchest = new CommandEnderchest(this);
         commandList = new CommandList(this, listYMLManager);
         commandTree = new CommandTree();
-        commandVanish = new CommandVanish(modYMLManager, this);
+        commandVanish = new CommandVanish(this);
         commandBurn = new CommandBurn(this);
         commandPtime = new CommandPtime();
         commandWorkbench = new CommandWorkbench();
@@ -107,19 +103,19 @@ public class Essentials extends JavaPlugin {
         commandGamemode = new CommandGamemode();
         commandExtinguish = new CommandExtinguish();
         commandSpeed = new CommandSpeed();
-        commandGod = new CommandGod(modYMLManager);
+        commandGod = new CommandGod();
         commandTop = new CommandTop();
         commandBack = new CommandBack();
         commandTphere = new CommandTphere();
-        commandSpawn = new CommandSpawn(warpYMLManager);
+        commandSpawn = new CommandSpawn();
         commandHome = new CommandHome();
         commandSethome = new CommandSethome();
         commandDelhome = new CommandDelhome();
         eventWeatherChange = new EventWeatherChange();
-        eventPlayerJoin = new EventPlayerJoin(modYMLManager);
-        eventPlayerQuit = new EventPlayerQuit(modYMLManager);
+        eventPlayerJoin = new EventPlayerJoin();
+        eventPlayerQuit = new EventPlayerQuit();
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
-        eventEntityDamage = new EventEntityDamage(modYMLManager);
+        eventEntityDamage = new EventEntityDamage();
     }
 
     @Override
@@ -184,6 +180,7 @@ public class Essentials extends JavaPlugin {
     }
 
     private void fillBoard() {
+        ModYMLManager modYMLManager = new ModYMLManager();
         Team team = Essentials.board.getTeam("vanishVisible");
         if (team == null) {
             team = Essentials.board.registerNewTeam("vanishVisible");

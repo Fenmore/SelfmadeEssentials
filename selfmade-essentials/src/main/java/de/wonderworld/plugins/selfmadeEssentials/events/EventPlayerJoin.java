@@ -17,16 +17,14 @@ public class EventPlayerJoin implements Listener {
 
     private ModYMLManager modYMLManager;
 
-    public EventPlayerJoin(ModYMLManager modYMLManager) {
-        this.modYMLManager = modYMLManager;
+    public EventPlayerJoin() {
+        this.modYMLManager = new ModYMLManager();
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-
         List<String> vanishActiveList = modYMLManager.getVanishActiveList();
-        //List<String> vanishVisibleList = modYMLManager.getVanishVisibleList();
         if (!event.getPlayer().hasPermission("selfmadeEssentials.vanish")) {
             for (String name : vanishActiveList) {
                 Player playerToHide = Bukkit.getPlayer(name);
@@ -36,13 +34,6 @@ public class EventPlayerJoin implements Listener {
         } else {
             Essentials.board.getTeam("vanishVisible").addEntry(event.getPlayer().getName());
             event.getPlayer().setScoreboard(Essentials.board);
-                /*for(Player player : Bukkit.getOnlinePlayers()) {
-                    if(vanishActiveList.contains(player.getName())) {
-                        event.getPlayer().hidePlayer(player);
-                        event.getPlayer().showPlayer(player);
-                    }
-                }*/
-
             if (vanishActiveList.contains(event.getPlayer().getName())) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     if (!p.hasPermission("selfmadeEssentials.vanish")) {
@@ -54,8 +45,6 @@ public class EventPlayerJoin implements Listener {
                 event.setJoinMessage(null);
             }
         }
-
-
 
 
         PlayerYMLManager pym = new PlayerYMLManager();

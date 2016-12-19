@@ -16,8 +16,8 @@ public class EventPlayerQuit implements Listener {
 
     private ModYMLManager modYMLManager;
 
-    public EventPlayerQuit(ModYMLManager modYMLManager) {
-        this.modYMLManager = modYMLManager;
+    public EventPlayerQuit() {
+        this.modYMLManager = new ModYMLManager();
     }
 
     @EventHandler
