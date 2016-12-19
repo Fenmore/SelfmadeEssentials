@@ -89,14 +89,14 @@ permissions:
 
 commands:
 #General
-  list: #DONE
+  list:
     usage: /list <command> <stage|comment>
     description: List all available commands
     permission: selfmadeEssentials.list
   ignore:
     usage: /ignore|mute <Player>
     description: Ignore a specific player
-  msg: #DONE
+  msg:
     usage: /msg <Player> <Message>
     description: Send a message to the specific player
     permission: selfmadeEssentials.msg
@@ -121,19 +121,19 @@ commands:
     aliases: [harakiri]
     permission:  selfmadeEssentials.suicide
   #Teleport
-  warp: #DONE
+  warp:
     usage: /warp <warp name>
     description: Warps you to a pre-set location
     permission: selfmadeEssentials.warp
-  setwarp: #DONE
+  setwarp:
     usage: /setwarp <warp name>
     description: Defines a new warp location
     permission: selfmadeEssentials.setwarp
-  delwarp: #DONE
+  delwarp:
     usage: /delwarp <warp name>
     description: Removes a warp location by warp name
     permission: selfmadeEssentials.delwarp
-  warplist: #DONE
+  warplist:
     usage: /warplist
     description: List all set warps
     permission: selfmadeEssentials.warplist
@@ -144,9 +144,6 @@ commands:
   tphere:
     usage: /tphere <player to teleport to YOUR SELF>
     description: Teleport player directly to you
-  #tpall:
-  #  usage: /<command> [player]
-  #  description: Teleports all connected players.
   top:
     usage: /top
     description: Teleports you to the highest block at your current location
@@ -174,23 +171,23 @@ commands:
     usage:
     description:
     permission: selfmadeEssentials.fb
-  bigtree: #In work
+  bigtree:
     usage: /bigtree <treetype>
     description: Spawns a tree
     permission: selfmadeEssentials.bigtree
-  vanish: #DONE
+  vanish:
     usage: /vanish
     description: Hide yourself from other players
     permission: selfmadeEssentials.vanish
-  sudo: #DONE
+  sudo:
     usage: /sudo <player> <command [args]>
     description: Make another user perform a command
     permission: selfmadeEssentials.sudo
-  spawnmob: #In work
+  spawnmob:
     usage: /spawnmob <mob>:<data> <amount>
     description: Allows you to spawn a specified mob with an optional mount
     permission: selfmadeEssentials.spawnmob
-  socialspy: #DONE
+  socialspy:
     usage: /spy <player>
     description: See other players private messages
     aliases: [spy]
@@ -201,7 +198,7 @@ commands:
   mute:
     usage: /mute <player name> [time]
     description: Mutes or un-mutes a specified player
-  invsee: #DONE
+  invsee:
     usage: /iv <player>
     description: See the inventory of other players
     aliases: [iv]
@@ -213,21 +210,21 @@ commands:
   essentials:
     usage: /essentials [reload|debug] (/<command> [reset] [player])
     description: Returns Essentials Version, and reload config
-  enderchest: #DONE
+  enderchest:
     usage: /ec <player>
     description: Lets you see inside an enderchest
     aliases: [ec]
     permission: selfmadeEssentials.enderchest
-  clearinventory: #DONE
+  clearinventory:
     usage: /ci <player>
     description: Clear a players inventory
     aliases: [ci, clear]
     permission: selfmadeEssentials.clearinventory
-  burn: #DONE
+  burn:
     usage: /burn <player1> <player2> ...
     description: Set players on fire
     permission: selfmadeEssentials.burn
-  killmob: #DONE
+  killmob:
     usage: /killmob <creature>
     description: Kill all given entities
     permission: selfmadeEssentials.killmob
@@ -242,19 +239,19 @@ commands:
   exp:
     usage: /exp <show|set|give> <Player> <amount>
     description: Give, set or look at a players exp
-  feed: #DONE
+  feed:
     usage: /feed
     description: Satisfy the hunger
     permission: selfmadeEssentials.feed
-  fly: #In work
-    usage: /fly <Player> #Für David
+  fly:
+    usage: /fly <Player>
     description: Set fly mode
     permission: selfmadeEssentials.fly
   god:
     usage: /god |<player>
     description: Toggle god mode
     permission: selfmadeEssentials.god
-  heal: #DONE
+  heal:
     usage: /h <player1> <plyer2> ...
     description: Heal the players
     aliases: [h]
@@ -268,7 +265,7 @@ commands:
   more:
     usage: /more 
     description: Fill the itemstack in your hand to maximum
-  ptime: #DONE
+  ptime:
     usage: /ptime [list|reset|day|night|dawn|17:30|4pm|4000ticks] <player|*>
     description: Change the time specificaly for the player
     permission: selfmadeEssentials.ptime
@@ -282,7 +279,7 @@ commands:
   unlimited:
     usage: /unlimited <list|item|clear> [player]
     description: Allows the unlimited placing of items
-  workbench: #DONE
+  workbench:
     usage: /wb
     description: Open up a workbench
     aliases: [wb]
