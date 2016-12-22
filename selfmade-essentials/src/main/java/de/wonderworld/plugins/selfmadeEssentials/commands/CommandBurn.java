@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -10,27 +11,21 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandBurn implements CommandExecutor {
+public class CommandBurn extends CustomCommand {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException {
         if (args.length == 0) {
-            if (!(sender instanceof Player)) {
-                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            }
-            else {
+            if (sender instanceof Player) {
                 Player player = ((Player) sender);
                 player.setFireTicks(Integer.MAX_VALUE);
+            }
+            else {
+                throw new NotInstanceOfPlayerException();
             }
             return true;
         }
 
-        for (String name : args) {
-            if (!EssentialCommands.validPlayerName(name)) {
-                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, name));
-                return true;
-            }
-        }
 
         List<Player> playerToBurn = new ArrayList<>();
         for (String name : args) {

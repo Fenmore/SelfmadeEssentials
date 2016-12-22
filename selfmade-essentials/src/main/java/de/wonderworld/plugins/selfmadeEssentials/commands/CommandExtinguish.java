@@ -24,12 +24,7 @@ public class CommandExtinguish implements CommandExecutor {
             }
         }
         else {
-            for (String name : args) {
-                if (!EssentialCommands.validPlayerName(name)) {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, name));
-                    return true;
-                }
-            }
+
 
             List<Player> playerToBurn = new ArrayList<>();
             for (String name : args) {

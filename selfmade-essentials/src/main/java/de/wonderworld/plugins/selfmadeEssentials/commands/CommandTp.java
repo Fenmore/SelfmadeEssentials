@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
@@ -18,7 +19,7 @@ public class CommandTp extends CustomCommand {
 
 
     @Override
-    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, PlayerNotFoundException {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, PlayerNotFoundException, InvalidPlayerNameException {
         if (requiredArgsLength(args)) {
 
             Player[] playersToTeleport = getPlayersToTeleport(args, sender);
@@ -121,7 +122,7 @@ public class CommandTp extends CustomCommand {
         }
     }
 
-    private Player getDestination(String[] args) throws PlayerNotFoundException {
+    private Player getDestination(String[] args) throws PlayerNotFoundException, InvalidPlayerNameException {
         Player destination = Bukkit.getPlayer(args[args.length - 1]);
         if (destination == null)
             throw new PlayerNotFoundException(args[args.length - 1]);
@@ -129,7 +130,7 @@ public class CommandTp extends CustomCommand {
             return destination;
     }
 
-    private Player[] getPlayersToTeleport(String[] args, CommandSender sender) throws PlayerNotFoundException, NotInstanceOfPlayerException {
+    private Player[] getPlayersToTeleport(String[] args, CommandSender sender) throws PlayerNotFoundException, NotInstanceOfPlayerException, InvalidPlayerNameException {
         if (args.length == 1) {
             if (sender instanceof Player) {
                 Player[] players = {(Player) sender};

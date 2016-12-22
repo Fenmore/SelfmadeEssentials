@@ -21,12 +21,7 @@ public class CommandHeal implements CommandExecutor {
                 ((Player) sender).setHealth(((Player) sender).getMaxHealth());
             }
         } else {
-            for (String name : args) {
-                if (!EssentialCommands.validPlayerName(name)) {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, name));
-                    return true;
-                }
-            }
+
             List<Player> playerToHeal = new ArrayList<>();
             for (String name : args) {
                 Player p = Bukkit.getPlayer(name);

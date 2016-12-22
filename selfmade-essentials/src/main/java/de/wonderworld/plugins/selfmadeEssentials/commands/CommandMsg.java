@@ -22,7 +22,7 @@ public class CommandMsg implements CommandExecutor{
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if(args.length < 2 || !EssentialCommands.validPlayerName(args[0]) || args[0].length() < 4 || args[0].length() > 16) {
+        if(args.length < 2 || args[0].length() < 4 || args[0].length() > 16) {
             return false;
         }
 

@@ -33,12 +33,7 @@ public class CommandFeed implements CommandExecutor {
             }
         }
         else {
-            for (String name : args) {
-                if (!EssentialCommands.validPlayerName(name)) {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, name));
-                    return true;
-                }
-            }
+
             List<Player> playerToFeed = new ArrayList<>();
             for (String name : args) {
                 Player p = plugin.getServer().getPlayer(name);

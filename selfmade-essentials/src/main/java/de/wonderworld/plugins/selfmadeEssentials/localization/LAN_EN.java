@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.localization;
 
 public class LAN_EN {
-    public static final String AVAILABLE_CHARS_IN_NAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
     public static final String NOT_INSTANCEOF_PLAYER = "&cThis way this command can only be used ingame.";
     public static final String NOT_VALID_PLAYER_NAME_FORMAT = "&cThe name &f%s &cis not a valid playername.";
     public static final String SOCIAL_SPY_IS_NOW_ON = "&6Your socialspy state is now &aon&6.";

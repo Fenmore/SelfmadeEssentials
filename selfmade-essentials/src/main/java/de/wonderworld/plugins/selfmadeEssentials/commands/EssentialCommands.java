@@ -1,6 +1,5 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,16 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 public class EssentialCommands {
-
-    public static boolean validPlayerName(String name) {
-        final StringBuilder nameBldr = new StringBuilder(name);
-        for (int i = 0; i < nameBldr.length(); i++) {
-            if (LAN_EN.AVAILABLE_CHARS_IN_NAME.indexOf(nameBldr.charAt(i)) < 0) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     public static String mergeArgs(String[] args, int start) {
         final StringBuilder bldr = new StringBuilder();
