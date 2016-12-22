@@ -20,7 +20,7 @@ public class CommandRepair extends PlayerCommand {
 
             else{
                 item.setDurability((short) 0);
-                sender.sendMessage(EssentialCommands.message(LAN_EN.ITEM_REPAIRED));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.ITEM_REPAIRED) );
 
             }
 
