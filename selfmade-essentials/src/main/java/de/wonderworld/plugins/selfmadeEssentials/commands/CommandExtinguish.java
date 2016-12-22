@@ -29,10 +29,7 @@ public class CommandExtinguish extends CustomCommand {
 
             List<Player> playerToBurn = new ArrayList<>();
             for (String name : args) {
-                Player p = Bukkit.getPlayer(name);
-                if (p == null) {
-                    throw new PlayerNotFoundException(name);
-                }
+                Player p = EssentialCommands.getPlayer(name);
                 playerToBurn.add(p);
             }
             for (Player p : playerToBurn) {

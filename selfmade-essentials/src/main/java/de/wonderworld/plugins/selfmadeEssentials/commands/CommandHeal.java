@@ -1,6 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -13,7 +15,7 @@ import java.util.List;
 public class CommandHeal extends CustomCommand {
 
     @Override
-    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
                 throw new NotInstanceOfPlayerException();
@@ -24,11 +26,7 @@ public class CommandHeal extends CustomCommand {
 
             List<Player> playerToHeal = new ArrayList<>();
             for (String name : args) {
-                Player p = Bukkit.getPlayer(name);
-                if (p == null) {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, name));
-                    return true;
-                }
+                Player p = EssentialCommands.getPlayer(name);
                 playerToHeal.add(p);
             }
             for (Player p : playerToHeal)

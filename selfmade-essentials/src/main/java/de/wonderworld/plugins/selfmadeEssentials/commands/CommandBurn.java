@@ -37,10 +37,7 @@ public class CommandBurn extends CustomCommand {
 
     private void addPlayers(String[] args, List<Player> playerToBurn) throws PlayerNotFoundException, InvalidPlayerNameException {
         for (String name : args) {
-            Player p = Bukkit.getPlayer(name);
-            if (p == null) {
-                throw new PlayerNotFoundException(name);
-            }
+            Player p = EssentialCommands.getPlayer(name);
             playerToBurn.add(p);
         }
     }

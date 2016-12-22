@@ -13,10 +13,7 @@ public class CommandEnderchest extends PlayerCommand {
         if (args.length == 0)
             return false;
 
-        Player p = Bukkit.getPlayer(args[0]);
-        if (p == null) {
-            throw new PlayerNotFoundException(args[0]);
-        }
+        Player p = EssentialCommands.getPlayer(args[0]);
 
         sender.openInventory(p.getEnderChest());
 

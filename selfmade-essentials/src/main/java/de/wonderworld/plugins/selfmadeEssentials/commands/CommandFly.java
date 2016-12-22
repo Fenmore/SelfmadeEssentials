@@ -1,6 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -11,7 +13,7 @@ public class CommandFly extends CustomCommand {
 
 
     @Override
-    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
         Player p;
         if(args.length == 0){
             if (!(sender instanceof Player)) {
@@ -22,11 +24,7 @@ public class CommandFly extends CustomCommand {
             }
         }
         else{
-            p = Bukkit.getServer().getPlayer(args[0]);
-            if(p == null ){
-                sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[0]));
-                return true;
-            }
+            p = EssentialCommands.getPlayer(args[0]);
         }
 
         if (!p.getAllowFlight()) {

@@ -21,8 +21,6 @@ public class CommandFeed extends CustomCommand {
 
     @Override
     public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
-
-
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
                 throw new NotInstanceOfPlayerException();
@@ -34,13 +32,9 @@ public class CommandFeed extends CustomCommand {
             }
         }
         else {
-
             List<Player> playerToFeed = new ArrayList<>();
             for (String name : args) {
-                Player p = plugin.getServer().getPlayer(name);
-                if (p == null) {
-                    throw new PlayerNotFoundException(name);
-                }
+                Player p = EssentialCommands.getPlayer(name);
                 playerToFeed.add(p);
             }
             for (Player p : playerToFeed) {
@@ -50,12 +44,5 @@ public class CommandFeed extends CustomCommand {
             }
         }
         return true;
-
     }
-
-
 }
-
-
-
-

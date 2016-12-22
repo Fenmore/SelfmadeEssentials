@@ -1,5 +1,9 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -44,5 +48,13 @@ public class EssentialCommands {
             loc.setY(loc.getBlockY() - 1);
         }
         return loc;
+    }
+
+    public static Player getPlayer(String name) throws InvalidPlayerNameException, PlayerNotFoundException {
+        Player p = Bukkit.getPlayer(name);
+        if(p == null) {
+            throw new PlayerNotFoundException(name);
+        }
+        return p;
     }
 }
