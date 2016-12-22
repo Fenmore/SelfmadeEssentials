@@ -107,6 +107,7 @@ Wonderland Plugin:
         + lokal
         + worldwide
         + serverwide
+        + serverwide
 
 + Currency Plugin
 

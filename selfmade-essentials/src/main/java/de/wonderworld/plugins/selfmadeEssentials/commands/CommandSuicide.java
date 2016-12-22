@@ -8,18 +8,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class CommandSuicide implements CommandExecutor {
+public class CommandSuicide extends PlayerCommand {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-        ((Player) sender).setHealth(0);
+    protected boolean onPlayerCommand(Player player, Command command, String label, String[] args) {
+        player.setHealth(0);
 
-        for(Player player: Bukkit.getOnlinePlayers()){
-            player.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_KILLED_HIMSELF_FORMAT, sender.getName()));
+        for(Player p: Bukkit.getOnlinePlayers()){
+            p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_KILLED_HIMSELF_FORMAT, player.getName()));
         }
         return true;
     }

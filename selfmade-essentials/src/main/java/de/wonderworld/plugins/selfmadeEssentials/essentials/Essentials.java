@@ -32,6 +32,7 @@ public class Essentials extends JavaPlugin {
     private CommandWarplist commandWarplist;
     private CommandSudo commandSudo;
     private CommandEnderchest commandEnderchest;
+    private CommandRepair commandRepair;
     private CommandList commandList;
     private CommandTree commandTree;
     private CommandVanish commandVanish;
@@ -91,6 +92,7 @@ public class Essentials extends JavaPlugin {
         commandSetwarp = new CommandSetwarp(warpYMLManager);
         commandDelwarp = new CommandDelwarp(warpYMLManager);
         commandWarplist = new CommandWarplist(warpYMLManager);
+        commandRepair = new CommandRepair();
         commandSudo = new CommandSudo();
         commandEnderchest = new CommandEnderchest();
         commandList = new CommandList(this, listYMLManager);
@@ -155,6 +157,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("tp").setExecutor(commandTp);
         this.getCommand("fb").setExecutor(commandFb);
         this.getCommand("effect").setExecutor(commandEffect);
+        this.getCommand("repair").setExecutor(commandRepair);
         this.getCommand("gamemode").setExecutor(commandGamemode);
         this.getCommand("speed").setExecutor(commandSpeed);
         this.getCommand("god").setExecutor(commandGod);
