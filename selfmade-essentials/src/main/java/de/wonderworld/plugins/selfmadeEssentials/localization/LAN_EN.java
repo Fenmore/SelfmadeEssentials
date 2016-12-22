@@ -68,4 +68,6 @@ public class LAN_EN {
     public static final String HOME_NOT_FOUND_FORMAT = "&cYour home &f%s &cwas not found.";
     public static final String HOME_WORLD_NOT_LOADED = "&cThe world this home is refering to is currently not loaded.";
     public static final String LOCATION_UNPORTABLE = "&cThe location of this player is currently unportable.";
+    public static final String ITEM_MUST_BE_AN_OBJECT = "&6You do not have an item in your hand.";
+    public static final String ITEM_REPAIRED = "&6Item &arepaired&6.";
 }
