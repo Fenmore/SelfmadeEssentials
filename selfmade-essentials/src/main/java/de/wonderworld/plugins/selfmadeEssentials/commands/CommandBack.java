@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -10,16 +10,22 @@ import org.bukkit.entity.Player;
 
 public class CommandBack implements CommandExecutor {
 
+    private PlayerYMLManager playerYMLManager;
+
+    public CommandBack(PlayerYMLManager playerYMLManager) {
+        this.playerYMLManager = playerYMLManager;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
-        Location loc = new PlayerYMLManager().getBackLocation(sender.getName());
+        Location loc = playerYMLManager.getBackLocation(sender.getName());
         if(loc.getWorld() != null) {
             ((Player) sender).teleport(loc);
-            new PlayerYMLManager().remBackLocation(sender.getName());
+            playerYMLManager.remBackLocation(sender.getName());
         }
 
         return true;

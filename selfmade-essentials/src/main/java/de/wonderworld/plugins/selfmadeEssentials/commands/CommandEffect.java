@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
-import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,15 +12,12 @@ import java.util.List;
 
 public class CommandEffect implements CommandExecutor {
 
-    private ModYMLManager modYMLManager;
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
                 return true;
             }
 
@@ -40,19 +36,13 @@ public class CommandEffect implements CommandExecutor {
                 return true;
             } else if (args[0].equalsIgnoreCase("remove")) {
 
-            }
-
-            if (!effectTypeList.contains(args[0].toUpperCase())) {
-                sender.sendMessage(EssentialCommands.message(Constants.EFFECT_NOT_FOUND_FORMAT, args[0]));
-                return true;
+            } else if (!effectTypeList.contains(args[0].toUpperCase())) {
+                sender.sendMessage(EssentialCommands.message(LAN_EN.EFFECT_NOT_FOUND_FORMAT, args[0]));
             } else {
                 ((Player) sender).addPotionEffect(PotionEffectType.getByName(args[0].toUpperCase()).createEffect(Integer.MAX_VALUE, 10));
-                sender.sendMessage(EssentialCommands.message(Constants.EFFECT_GAINED_FORMAT, args[0]));
-                return true;
+                sender.sendMessage(EssentialCommands.message(LAN_EN.EFFECT_GAINED_FORMAT, args[0]));
             }
-
         }
-
 
         return true;
     }

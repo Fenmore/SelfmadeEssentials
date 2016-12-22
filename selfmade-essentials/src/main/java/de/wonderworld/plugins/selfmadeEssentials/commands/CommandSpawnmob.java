@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -16,15 +16,10 @@ import java.util.Set;
 
 public class CommandSpawnmob implements CommandExecutor{
 
-    private Essentials plugin;
-    public CommandSpawnmob(Essentials plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -36,7 +31,7 @@ public class CommandSpawnmob implements CommandExecutor{
             mobList.add(type.toString());
 
         if(!mobList.contains(args[0].toUpperCase())) {
-            sender.sendMessage(EssentialCommands.message(Constants.MOB_NOT_FOUND_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.MOB_NOT_FOUND_FORMAT, args[0]));
             return true;
         }
 
@@ -48,7 +43,7 @@ public class CommandSpawnmob implements CommandExecutor{
                 else
                     max = 20;
             } catch (NumberFormatException e) {
-                sender.sendMessage(EssentialCommands.message(Constants.ARGUMENT_HAS_TO_BE_INTEGER_FORMAT, args[1]));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.ARGUMENT_HAS_TO_BE_INTEGER_FORMAT, args[1]));
                 return true;
             }
         }

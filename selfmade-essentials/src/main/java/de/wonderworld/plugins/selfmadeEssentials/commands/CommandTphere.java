@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -15,7 +15,7 @@ public class CommandTphere implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -25,7 +25,7 @@ public class CommandTphere implements CommandExecutor {
 
         Player p = Bukkit.getPlayer(args[0]);
         if(p == null) {
-            sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[0]));
             return true;
         }
 

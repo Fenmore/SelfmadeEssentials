@@ -1,15 +1,15 @@
-package de.wonderworld.plugins.selfmadeEssentials.essentials;
+package de.wonderworld.plugins.selfmadeEssentials.localization;
 
-public class Constants {
+public class LAN_EN {
     public static final String AVAILABLE_CHARS_IN_NAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-    public static final String NOT_INSTANCEOF_PLAYER = "&cThis command can only be used ingame.";
+    public static final String NOT_INSTANCEOF_PLAYER = "&cThis way this command can only be used ingame.";
     public static final String NOT_VALID_PLAYER_NAME_FORMAT = "&cThe name &f%s &cis not a valid playername.";
     public static final String SOCIAL_SPY_IS_NOW_ON = "&6Your socialspy state is now &aon&6.";
     public static final String SOCIAL_SPY_IS_NOW_OFF = "&6Your socialspy state is now &coff&6.";
     public static final String PLAYER_NOT_FOUND_FORMAT = "&cThe player &f%s &cwasn't found.";
     public static final String MOB_NOT_FOUND_FORMAT = "&cThe mob &f%s &cwasn't found.";
     public static final String FLY_MODE_ON = "&6Your fly mode is now &aon&6.";
-    public static final String PLAYER_KILLED_HIM_SELFE_FORMAT="&c%s &6committed suicide.";
+    public static final String PLAYER_KILLED_HIMSELF_FORMAT ="&c%s &6committed suicide.";
     public static final String FLY_MODE_OFF = "&6Your fly mode is now &coff&6.";
     public static final String WARP_SET_FORMAT = "&aThe warp &f%s &ahas been set to your current location.";
     public static final String WARP_REMOVED_FORMAT = "&aThe warp &f%s &ahas been removed.";
@@ -68,4 +68,5 @@ public class Constants {
     public static final String DELHOME_SUCCESS_FORMAT = "&6Your home &f%s &6has been &adeleted.";
     public static final String HOME_NOT_FOUND_FORMAT = "&cYour home &f%s &cwas not found.";
     public static final String HOME_WORLD_NOT_LOADED = "&cThe world this home is refering to is currently not loaded.";
+    public static final String LOCATION_UNPORTABLE = "&cThe location of this player is currently unportable.";
 }

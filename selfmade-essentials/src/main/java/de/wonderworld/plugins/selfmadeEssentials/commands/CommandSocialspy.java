@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,14 +11,14 @@ public class CommandSocialspy implements CommandExecutor {
 
     private ModYMLManager modYMLManager;
 
-    public CommandSocialspy() {
-        this.modYMLManager = new ModYMLManager();
+    public CommandSocialspy(ModYMLManager modYMLManager) {
+        this.modYMLManager = modYMLManager;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -26,9 +26,9 @@ public class CommandSocialspy implements CommandExecutor {
         modYMLManager.toggleSocialSpy(sender.getName());
 
         if(modYMLManager.socialSpyIsActive(sender.getName()))
-            sender.sendMessage(EssentialCommands.message(Constants.SOCIAL_SPY_IS_NOW_ON));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.SOCIAL_SPY_IS_NOW_ON));
         else
-            sender.sendMessage(EssentialCommands.message(Constants.SOCIAL_SPY_IS_NOW_OFF));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.SOCIAL_SPY_IS_NOW_OFF));
 
 
         return true;

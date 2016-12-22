@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -16,53 +16,53 @@ public class CommandGamemode implements CommandExecutor {
 
         if (args.length <= 1) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
                 return true;
             }
-            p = (Player) sender;
-            if(args.length == 0){
-                String gamemode = p.getGameMode().toString();
-                switch (gamemode) {
-                    case "SURVIVAL":
-                        mode = GameMode.CREATIVE;
-                        break;
-                    case "CREATIVE":
-                        mode = GameMode.SURVIVAL;
-                        break;
-                    case "ADVENTURE":
-                        mode = GameMode.CREATIVE;
-                        break;
-                    case "SPECTATOR":
-                        mode = GameMode.CREATIVE;
-                        break;
-                }
-            }
             else {
-                int modeInt;
-                try{
-                    modeInt = Integer.valueOf(args[0]);
-                    switch (modeInt) {
-                        case 0:
-                            mode = GameMode.SURVIVAL;
-                            break;
-                        case 1:
+                p = (Player) sender;
+                if (args.length == 0) {
+                    String gamemode = p.getGameMode().toString();
+                    switch (gamemode) {
+                        case "SURVIVAL":
                             mode = GameMode.CREATIVE;
                             break;
-                        case 2:
-                            mode = GameMode.ADVENTURE;
+                        case "CREATIVE":
+                            mode = GameMode.SURVIVAL;
                             break;
-                        case 3:
-                            mode = GameMode.SPECTATOR;
+                        case "ADVENTURE":
+                            mode = GameMode.CREATIVE;
                             break;
-                        default: {
-                            sender.sendMessage(EssentialCommands.message(Constants.GAMEMODE_BIGGER_3, args[0]));
-                            return true;
-                        }
+                        case "SPECTATOR":
+                            mode = GameMode.CREATIVE;
+                            break;
                     }
-                }
-                catch (NumberFormatException e) {
-                    sender.sendMessage(EssentialCommands.message(Constants.ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT, args[0]));
-                    return true;
+                } else {
+                    int modeInt;
+                    try {
+                        modeInt = Integer.valueOf(args[0]);
+                        switch (modeInt) {
+                            case 0:
+                                mode = GameMode.SURVIVAL;
+                                break;
+                            case 1:
+                                mode = GameMode.CREATIVE;
+                                break;
+                            case 2:
+                                mode = GameMode.ADVENTURE;
+                                break;
+                            case 3:
+                                mode = GameMode.SPECTATOR;
+                                break;
+                            default: {
+                                sender.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_BIGGER_3, args[0]));
+                                return true;
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(EssentialCommands.message(LAN_EN.ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT, args[0]));
+                        return true;
+                    }
                 }
             }
         }
@@ -72,7 +72,7 @@ public class CommandGamemode implements CommandExecutor {
                 modeInt = Integer.valueOf(args[0]);
                 p = Bukkit.getServer().getPlayer(args[1]);
                 if(p == null ){
-                    sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[1]));
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[1]));
                     return true;
                 }
             }
@@ -80,7 +80,7 @@ public class CommandGamemode implements CommandExecutor {
                 modeInt = Integer.valueOf(args[1]);
                 p = Bukkit.getServer().getPlayer(args[0]);
                 if(p == null ){
-                    sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[0]));
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[0]));
                     return true;
                 }
             }
@@ -98,7 +98,7 @@ public class CommandGamemode implements CommandExecutor {
                     mode = GameMode.SPECTATOR;
                     break;
                 default: {
-                    sender.sendMessage(EssentialCommands.message(Constants.GAMEMODE_BIGGER_3, args[0]));
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_BIGGER_3, args[0]));
                     return true;
                 }
 
@@ -106,7 +106,7 @@ public class CommandGamemode implements CommandExecutor {
         }
 
         p.setGameMode(mode);
-        p.sendMessage(EssentialCommands.message(Constants.GAMEMODE_SET_FORMAT, mode.toString()));
+        p.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_SET_FORMAT, mode.toString()));
 
         return true;
     }

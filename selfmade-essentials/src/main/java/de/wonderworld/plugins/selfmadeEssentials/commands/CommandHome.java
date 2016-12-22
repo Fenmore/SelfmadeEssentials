@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -12,15 +12,15 @@ public class CommandHome implements CommandExecutor{
 
     private PlayerYMLManager playerYMLManager;
 
-    public CommandHome() {
-        this.playerYMLManager = new PlayerYMLManager();
+    public CommandHome(PlayerYMLManager playerYMLManager) {
+        this.playerYMLManager = playerYMLManager;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -30,7 +30,7 @@ public class CommandHome implements CommandExecutor{
         }
 
         if(!playerYMLManager.getHomeList(sender.getName()).contains(home)) {
-            sender.sendMessage(EssentialCommands.message(Constants.HOME_NOT_FOUND_FORMAT, home));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.HOME_NOT_FOUND_FORMAT, home));
         }
         else {
             Location loc = playerYMLManager.getHome(sender.getName(), home);
@@ -39,7 +39,7 @@ public class CommandHome implements CommandExecutor{
                 ((Player) sender).teleport(loc);
             }
             else
-                sender.sendMessage(EssentialCommands.message(Constants.HOME_WORLD_NOT_LOADED));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.HOME_WORLD_NOT_LOADED));
         }
 
         return true;

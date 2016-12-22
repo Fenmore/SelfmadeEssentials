@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -14,8 +13,8 @@ import java.util.List;
 public class CommandMsg implements CommandExecutor{
 
     private ModYMLManager modYMLManager;
-    public CommandMsg() {
-        this.modYMLManager = new ModYMLManager();
+    public CommandMsg(ModYMLManager modYMLManager) {
+        this.modYMLManager = modYMLManager;
     }
 
 
@@ -27,24 +26,22 @@ public class CommandMsg implements CommandExecutor{
             return false;
         }
 
-
-
         String message = EssentialCommands.mergeArgs(args, 1);
 
         Player p = Bukkit.getPlayer(args[0]);
         if(p == null) {
-            p.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, args[0]));
+            p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[0]));
             return true;
         }
 
-        p.sendMessage(EssentialCommands.message(Constants.SOCIALSPY_MSG_SENDER_ME, sender.getName(), message));
-        sender.sendMessage(EssentialCommands.message(Constants.SOCIALSPY_MSG_ME_SENDER, p.getName(), message));
+        p.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_SENDER_ME, sender.getName(), message));
+        sender.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_ME_SENDER, p.getName(), message));
 
         List<String> socialSpyList = modYMLManager.getSocialSpyList();
         if(socialSpyList != null) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 if (socialSpyList.contains(player.getName()) && !player.getName().equalsIgnoreCase(sender.getName()) && !player.getName().equalsIgnoreCase(args[0]))
-                    player.sendMessage(EssentialCommands.message(Constants.SOCIALSPY_MSG_SENDER_RECIEVER, sender.getName(), p.getName(), message));
+                    player.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_SENDER_RECIEVER, sender.getName(), p.getName(), message));
             }
         }
 

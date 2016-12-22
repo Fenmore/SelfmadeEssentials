@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import org.bukkit.Location;
@@ -12,8 +12,8 @@ import org.bukkit.entity.Player;
 public class CommandWarp implements CommandExecutor{
 
     private WarpYMLManager warpYMLManager;
-    public CommandWarp() {
-        this.warpYMLManager = new WarpYMLManager();
+    public CommandWarp(WarpYMLManager warpYMLManager) {
+        this.warpYMLManager = warpYMLManager;
     }
 
 
@@ -21,7 +21,7 @@ public class CommandWarp implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -30,7 +30,7 @@ public class CommandWarp implements CommandExecutor{
 
         Location warp = warpYMLManager.getWarp(args[0]);
         if(warp == null) {
-            sender.sendMessage(EssentialCommands.message(Constants.WARP_DOES_NOT_EXIST_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.WARP_DOES_NOT_EXIST_FORMAT, args[0]));
             return true;
         }
 
@@ -39,7 +39,7 @@ public class CommandWarp implements CommandExecutor{
             ((Player) sender).teleport(warp);
         }
         else
-            sender.sendMessage(EssentialCommands.message(Constants.WARP_WORLD_NOT_LOADED));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.WARP_WORLD_NOT_LOADED));
 
 
         return true;

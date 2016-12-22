@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.json.*;
 import org.bukkit.Bukkit;
@@ -18,7 +18,7 @@ public class CommandPtime implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -26,22 +26,22 @@ public class CommandPtime implements CommandExecutor {
 
         if(args.length == 0) {
             if(((Player) sender).isPlayerTimeRelative() && ((Player) sender).getPlayerTime() == ((Player) sender).getWorld().getFullTime()) {
-                sender.sendMessage(EssentialCommands.message(Constants.PTIME_EQUAL_TO_SERVER_FORMAT));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_EQUAL_TO_SERVER_FORMAT));
                 return true;
             }
             else if(!((Player) sender).isPlayerTimeRelative()) {
-                sender.sendMessage(EssentialCommands.message(Constants.PTIME_ABSOLUTE_FORMAT, ((Player) sender).getPlayerTime()));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_ABSOLUTE_FORMAT, ((Player) sender).getPlayerTime()));
                 return true;
             }
             else if(((Player) sender).getPlayerTimeOffset() > 0) {
-                sender.sendMessage(EssentialCommands.message(Constants.PTIME_RELATIVE_AHEAD_FORMAT, ((Player) sender).getPlayerTimeOffset()));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_RELATIVE_AHEAD_FORMAT, ((Player) sender).getPlayerTimeOffset()));
             }
             else if(((Player) sender).getPlayerTimeOffset() < 0) {
-                sender.sendMessage(EssentialCommands.message(Constants.PTIME_RELATIVE_BEHIND_FORMAT, ((Player) sender).getPlayerTimeOffset()));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_RELATIVE_BEHIND_FORMAT, ((Player) sender).getPlayerTimeOffset()));
             }
         }
         else if(args[0].equalsIgnoreCase("list")){
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_INTRO));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_INTRO));
             JsonWrapper json = new JsonWrapper().wrapJsonTellraw(sender.getName());
             Map<String, List<String>> ptimeMap = getCommandMap();
             for(String key : ptimeMap.keySet()) {
@@ -53,27 +53,27 @@ public class CommandPtime implements CommandExecutor {
         else if(args[0].equalsIgnoreCase("reset")) {
             ((Player) sender).resetPlayerTime();
             new PlayerYMLManager().remPtime(sender.getName());
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_RESET));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_RESET));
         }
         else if(args[0].equalsIgnoreCase("day")){
             ((Player) sender).setPlayerTime(6000, false);
             new PlayerYMLManager().setPtime(sender.getName(), 6000, false);
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_CONSTANT_FORMAT, 6000));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_CONSTANT_FORMAT, 6000));
         }
         else if(args[0].equalsIgnoreCase("night")){
             ((Player) sender).setPlayerTime(18000, false);
             new PlayerYMLManager().setPtime(sender.getName(), 18000, false);
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_CONSTANT_FORMAT, 18000));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_CONSTANT_FORMAT, 18000));
         }
         else if(args[0].equalsIgnoreCase("dawn")){
             ((Player) sender).setPlayerTime(0, false);
             new PlayerYMLManager().setPtime(sender.getName(), 0, false);
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_CONSTANT_FORMAT, 0));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_CONSTANT_FORMAT, 0));
         }
         else if(args[0].equalsIgnoreCase("sunset")){
             ((Player) sender).setPlayerTime(12000, false);
             new PlayerYMLManager().setPtime(sender.getName(), 12000, false);
-            sender.sendMessage(EssentialCommands.message(Constants.PTIME_CONSTANT_FORMAT, 12000));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_CONSTANT_FORMAT, 12000));
         }
         else {
             long l = 0;
@@ -81,7 +81,7 @@ public class CommandPtime implements CommandExecutor {
                 l = Long.valueOf(args[0]);
             }
             catch (NumberFormatException e) {
-                sender.sendMessage(EssentialCommands.message(Constants.PTIME_NOT_NUMBER_FORMAT, args[0]));
+                sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_NOT_NUMBER_FORMAT, args[0]));
             }
             if(args.length == 1) {
                 ((Player) sender).setPlayerTime(l, false);
@@ -94,7 +94,7 @@ public class CommandPtime implements CommandExecutor {
                     new PlayerYMLManager().setPtime(sender.getName(), l, b);
                 }
                 catch (NumberFormatException e) {
-                    sender.sendMessage(EssentialCommands.message(Constants.PTIME_NOT_BOOLEAN_FORMAT, args[1]));
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_NOT_BOOLEAN_FORMAT, args[1]));
                 }
             }
         }

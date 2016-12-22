@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ListYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.json.*;
@@ -57,13 +57,13 @@ public class CommandList implements CommandExecutor{
 
         Map<String, Object> attributeMap = commandMap.get(args[0].toLowerCase());
         if(attributeMap == null) {
-            sender.sendMessage(EssentialCommands.message(Constants.COMMAND_NOT_FOUND_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMAND_NOT_FOUND_FORMAT, args[0]));
             return true;
         }
 
         if(args.length == 1) {
             List<String> comments = listYMLManager.getComments(args[0].toLowerCase());
-            sender.sendMessage(EssentialCommands.message(Constants.COMMENT_INTRO));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMENT_INTRO));
             for(String comment : comments)
                 sender.sendMessage("- " + comment);
             return true;
@@ -72,26 +72,26 @@ public class CommandList implements CommandExecutor{
         if(args.length > 2) {
             String comment = EssentialCommands.mergeArgs(args, 1);
             listYMLManager.addComment(comment, args[0].toLowerCase());
-            sender.sendMessage(EssentialCommands.message(Constants.COMMENT_SET));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMENT_SET));
             return true;
         }
 
         if(!args[1].equalsIgnoreCase("alpha") && !args[1].equalsIgnoreCase("beta") && !args[1].equalsIgnoreCase("stable")) {
-            sender.sendMessage(EssentialCommands.message(Constants.AVAILABLE_COMMAND_STAGES));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.AVAILABLE_COMMAND_STAGES));
             return true;
         }
 
         if(args[1].equalsIgnoreCase("alpha")) {
             listYMLManager.setStage(args[0].toLowerCase(), "alpha");
-            sender.sendMessage(EssentialCommands.message(Constants.COMMAND_CHANGED_TO_ALPHA_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMAND_CHANGED_TO_ALPHA_FORMAT, args[0]));
         }
         else if(args[1].equalsIgnoreCase("beta")) {
             listYMLManager.setStage(args[0].toLowerCase(), "beta");
-            sender.sendMessage(EssentialCommands.message(Constants.COMMAND_CHANGED_TO_BETA_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMAND_CHANGED_TO_BETA_FORMAT, args[0]));
         }
         else if(args[1].equalsIgnoreCase("stable")) {
             listYMLManager.setStage(args[0].toLowerCase(), "stable");
-            sender.sendMessage(EssentialCommands.message(Constants.COMMAND_CHANGED_TO_STABLE_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.COMMAND_CHANGED_TO_STABLE_FORMAT, args[0]));
         }
         return true;
     }

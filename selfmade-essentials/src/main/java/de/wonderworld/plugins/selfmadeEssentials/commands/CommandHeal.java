@@ -1,7 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,47 +12,33 @@ import java.util.List;
 
 public class CommandHeal implements CommandExecutor {
 
-    private Essentials plugin;
-
-    public CommandHeal(Essentials plugin) {
-        this.plugin = plugin;
-    }
-
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
         if (args.length == 0) {
-            ((Player) sender).setHealth(((Player) sender).getMaxHealth());
-            return true;
-        }
-
-        for (String name : args) {
-            if (!EssentialCommands.validPlayerName(name)) {
-                sender.sendMessage(EssentialCommands.message(Constants.NOT_VALID_PLAYER_NAME_FORMAT, name));
-                return true;
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
+            } else {
+                ((Player) sender).setHealth(((Player) sender).getMaxHealth());
             }
-        }
-
-        List<Player> playerToHeal = new ArrayList<>();
-        for (String name : args) {
-            Player p = plugin.getServer().getPlayer(name);
-            if (p == null) {
-                sender.sendMessage(EssentialCommands.message(Constants.PLAYER_NOT_FOUND_FORMAT, name));
-                return true;
+        } else {
+            for (String name : args) {
+                if (!EssentialCommands.validPlayerName(name)) {
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, name));
+                    return true;
+                }
             }
-            playerToHeal.add(p);
+            List<Player> playerToHeal = new ArrayList<>();
+            for (String name : args) {
+                Player p = Bukkit.getPlayer(name);
+                if (p == null) {
+                    sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, name));
+                    return true;
+                }
+                playerToHeal.add(p);
+            }
+            for (Player p : playerToHeal)
+                p.setHealth(p.getMaxHealth());
         }
-
-
-        for (Player p : playerToHeal)
-            p.setHealth(p.getMaxHealth());
-
-
         return true;
     }
 }

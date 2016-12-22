@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.block.Block;
@@ -15,14 +15,11 @@ import java.util.Set;
 
 public class CommandTree implements CommandExecutor{
 
-
-
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(Constants.NOT_INSTANCEOF_PLAYER));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }
 
@@ -39,12 +36,12 @@ public class CommandTree implements CommandExecutor{
         }
 
         if(args[0].equalsIgnoreCase("list")) {
-            sender.sendMessage(EssentialCommands.message(Constants.AVAILABLE_TREETYPES_FORMAT, treeTypes.toString()));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.AVAILABLE_TREETYPES_FORMAT, treeTypes.toString()));
             return true;
         }
 
         if(!treeTypes.contains(args[0].toUpperCase())) {
-            sender.sendMessage(EssentialCommands.message(Constants.TREETYPE_NOT_FOUND_FORMAT, args[0]));
+            sender.sendMessage(EssentialCommands.message(LAN_EN.TREETYPE_NOT_FOUND_FORMAT, args[0]));
             return true;
         }
 

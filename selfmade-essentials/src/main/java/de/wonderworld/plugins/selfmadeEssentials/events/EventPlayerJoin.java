@@ -1,7 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.events;
 
 import de.wonderworld.plugins.selfmadeEssentials.commands.EssentialCommands;
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Constants;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
@@ -39,7 +39,7 @@ public class EventPlayerJoin implements Listener {
                     if (!p.hasPermission("selfmadeEssentials.vanish")) {
                         p.hidePlayer(event.getPlayer());
                     } else {
-                        p.sendMessage(EssentialCommands.message(Constants.PLAYER_JOINED_VANISH_FORMAT, event.getPlayer().getName()));
+                        p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_JOINED_VANISH_FORMAT, event.getPlayer().getName()));
                     }
                 }
                 event.setJoinMessage(null);
