@@ -1,14 +1,14 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandGod implements CommandExecutor {
+public class CommandGod extends CustomCommand {
 
     private ModYMLManager modYMLManager;
 
@@ -17,7 +17,7 @@ public class CommandGod implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException {
         Player targetPlayer = getTargetPlayer(sender, args);
 
         if (targetPlayer == null) {
@@ -28,11 +28,11 @@ public class CommandGod implements CommandExecutor {
         return true;
     }
 
-    private void sendMessagePlayerNotFound(CommandSender sender, String[] args) {
+    private void sendMessagePlayerNotFound(CommandSender sender, String[] args) throws NotInstanceOfPlayerException {
         if (sender instanceof Player) {
             sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, getPlayerName(args)));
         } else {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
+            throw new NotInstanceOfPlayerException();
         }
     }
 

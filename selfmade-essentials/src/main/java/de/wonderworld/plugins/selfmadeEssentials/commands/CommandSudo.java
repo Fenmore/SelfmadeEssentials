@@ -1,17 +1,15 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandSudo implements CommandExecutor{
+public class CommandSudo extends CustomCommand{
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(args.length <= 1) {
             return false;
         }

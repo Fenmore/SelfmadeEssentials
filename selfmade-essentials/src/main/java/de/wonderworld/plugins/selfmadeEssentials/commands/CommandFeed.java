@@ -1,16 +1,17 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandFeed implements CommandExecutor {
+public class CommandFeed extends CustomCommand {
 
     private Essentials plugin;
 
@@ -19,12 +20,12 @@ public class CommandFeed implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
 
 
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
+                throw new NotInstanceOfPlayerException();
             }
             else {
                 ((Player) sender).setFoodLevel(20);
@@ -38,8 +39,7 @@ public class CommandFeed implements CommandExecutor {
             for (String name : args) {
                 Player p = plugin.getServer().getPlayer(name);
                 if (p == null) {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, name));
-                    return true;
+                    throw new PlayerNotFoundException(name);
                 }
                 playerToFeed.add(p);
             }

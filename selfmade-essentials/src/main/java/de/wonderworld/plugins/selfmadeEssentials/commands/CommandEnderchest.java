@@ -1,31 +1,24 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandEnderchest implements CommandExecutor {
+public class CommandEnderchest extends PlayerCommand {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) throws InvalidPlayerNameException, PlayerNotFoundException {
         if (args.length == 0)
             return false;
 
         Player p = Bukkit.getPlayer(args[0]);
         if (p == null) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, args[0]));
-            return true;
+            throw new PlayerNotFoundException(args[0]);
         }
 
-        ((Player) sender).openInventory(p.getEnderChest());
+        sender.openInventory(p.getEnderChest());
 
 
         return true;

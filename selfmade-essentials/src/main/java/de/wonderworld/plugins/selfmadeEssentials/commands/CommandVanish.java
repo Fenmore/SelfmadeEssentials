@@ -1,12 +1,10 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.potion.PotionEffect;
@@ -15,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandVanish implements CommandExecutor {
+public class CommandVanish extends PlayerCommand {
 
     private ModYMLManager modYMLManager;
     private Essentials plugin;
@@ -25,16 +23,8 @@ public class CommandVanish implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    //Test
-
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(LAN_EN.NOT_INSTANCEOF_PLAYER);
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         List<String> vanishActiveList = modYMLManager.getVanishActiveList();
         //List<String> vanishSeeList = modYMLManager.getVanishVisibleList();
         if(args.length == 0) {

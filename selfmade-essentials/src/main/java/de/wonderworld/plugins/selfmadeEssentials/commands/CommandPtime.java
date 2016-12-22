@@ -1,27 +1,21 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.json.*;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class CommandPtime implements CommandExecutor {
-
+public class CommandPtime extends PlayerCommand {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         //sender.sendMessage("Fulltime (Absolute): " + ((Player) sender).getWorld().getFullTime() + ", time (relative): " + ((Player) sender).getWorld().getTime());
 
         if(args.length == 0) {

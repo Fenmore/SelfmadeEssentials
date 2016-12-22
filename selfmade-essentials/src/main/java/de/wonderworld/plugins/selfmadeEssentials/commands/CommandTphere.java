@@ -1,24 +1,16 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class CommandTphere implements CommandExecutor {
+public class CommandTphere extends PlayerCommand {
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if(args.length == 0) {
             return false;
         }
@@ -30,17 +22,17 @@ public class CommandTphere implements CommandExecutor {
         }
 
         new PlayerYMLManager().setBackLocation(p.getName(), p.getLocation());
-        if(((Player) sender).isFlying()) {
+        if(sender.isFlying()) {
             if(p.getAllowFlight()) {
-                p.teleport((Entity) sender);
+                p.teleport(sender);
                 p.setFlying(true);
             }
             else {
-                p.teleport(EssentialCommands.getSafeLocation(((Player) sender).getLocation()));
+                p.teleport(EssentialCommands.getSafeLocation(sender.getLocation()));
             }
         }
         else {
-            p.teleport((Entity) sender);
+            p.teleport(sender);
         }
         return true;
     }

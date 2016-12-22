@@ -12,17 +12,16 @@ public abstract class PlayerCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        if(commandSender instanceof  Player){
+        if (commandSender instanceof Player) {
             try {
                 return onPlayerCommand((Player) commandSender, command, label, args);
-            }
-            catch (InvalidPlayerNameException e) {
+            } catch (InvalidPlayerNameException e) {
                 commandSender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, e.getPlayerName()));
             } catch (PlayerNotFoundException e) {
                 commandSender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, e.getPlayerName()));
             }
             return true;
-        }else{
+        } else {
             commandSender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
             return true;
         }

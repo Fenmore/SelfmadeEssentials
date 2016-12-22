@@ -1,12 +1,9 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
-import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
@@ -14,15 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class CommandSpawnmob implements CommandExecutor{
+public class CommandSpawnmob extends PlayerCommand{
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if(args.length == 0)
             return false;
 

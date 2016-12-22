@@ -1,12 +1,11 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class CommandDelwarp implements CommandExecutor {
+public class CommandDelwarp extends CustomCommand {
 
     private WarpYMLManager warpYMLManager;
 
@@ -15,7 +14,7 @@ public class CommandDelwarp implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 0)
             return false;
 

@@ -1,16 +1,15 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class CommandMsg implements CommandExecutor{
+public class CommandMsg extends CustomCommand{
 
     private ModYMLManager modYMLManager;
     public CommandMsg(ModYMLManager modYMLManager) {
@@ -20,7 +19,7 @@ public class CommandMsg implements CommandExecutor{
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(args.length < 2 || args[0].length() < 4 || args[0].length() > 16) {
             return false;

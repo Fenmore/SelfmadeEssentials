@@ -5,27 +5,19 @@ import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class CommandTree implements CommandExecutor{
+public class CommandTree extends PlayerCommand{
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
-            return true;
-        }
-
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if(args.length == 0) {
-            List<Block> lineOfSight = ((Player) sender).getLineOfSight((Set) null, 100);
-            ((Player) sender).getWorld().generateTree(lineOfSight.get(lineOfSight.size() - 1).getLocation(), TreeType.BIG_TREE);
+            List<Block> lineOfSight = sender.getLineOfSight((Set) null, 100);
+            sender.getWorld().generateTree(lineOfSight.get(lineOfSight.size() - 1).getLocation(), TreeType.BIG_TREE);
             return true;
         }
 
@@ -56,10 +48,10 @@ public class CommandTree implements CommandExecutor{
             }
         }*/
 
-        List<Block> lineOfSight = ((Player) sender).getLineOfSight((Set) null, 100);
+        List<Block> lineOfSight = sender.getLineOfSight((Set) null, 100);
         if(lineOfSight.get(lineOfSight.size() - 1).getType().equals(Material.GRASS))
 
-        ((Player) sender).getWorld().generateTree(lineOfSight.get(lineOfSight.size() - 1).getLocation(), TreeType.valueOf(args[0].toUpperCase()));
+        sender.getWorld().generateTree(lineOfSight.get(lineOfSight.size() - 1).getLocation(), TreeType.valueOf(args[0].toUpperCase()));
 
         return true;
     }
