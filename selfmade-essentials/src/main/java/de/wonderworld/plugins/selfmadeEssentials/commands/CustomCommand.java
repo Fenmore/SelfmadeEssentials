@@ -3,6 +3,7 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,10 +21,12 @@ public abstract class CustomCommand implements CommandExecutor{
             sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
         } catch (InvalidPlayerNameException e) {
             sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, e.getPlayerName()));
+        } catch (PlayersNotTeleportedException e) {
+            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYERS_NOT_TELEPORTED_FORMAT, e.getPlayers().toString()));
         }
         return true;
     }
 
-    protected abstract boolean onCustomCommand(CommandSender sender, Command command, String label, String[] args) throws PlayerNotFoundException, NotInstanceOfPlayerException, InvalidPlayerNameException;
+    protected abstract boolean onCustomCommand(CommandSender sender, Command command, String label, String[] args) throws PlayerNotFoundException, NotInstanceOfPlayerException, InvalidPlayerNameException, PlayersNotTeleportedException;
 
 }

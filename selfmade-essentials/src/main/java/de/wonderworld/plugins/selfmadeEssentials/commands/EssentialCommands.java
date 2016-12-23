@@ -2,7 +2,8 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
+import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -10,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -37,8 +39,11 @@ public class EssentialCommands {
         return list;
     }
 
-    public static Location getSafeLocation(Location loc) {
+    private static Location getSafeLocation(Location locToTest) {
+        Location loc = new Location(locToTest.getWorld(), locToTest.getX(), locToTest.getY(), locToTest.getZ());
         while (true) {
+            if (loc.getBlockY() < 0)
+                return null;
             if (loc.getWorld().getBlockAt(loc).getType().isSolid() || loc.getWorld().getBlockAt(loc).getType().equals(Material.STATIONARY_WATER) ||
                     loc.getWorld().getBlockAt(loc).getType().equals(Material.STATIONARY_LAVA) || loc.getWorld().getBlockAt(loc).getType().equals(Material.WATER) ||
                     loc.getWorld().getBlockAt(loc).getType().equals(Material.LAVA)) {
@@ -52,9 +57,39 @@ public class EssentialCommands {
 
     public static Player getPlayer(String name) throws InvalidPlayerNameException, PlayerNotFoundException {
         Player p = Bukkit.getPlayer(name);
-        if(p == null) {
+        if (p == null) {
             throw new PlayerNotFoundException(name);
         }
         return p;
+    }
+
+    public static void teleportPlayers(Player[] playersToTeleport, Location destination) throws PlayersNotTeleportedException {
+        PlayerYMLManager playerYMLManager = new PlayerYMLManager();
+        Location safeLoc = getSafeLocation(destination);
+        List<Player> playersNotTeleported = new ArrayList<>();
+        for (Player p : playersToTeleport) {
+            if (safeLoc == null) {
+                if (p.getAllowFlight()) {
+                    playerYMLManager.setBackLocation(p.getName(), p.getLocation());
+                    p.teleport(destination);
+                } else {
+                    playersNotTeleported.add(p);
+                }
+            } else if (destination.getBlockY() == safeLoc.getBlockY()) {
+                playerYMLManager.setBackLocation(p.getName(), p.getLocation());
+                p.teleport(destination);
+            } else {
+                if (p.getAllowFlight()) {
+                    playerYMLManager.setBackLocation(p.getName(), p.getLocation());
+                    p.teleport(destination);
+                    p.setFlying(true);
+                } else {
+                    playerYMLManager.setBackLocation(p.getName(), p.getLocation());
+                    p.teleport(safeLoc);
+                }
+            }
+        }
+        if(!playersNotTeleported.isEmpty())
+            throw new PlayersNotTeleportedException(playersNotTeleported);
     }
 }

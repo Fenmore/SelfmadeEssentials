@@ -94,7 +94,7 @@ commands:
     description: List all available commands
     permission: selfmadeEssentials.list
   ignore:
-    usage: /ignore|mute <Player>
+    usage: /ignore <Player>
     description: Ignore a specific player
   msg:
     usage: /msg <Player> <Message>
@@ -138,30 +138,30 @@ commands:
     description: List all set warps
     permission: selfmadeEssentials.warplist
   tp:
-    usage: /tp <Player> [Player]
-    description: Teleport you or a given player
+    usage: /tp [Player1] [Player2] <Player (Destination)>
+    description: Teleport you or a given players to the last player
     permission: selfmadeEssentials.tp
   tphere:
     usage: /tphere <player to teleport to YOUR SELF>
     description: Teleport player directly to you
+  tppos:
+    usage: /tppos [player1] [player2] <x> <y> <z>
+    description: Teleport players to given coordinates
   top:
     usage: /top
     description: Teleports you to the highest block at your current location
   home:
-    usage: /home [name]
+    usage: /home <name>
     description: Teleports you home
   sethome:
-    usage: /sethome [name]
+    usage: /sethome <name>
     description: Sets your home location
   delhome:
     usage: /delhome <name>
     description: Removes a home
   spawn:
-    usage: /spawn [player]
+    usage: /spawn
     description: Teleports you to spawn
-  setspawn:
-    usage: /setspawn [group]
-    description: Sets the spawn location
   back:
     usage: /back
     description: Returns you to your last position from a prior teleport

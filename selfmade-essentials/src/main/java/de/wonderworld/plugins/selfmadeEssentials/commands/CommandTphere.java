@@ -2,36 +2,34 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
-import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
-import org.bukkit.Bukkit;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 public class CommandTphere extends PlayerCommand {
 
-
     @Override
-    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) throws InvalidPlayerNameException, PlayerNotFoundException {
-        if(args.length == 0) {
+    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) throws InvalidPlayerNameException, PlayerNotFoundException, PlayersNotTeleportedException {
+        if (neededArgsLength(args)) {
+
+            Player[] players = getPlayersToTeleport(args);
+
+            EssentialCommands.teleportPlayers(players, sender.getLocation());
+            return true;
+        } else {
             return false;
         }
+    }
 
-        Player p = EssentialCommands.getPlayer(args[0]);
+    private Player[] getPlayersToTeleport(String[] args) throws InvalidPlayerNameException, PlayerNotFoundException {
+        Player[] players = new Player[args.length];
+        for (int i = 0; i < args.length; i++) {
+            players[i] = EssentialCommands.getPlayer(args[i]);
+        }
+        return players;
+    }
 
-        new PlayerYMLManager().setBackLocation(p.getName(), p.getLocation());
-        if(sender.isFlying()) {
-            if(p.getAllowFlight()) {
-                p.teleport(sender);
-                p.setFlying(true);
-            }
-            else {
-                p.teleport(EssentialCommands.getSafeLocation(sender.getLocation()));
-            }
-        }
-        else {
-            p.teleport(sender);
-        }
-        return true;
+    private boolean neededArgsLength(String[] args) {
+        return args.length > 0;
     }
 }

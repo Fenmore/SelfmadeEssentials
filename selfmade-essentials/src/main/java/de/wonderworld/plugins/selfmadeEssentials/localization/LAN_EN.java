@@ -46,7 +46,6 @@ public class LAN_EN {
     public static final String PTIME_NOT_NUMBER_FORMAT = "&cThe argument &f%s &chas to be a number.";
     public static final String PTIME_NOT_BOOLEAN_FORMAT = "&cThe argument &f%s &chas to be &ftrue &6or &ffalse&6.";
     public static final String PTIME_INTRO = "&6The following arguments are allowed:";
-    public static final String TP_NUMBERS_EXPECTED = "&cIf you want to teleport to a given location you have to type in numbers.";
     public static final String EFFECT_NOT_FOUND_FORMAT = "&cThe effect &f%s &cwas not found.";
     public static final String EFFECT_GAINED_FORMAT = "&aYou recieved the effect &f%s &a.";
     public static final String VANISH_LIST_INTRO = "&6The following currently online players have the ability to see you:";
@@ -70,4 +69,6 @@ public class LAN_EN {
     public static final String LOCATION_UNPORTABLE = "&cThe location of this player is currently unportable.";
     public static final String ITEM_MUST_BE_AN_OBJECT = "&6You do not have an item in your hand.";
     public static final String ITEM_REPAIRED = "&6Item &arepaired&6.";
+    public static final String NUMBER_EXPECTED_FORMAT = "&cThe argument &f%s&c has to be a number.";
+    public static final String PLAYERS_NOT_TELEPORTED_FORMAT = "&6The players &f%s&6 were not teleported because they are not allowed to fly.";
 }

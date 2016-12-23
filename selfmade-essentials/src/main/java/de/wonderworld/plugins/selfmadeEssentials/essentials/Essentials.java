@@ -54,6 +54,7 @@ public class Essentials extends JavaPlugin {
     private CommandHome commandHome;
     private CommandSethome commandSethome;
     private CommandDelhome commandDelhome;
+    private CommandTppos commandTppos;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -101,7 +102,7 @@ public class Essentials extends JavaPlugin {
         commandBurn = new CommandBurn();
         commandPtime = new CommandPtime();
         commandWorkbench = new CommandWorkbench();
-        commandTp = new CommandTp(playerYMLManager);
+        commandTp = new CommandTp();
         commandSuicide = new CommandSuicide();
         commandFb = new CommandFb(this);
         commandEffect = new CommandEffect();
@@ -116,6 +117,7 @@ public class Essentials extends JavaPlugin {
         commandHome = new CommandHome(playerYMLManager);
         commandSethome = new CommandSethome(playerYMLManager);
         commandDelhome = new CommandDelhome(playerYMLManager);
+        commandTppos = new CommandTppos();
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin();
         eventPlayerQuit = new EventPlayerQuit();
@@ -168,6 +170,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("home").setExecutor(commandHome);
         this.getCommand("sethome").setExecutor(commandSethome);
         this.getCommand("delhome").setExecutor(commandDelhome);
+        this.getCommand("tppos").setExecutor(commandTppos);
         fillBoard();
         fillUuid();
     }
