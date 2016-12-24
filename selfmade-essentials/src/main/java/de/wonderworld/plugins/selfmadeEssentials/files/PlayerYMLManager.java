@@ -127,4 +127,15 @@ public class PlayerYMLManager {
             world = cfg.getString("homes." + home + ".world");
         return new Location(Bukkit.getWorld(world), cfg.getDouble("homes." + home + ".x"), cfg.getDouble("homes." + home + ".y"), cfg.getDouble("homes." + home + ".z"));
     }
+
+    public void setQuickResponseName(String recieverName, String senderName) {
+        YamlConfiguration cfg = loadCfg(recieverName);
+        cfg.set("quickResponse", senderName);
+        safeFile(cfg, recieverName);
+    }
+
+    public String getQuickResponseName(String name) {
+        YamlConfiguration cfg = loadCfg(name);
+        return cfg.getString("quickResponse");
+    }
 }

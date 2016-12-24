@@ -80,7 +80,7 @@ public class Essentials extends JavaPlugin {
         warpYMLManager = new WarpYMLManager();
         modYMLManager = new ModYMLManager();
         listYMLManager = new ListYMLManager(this);
-        commandMsg = new CommandMsg(modYMLManager);
+        commandMsg = new CommandMsg(modYMLManager, playerYMLManager);
         commandHeal = new CommandHeal();
         commandFeed = new CommandFeed(this);
         commandSocialspy = new CommandSocialspy(modYMLManager);

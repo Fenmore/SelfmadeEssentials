@@ -70,4 +70,5 @@ public class LAN_EN {
     public static final String ITEM_REPAIRED = "&6Item &arepaired&6.";
     public static final String NUMBER_EXPECTED_FORMAT = "&cThe argument &f%s&c has to be a number.";
     public static final String PLAYERS_NOT_TELEPORTED_FORMAT = "&6The players &f%s&6 were not teleported because they are not allowed to fly.";
+    public static final String QUICK_RESPONSE_NOT_AVAILABLE = "&cThere is no player who wrote to you. &6Start a conversation with \"&f/msg&6\".";
 }

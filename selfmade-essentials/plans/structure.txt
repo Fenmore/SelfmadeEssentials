@@ -16,6 +16,9 @@ Wonderland Plugin:
                 + keine Chat/msg Nachrichten Empfangen
             - /msg , um anderen Spielern private Nachrichten zu senden
             + /r , um schnell direkt antworten zu können
+                + Was soll /r tun?
+                    + Da man nicht abfragen kann, wann der /r Befehl angefangen wurde zu schreiben, könnte es passieren, dass Nachrichten mit /r an eine
+                        andere Person gesendet werden, die zwischendurch diesem Spielen mit /msg kontaktiert hat
             + /recipe , um wie NEI eine klare Übersicht aller crafting Rezepte zu haben
             + /rules , um Regeln auf dem Server anzuzeigen
             + /seen , um zu sehen, wann eine Person zuletzt online war
