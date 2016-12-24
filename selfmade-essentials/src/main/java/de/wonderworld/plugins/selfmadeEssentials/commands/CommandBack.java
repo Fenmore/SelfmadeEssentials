@@ -20,7 +20,6 @@ public class CommandBack extends PlayerCommand {
             sender.teleport(loc);
             playerYMLManager.remBackLocation(sender.getName());
         }
-
         return true;
     }
 }

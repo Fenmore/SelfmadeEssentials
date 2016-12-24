@@ -37,7 +37,7 @@ Wonderland Plugin:
             + /mute , um einen Spieler für alle Spieler zu muten
                 + Chat/Msg Nachrichten
             - /invsee , um das Inventar eines anderen Spieler zu öffnen
-            + /ext , um einen brennenden Spieler zu löschen
+            - /ext , um einen brennenden Spieler zu löschen
             - /enderchest , um das Endertruheninventar eines Spielers zu öffnen
             - /clearinventory , um das eigene Inventar zu leeren
             - /burn , um einen Spieler anzuzünden, bis er stirbt
@@ -70,7 +70,7 @@ Wonderland Plugin:
                 - Zeit zurücksetzen auf Serverzeit
                 - Liste aller Möglichkeiten
             + /pweather , um das Wetter clientside zu ändern
-            + /repair , um Items mit Durability zu reparieren
+            - /repair , um Items mit Durability zu reparieren
             - /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
             + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können
             - /workbench , um ein Workbenchinventar zu öffnen
@@ -114,6 +114,8 @@ Wonderland Plugin:
     + Umfallenden Baum animieren bei Entfernen des unteren Blocks
 
 + Minigames
+    + Worms
+    + Jump 'n' Run (Temple Run)
     + Skyblock
     + Spleef
     + Hungergames
