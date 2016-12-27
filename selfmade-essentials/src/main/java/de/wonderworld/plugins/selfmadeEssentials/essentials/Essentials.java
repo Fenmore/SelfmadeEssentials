@@ -1,8 +1,11 @@
 package de.wonderworld.plugins.selfmadeEssentials.essentials;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.commands.*;
 import de.wonderworld.plugins.selfmadeEssentials.events.*;
 import de.wonderworld.plugins.selfmadeEssentials.files.*;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_DE;
+import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -66,7 +69,10 @@ public class Essentials extends JavaPlugin {
     private EventEntityDamage eventEntityDamage;
 
 
+
     public Essentials() {
+        LocaleHandler.setLocaleClass("en", LAN_EN.class);
+        LocaleHandler.setLocaleClass("de", LAN_DE.class);
         dir = new File(getDataFolder().toString());
         dirStats = new File(getDataFolder(), "Stats");
         dirPlayer = new File(dirStats, "Player");
