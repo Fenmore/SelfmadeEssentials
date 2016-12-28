@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,7 +13,7 @@ public class CommandSuicide extends PlayerCommand {
         sender.setHealth(0);
 
         for(Player player: Bukkit.getOnlinePlayers()){
-            player.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_KILLED_HIMSELF_FORMAT, sender.getName()));
+            LocaleHandler.sendLocalizedMessage(player, "PLAYER_KILLED_HIMSELF_FORMAT", sender.getName());
         }
         return true;
     }

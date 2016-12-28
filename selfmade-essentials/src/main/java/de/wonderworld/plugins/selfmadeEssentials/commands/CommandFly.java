@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -29,10 +30,10 @@ public class CommandFly extends CustomCommand {
 
         if (!p.getAllowFlight()) {
             p.setAllowFlight(true);
-            p.sendMessage(EssentialCommands.message(LAN_EN.FLY_MODE_ON));
+            LocaleHandler.sendLocalizedMessage(p, "FLY_MODE_ON");
         } else {
             p.setAllowFlight(false);
-            p.sendMessage(EssentialCommands.message(LAN_EN.FLY_MODE_OFF));
+            LocaleHandler.sendLocalizedMessage(p, "FLY_MODE_OFF");
         }
         return true;
     }

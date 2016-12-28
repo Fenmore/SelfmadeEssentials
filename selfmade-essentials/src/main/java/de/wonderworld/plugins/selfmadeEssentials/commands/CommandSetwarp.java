@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
@@ -18,7 +19,7 @@ public class CommandSetwarp extends PlayerCommand {
             return false;
 
         warpYMLManager.setWarp(sender.getLocation(), args[0]);
-        sender.sendMessage(EssentialCommands.message(LAN_EN.WARP_SET_FORMAT, args[0]));
+        LocaleHandler.sendLocalizedMessage(sender, "WARP_SET_FORMAT", args[0]);
 
         return true;
     }

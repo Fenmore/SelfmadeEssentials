@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Material;
 import org.bukkit.TreeType;
@@ -28,12 +29,12 @@ public class CommandTree extends PlayerCommand{
         }
 
         if(args[0].equalsIgnoreCase("list")) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.AVAILABLE_TREETYPES_FORMAT, treeTypes.toString()));
+            LocaleHandler.sendLocalizedMessage(sender, "AVAILABLE_TREETYPES_FORMAT", treeTypes.toString());
             return true;
         }
 
         if(!treeTypes.contains(args[0].toUpperCase())) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.TREETYPE_NOT_FOUND_FORMAT, args[0]));
+            LocaleHandler.sendLocalizedMessage(sender, "TREETYPE_NOT_FOUND_FORMAT", args[0]);
             return true;
         }
 

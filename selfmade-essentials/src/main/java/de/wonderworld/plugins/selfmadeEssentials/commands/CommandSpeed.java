@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -9,13 +10,13 @@ public class CommandSpeed extends PlayerCommand {
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_INFO_FORMAT, ((Player) sender).getWalkSpeed(), ((Player) sender).getFlySpeed()));
+            LocaleHandler.sendLocalizedMessage(sender, "SPEED_INFO_FORMAT", ((Player) sender).getWalkSpeed(), ((Player) sender).getFlySpeed());
             return true;
         } else {
             if (args[0].equalsIgnoreCase("reset")) {
                 ((Player) sender).setFlySpeed(0.1f);
                 ((Player) sender).setWalkSpeed(0.2f);
-                sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_RESET));
+                LocaleHandler.sendLocalizedMessage(sender, "SPEED_RESET");
                 return true;
             }
             Float value;
@@ -33,7 +34,7 @@ public class CommandSpeed extends PlayerCommand {
                     }
                     stringValue = stringValue.substring(0, stringValue.length() - 2);
                 }
-                sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_WALK_FLY_SET_FORMAT, stringValue));
+                LocaleHandler.sendLocalizedMessage(sender, "SPEED_WALK_FLY_SET_FORMAT", stringValue);
             } catch (NumberFormatException e) {
                 if (args.length == 1) {
                     return false;
@@ -53,19 +54,19 @@ public class CommandSpeed extends PlayerCommand {
                         switch (args[0]) {
                             case "fly": {
                                 ((Player) sender).setFlySpeed((1f / 100f) * value);
-                                sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_FLY_SET_FORMAT, stringValue));
+                                LocaleHandler.sendLocalizedMessage(sender, "SPEED_FLY_SET_FORMAT", stringValue);
                                 break;
                             }
                             case "walk": {
                                 ((Player) sender).setWalkSpeed((1f / 100f) * value);
-                                sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_WALK_SET_FORMAT, stringValue));
+                                LocaleHandler.sendLocalizedMessage(sender, "SPEED_WALK_SET_FORMAT", stringValue);
                                 break;
                             }
                             default:
                                 return false;
                         }
                     } catch (NumberFormatException e2) {
-                        sender.sendMessage(EssentialCommands.message(LAN_EN.SPEED_WRONG_ARGUMENT_FORMAT, args[1]));
+                        LocaleHandler.sendLocalizedMessage(sender, "SPEED_WRONG_ARGUMENT_FORMAT", args[1]);
                     }
                 }
             }

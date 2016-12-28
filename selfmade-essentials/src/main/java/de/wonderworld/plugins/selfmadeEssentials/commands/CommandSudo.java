@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -16,12 +17,12 @@ public class CommandSudo extends CustomCommand{
 
         Player p = Bukkit.getPlayer(args[0]);
         if(p == null) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT));
+            LocaleHandler.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT");
             return true;
         }
 
         if(args[1].equalsIgnoreCase("msg") || args[1].equalsIgnoreCase("r")) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.SUDO_COMMAND_NOT_ALLOWED));
+            LocaleHandler.sendLocalizedMessage(sender, "SUDO_COMMAND_NOT_ALLOWED");
             return true;
         }
 

@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.ArgumentNumberExpectedException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -18,17 +19,17 @@ public abstract class PlayerCommand implements CommandExecutor {
             try {
                 return onPlayerCommand((Player) commandSender, command, label, args);
             } catch (InvalidPlayerNameException e) {
-                commandSender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, e.getPlayerName()));
+                LocaleHandler.sendLocalizedMessage(commandSender, "NOT_VALID_PLAYER_NAME_FORMAT", e.getPlayerName());
             } catch (PlayerNotFoundException e) {
-                commandSender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, e.getPlayerName()));
+                LocaleHandler.sendLocalizedMessage(commandSender, "PLAYER_NOT_FOUND_FORMAT", e.getPlayerName());
             } catch (ArgumentNumberExpectedException e) {
-                commandSender.sendMessage(EssentialCommands.message(LAN_EN.NUMBER_EXPECTED_FORMAT, e.getArgument()));
+                LocaleHandler.sendLocalizedMessage(commandSender, "NUMBER_EXPECTED_FORMAT", e.getArgument());
             } catch (PlayersNotTeleportedException e) {
-                commandSender.sendMessage(EssentialCommands.message(LAN_EN.PLAYERS_NOT_TELEPORTED_FORMAT, e.getPlayers().toString()));
+                LocaleHandler.sendLocalizedMessage(commandSender, "PLAYERS_NOT_TELEPORTED_FORMAT", e.getPlayers().toString());
             }
             return true;
         } else {
-            commandSender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
+            LocaleHandler.sendLocalizedMessage(commandSender, "NOT_INSTANCEOF_PLAYER");
             return true;
         }
     }

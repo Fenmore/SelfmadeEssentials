@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
@@ -45,7 +46,7 @@ public class CommandMsg extends CustomCommand{
         if(socialSpyList != null) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 if (socialSpyList.contains(player.getName()) && !player.getName().equalsIgnoreCase(sender.getName()) && !player.getName().equalsIgnoreCase(args[0]))
-                    player.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_SENDER_RECIEVER, sender.getName(), reciever.getName(), message));
+                    LocaleHandler.sendLocalizedMessage(player, "SOCIALSPY_MSG_SENDER_RECIEVER", sender.getName(), reciever.getName(), message);
             }
         }
     }
@@ -60,9 +61,9 @@ public class CommandMsg extends CustomCommand{
     }
 
     private CommandSender sendMsg(CommandSender sender, CommandSender reciever, String message) throws InvalidPlayerNameException, PlayerNotFoundException {
-        reciever.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_SENDER_ME, sender.getName(), message));
+        LocaleHandler.sendLocalizedMessage(reciever, "SOCIALSPY_MSG_SENDER_ME", sender.getName(), message);
         //playerYMLManager.setQuickResponseName(reciever.getName(), sender.getName());
-        sender.sendMessage(EssentialCommands.message(LAN_EN.SOCIALSPY_MSG_ME_SENDER, reciever.getName(), message));
+        LocaleHandler.sendLocalizedMessage(sender, "SOCIALSPY_MSG_ME_SENDER", reciever.getName(), message);
 
         return reciever;
     }

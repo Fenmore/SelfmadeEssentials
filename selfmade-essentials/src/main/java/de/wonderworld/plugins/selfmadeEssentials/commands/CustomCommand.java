@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -16,13 +17,13 @@ public abstract class CustomCommand implements CommandExecutor{
         try {
             return onCustomCommand(sender, command, label, args);
         } catch (PlayerNotFoundException e) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, e.getPlayerName()));
+            LocaleHandler.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT", e.getPlayerName());
         } catch (NotInstanceOfPlayerException e) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_INSTANCEOF_PLAYER));
+            LocaleHandler.sendLocalizedMessage(sender, "NOT_INSTANCEOF_PLAYER");
         } catch (InvalidPlayerNameException e) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.NOT_VALID_PLAYER_NAME_FORMAT, e.getPlayerName()));
+            LocaleHandler.sendLocalizedMessage(sender, "NOT_VALID_PLAYER_NAME_FORMAT", e.getPlayerName());
         } catch (PlayersNotTeleportedException e) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYERS_NOT_TELEPORTED_FORMAT, e.getPlayers().toString()));
+            LocaleHandler.sendLocalizedMessage(sender, "PLAYERS_NOT_TELEPORTED_FORMAT", e.getPlayers().toString());
         }
         return true;
     }

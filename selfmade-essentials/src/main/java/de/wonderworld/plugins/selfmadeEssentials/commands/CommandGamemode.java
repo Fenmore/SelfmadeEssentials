@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -56,12 +57,12 @@ public class CommandGamemode extends CustomCommand {
                                 mode = GameMode.SPECTATOR;
                                 break;
                             default: {
-                                sender.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_BIGGER_3, args[0]));
+                                LocaleHandler.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
                                 return true;
                             }
                         }
                     } catch (NumberFormatException e) {
-                        sender.sendMessage(EssentialCommands.message(LAN_EN.ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT, args[0]));
+                        LocaleHandler.sendLocalizedMessage(sender, "ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT", args[0]);
                         return true;
                     }
                 }
@@ -91,7 +92,7 @@ public class CommandGamemode extends CustomCommand {
                     mode = GameMode.SPECTATOR;
                     break;
                 default: {
-                    sender.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_BIGGER_3, args[0]));
+                    LocaleHandler.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
                     return true;
                 }
 
@@ -99,7 +100,7 @@ public class CommandGamemode extends CustomCommand {
         }
 
         p.setGameMode(mode);
-        p.sendMessage(EssentialCommands.message(LAN_EN.GAMEMODE_SET_FORMAT, mode.toString()));
+        LocaleHandler.sendLocalizedMessage(p, "GAMEMODE_SET_FORMAT", mode.toString());
 
         return true;
     }

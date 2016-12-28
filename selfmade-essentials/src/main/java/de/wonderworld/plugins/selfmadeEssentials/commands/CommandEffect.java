@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
@@ -36,10 +37,10 @@ public class CommandEffect extends CustomCommand {
             } else if (args[0].equalsIgnoreCase("remove")) {
 
             } else if (!effectTypeList.contains(args[0].toUpperCase())) {
-                sender.sendMessage(EssentialCommands.message(LAN_EN.EFFECT_NOT_FOUND_FORMAT, args[0]));
+                LocaleHandler.sendLocalizedMessage(sender, "EFFECT_NOT_FOUND_FORMAT", args[0]);
             } else {
                 ((Player) sender).addPotionEffect(PotionEffectType.getByName(args[0].toUpperCase()).createEffect(Integer.MAX_VALUE, 10));
-                sender.sendMessage(EssentialCommands.message(LAN_EN.EFFECT_GAINED_FORMAT, args[0]));
+                LocaleHandler.sendLocalizedMessage(sender, "EFFECT_GAINED_FORMAT", args[0]);
             }
         }
 

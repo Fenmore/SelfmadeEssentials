@@ -141,7 +141,7 @@ public class ModYMLManager {
         }
     }
 
-    public void toggleGodmode(String name) {
+      public void toggleGodmode(String name) {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("godmode");
         if (list == null) {

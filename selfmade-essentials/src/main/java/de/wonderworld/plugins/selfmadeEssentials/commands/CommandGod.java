@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
@@ -30,7 +31,7 @@ public class CommandGod extends CustomCommand {
 
     private void sendMessagePlayerNotFound(CommandSender sender, String[] args) throws NotInstanceOfPlayerException {
         if (sender instanceof Player) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_NOT_FOUND_FORMAT, getPlayerName(args)));
+            LocaleHandler.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT", getPlayerName(args));
         } else {
             throw new NotInstanceOfPlayerException();
         }
@@ -54,9 +55,9 @@ public class CommandGod extends CustomCommand {
         modYMLManager.toggleGodmode(targetPlayer.getName());
 
         if (modYMLManager.isGodmodeActive(targetPlayer.getName())) {
-            targetPlayer.sendMessage(EssentialCommands.message(LAN_EN.GODMODE_IS_NOW_ON));
+            LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_ON");
         } else {
-            targetPlayer.sendMessage(EssentialCommands.message(LAN_EN.GODMODE_IS_NOW_OFF));
+            LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_OFF");
         }
     }
 

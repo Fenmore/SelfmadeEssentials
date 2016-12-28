@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Creature;
@@ -24,7 +25,7 @@ public class CommandKillmob extends PlayerCommand {
 
         for (String mob : args) {
             if (!mobList.contains(mob.toUpperCase())) {
-                sender.sendMessage(EssentialCommands.message(LAN_EN.MOB_NOT_FOUND_FORMAT, mob));
+                LocaleHandler.sendLocalizedMessage(sender, "MOB_NOT_FOUND_FORMAT, mob");
                 return true;
             }
         }

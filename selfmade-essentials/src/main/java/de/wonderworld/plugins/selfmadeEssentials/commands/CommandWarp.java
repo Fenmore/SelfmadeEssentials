@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
@@ -22,7 +23,7 @@ public class CommandWarp extends PlayerCommand {
 
         Location warp = warpYMLManager.getWarp(args[0]);
         if(warp == null) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.WARP_DOES_NOT_EXIST_FORMAT, args[0]));
+            LocaleHandler.sendLocalizedMessage(sender, "WARP_DOES_NOT_EXIST_FORMAT", args[0]);
             return true;
         }
 
@@ -31,7 +32,7 @@ public class CommandWarp extends PlayerCommand {
             sender.teleport(warp);
         }
         else
-            sender.sendMessage(EssentialCommands.message(LAN_EN.WARP_WORLD_NOT_LOADED));
+            LocaleHandler.sendLocalizedMessage(sender, "WARP_WORLD_NOT_LOADED");
 
 
         return true;
