@@ -25,14 +25,22 @@ public class EventPlayerQuit implements Listener {
         List<String> vanishList = modYMLManager.getVanishActiveList();
         if (vanishList.contains(event.getPlayer().getName())) {
             event.setQuitMessage(null);
-            if (Essentials.board.getTeam("vanishVisible").getEntries().contains(event.getPlayer().getName())) {
-                Essentials.board.getTeam("vanishVisible").removeEntry(event.getPlayer().getName());
+            unregisterFromMessageBoard(event);
+            informPlayer(event);
+        }
+    }
+
+    private void informPlayer(PlayerQuitEvent event) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.hasPermission("selfmadeEssentials.vanish")) {
+                p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_LEFT_VANISH_FORMAT, event.getPlayer().getName()));
             }
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                if (p.hasPermission("selfmadeEssentials.vanish")) {
-                    p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_LEFT_VANISH_FORMAT, event.getPlayer().getName()));
-                }
-            }
+        }
+    }
+
+    private void unregisterFromMessageBoard(PlayerQuitEvent event) {
+        if (Essentials.board.getTeam("vanishVisible").getEntries().contains(event.getPlayer().getName())) {
+            Essentials.board.getTeam("vanishVisible").removeEntry(event.getPlayer().getName());
         }
     }
 }

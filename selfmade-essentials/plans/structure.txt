@@ -129,4 +129,3 @@ Wonderland Plugin:
 
 + TOOLS (Dependecies, keine Plugins)
     + Localization Handler
-    + UUID Handler (UUID by PlayerName für Befehle)
