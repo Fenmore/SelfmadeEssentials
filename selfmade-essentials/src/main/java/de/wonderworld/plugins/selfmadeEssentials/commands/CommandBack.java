@@ -15,11 +15,14 @@ public class CommandBack extends PlayerCommand {
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
+
         Location loc = playerYMLManager.getBackLocation(sender.getName());
+
         if (loc.getWorld() != null) {
             sender.teleport(loc);
             playerYMLManager.remBackLocation(sender.getName());
         }
+
         return true;
     }
 }

@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
+import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
@@ -9,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -91,5 +93,25 @@ public class EssentialCommands {
         }
         if(!playersNotTeleported.isEmpty())
             throw new PlayersNotTeleportedException(playersNotTeleported);
+    }
+
+    public static List<Player> getPlayersFromArgumets(String[] args, CommandSender sender) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
+
+        List<Player> playersFromArguments = new ArrayList<>();
+        if (args.length == 0) {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
+                playersFromArguments.add(p);
+            } else {
+                throw new NotInstanceOfPlayerException();
+            }
+        } else {
+            for (String name : args) {
+                Player p = EssentialCommands.getPlayer(name);
+                playersFromArguments.add(p);
+            }
+        }
+
+        return playersFromArguments;
     }
 }

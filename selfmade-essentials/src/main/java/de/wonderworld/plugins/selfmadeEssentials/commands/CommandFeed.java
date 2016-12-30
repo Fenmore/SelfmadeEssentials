@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CommandFeed extends CustomCommand {
@@ -21,28 +22,18 @@ public class CommandFeed extends CustomCommand {
 
     @Override
     public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
-        if (args.length == 0) {
-            if (!(sender instanceof Player)) {
-                throw new NotInstanceOfPlayerException();
-            }
-            else {
-                ((Player) sender).setFoodLevel(20);
-                ((Player) sender).setSaturation(20);
-                ((Player) sender).setExhaustion(0);
-            }
-        }
-        else {
-            List<Player> playerToFeed = new ArrayList<>();
-            for (String name : args) {
-                Player p = EssentialCommands.getPlayer(name);
-                playerToFeed.add(p);
-            }
-            for (Player p : playerToFeed) {
-                p.setFoodLevel(20);
-                p.setSaturation(20);
-                p.setExhaustion(0);
-            }
-        }
+
+        List<Player> playerToFeed = EssentialCommands.getPlayersFromArgumets(args, sender);
+        feedPlayers(playerToFeed);
+
         return true;
+    }
+
+    private void feedPlayers(List<Player> playerToFeed) {
+        for (Player p : playerToFeed) {
+            p.setFoodLevel(20);
+            p.setSaturation(20);
+            p.setExhaustion(0);
+        }
     }
 }

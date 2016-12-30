@@ -1,0 +1,8 @@
+- Methods
+-- Never have a "one-line" method
+-- Spaces after method declarations
+-- Spaces to group code lines into blocks
+-- Spaces before returns.
+
+- Commands
+-- Commands should always be named Command<NAME-OF-COMMAND> (e.g. CommandGodMode)

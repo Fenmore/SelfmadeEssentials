@@ -11,24 +11,40 @@ public class CommandDelhome extends PlayerCommand {
     private PlayerYMLManager playerYMLManager;
 
     public CommandDelhome(PlayerYMLManager playerYMLManager) {
+
         this.playerYMLManager = playerYMLManager;
     }
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
+
         if(args.length == 0) {
-            sender.sendMessage(EssentialCommands.message(LAN_EN.DELHOME_INFO));
-            sender.sendMessage(playerYMLManager.getHomeList(sender.getName()).toString());
+            showHomes(sender);
         }
         else {
-            if(!playerYMLManager.getHomeList(sender.getName()).contains(args[0])) {
-                LocaleHandler.sendLocalizedMessage(sender, "HOME_NOT_FOUND_FORMAT", args[0]);
-            }
-            else {
-                playerYMLManager.remHomeLocation(sender.getName(), args[0]);
-                LocaleHandler.sendLocalizedMessage(sender, "DELHOME_SUCCESS_FORMAT", args[0]);
-            }
+            deleteHome(sender, args[0]);
         }
+
         return true;
+    }
+
+    private void deleteHome(Player sender, String arg) {
+
+        String name = sender.getName();
+
+        if (playerYMLManager.getHomeList(name).contains(arg)) {
+            playerYMLManager.remHomeLocation(name, arg);
+            LocaleHandler.sendLocalizedMessage(sender, "DELHOME_SUCCESS_FORMAT", arg);
+        } else {
+            LocaleHandler.sendLocalizedMessage(sender, "HOME_NOT_FOUND_FORMAT", arg);
+        }
+    }
+
+    private void showHomes(Player sender) {
+
+        String name = sender.getName();
+
+        LocaleHandler.sendLocalizedMessage(sender, "DELHOME_INFO");
+        sender.sendMessage(playerYMLManager.getHomeList(name).toString());
     }
 }

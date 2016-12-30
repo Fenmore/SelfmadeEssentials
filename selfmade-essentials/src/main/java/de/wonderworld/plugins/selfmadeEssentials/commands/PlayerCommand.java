@@ -11,23 +11,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public abstract class PlayerCommand implements CommandExecutor {
+public abstract class PlayerCommand extends CustomCommand {
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+    public boolean onCustomCommand(CommandSender commandSender, Command command, String label, String[] args) throws ArgumentNumberExpectedException, InvalidPlayerNameException, PlayersNotTeleportedException, PlayerNotFoundException {
         if (commandSender instanceof Player) {
-            try {
-                return onPlayerCommand((Player) commandSender, command, label, args);
-            } catch (InvalidPlayerNameException e) {
-                LocaleHandler.sendLocalizedMessage(commandSender, "NOT_VALID_PLAYER_NAME_FORMAT", e.getPlayerName());
-            } catch (PlayerNotFoundException e) {
-                LocaleHandler.sendLocalizedMessage(commandSender, "PLAYER_NOT_FOUND_FORMAT", e.getPlayerName());
-            } catch (ArgumentNumberExpectedException e) {
-                LocaleHandler.sendLocalizedMessage(commandSender, "NUMBER_EXPECTED_FORMAT", e.getArgument());
-            } catch (PlayersNotTeleportedException e) {
-                LocaleHandler.sendLocalizedMessage(commandSender, "PLAYERS_NOT_TELEPORTED_FORMAT", e.getPlayers().toString());
-            }
-            return true;
+            return onPlayerCommand((Player) commandSender, command, label, args);
         } else {
             LocaleHandler.sendLocalizedMessage(commandSender, "NOT_INSTANCEOF_PLAYER");
             return true;

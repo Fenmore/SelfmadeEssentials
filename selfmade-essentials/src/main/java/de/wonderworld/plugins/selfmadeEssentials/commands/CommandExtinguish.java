@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -16,26 +18,17 @@ public class CommandExtinguish extends CustomCommand {
 
     @Override
     public boolean onCustomCommand(CommandSender sender, Command command, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
-        if (args.length == 0) {
-            if (!(sender instanceof Player)) {
-                throw new NotInstanceOfPlayerException();
-            }
-            else {
-                ((Player) sender).setFireTicks(0);
-            }
-        }
-        else {
 
+        List<Player> playersToExtinguish = EssentialCommands.getPlayersFromArgumets(args, sender);
+        extinguishPlayers(playersToExtinguish);
 
-            List<Player> playerToBurn = new ArrayList<>();
-            for (String name : args) {
-                Player p = EssentialCommands.getPlayer(name);
-                playerToBurn.add(p);
-            }
-            for (Player p : playerToBurn) {
-                p.setFireTicks(0);
-            }
-        }
         return true;
     }
+
+    private void extinguishPlayers(List<Player> playersToExtinguish) {
+        for (Player p : playersToExtinguish) {
+            p.setFireTicks(0);
+        }
+    }
+
 }
