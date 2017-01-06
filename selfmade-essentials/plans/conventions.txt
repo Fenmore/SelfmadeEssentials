@@ -6,3 +6,7 @@
 
 - Commands
 -- Commands should always be named Command<NAME-OF-COMMAND> (e.g. CommandGodMode)
+
+
+- Events
+-- Event classes should always be named Event<NAME-OF-EVENT> (e.g. EventBlockPlace)

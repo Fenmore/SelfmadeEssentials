@@ -74,7 +74,7 @@ public class PlayerYMLManager {
     public Location getBackLocation(String name) {
         YamlConfiguration cfg = loadCfg(name);
         String world = "";
-        if(cfg.getString("back.world") != null)
+        if (cfg.getString("back.world") != null)
             world = cfg.getString("back.world");
         return new Location(Bukkit.getWorld(world), cfg.getDouble("back.x"), cfg.getDouble("back.y"), cfg.getDouble("back.z"));
     }
@@ -114,7 +114,7 @@ public class PlayerYMLManager {
         ConfigurationSection section = cfg.getConfigurationSection("homes");
         Map<String, Object> sectionValues = section.getValues(false);
         List<String> list = new ArrayList<>();
-        for(String key : sectionValues.keySet()) {
+        for (String key : sectionValues.keySet()) {
             list.add(key);
         }
         return list;
@@ -123,7 +123,7 @@ public class PlayerYMLManager {
     public Location getHome(String name, String home) {
         YamlConfiguration cfg = loadCfg(name);
         String world = "";
-        if(cfg.getString("homes." + home + ".world") != null)
+        if (cfg.getString("homes." + home + ".world") != null)
             world = cfg.getString("homes." + home + ".world");
         return new Location(Bukkit.getWorld(world), cfg.getDouble("homes." + home + ".x"), cfg.getDouble("homes." + home + ".y"), cfg.getDouble("homes." + home + ".z"));
     }
@@ -137,5 +137,24 @@ public class PlayerYMLManager {
     public String getQuickResponseName(String name) {
         YamlConfiguration cfg = loadCfg(name);
         return cfg.getString("quickResponse");
+    }
+
+    public void toggle(String targetPlayerName, String variableName) {
+        set(
+                !isActive(targetPlayerName,variableName),
+                targetPlayerName,
+                variableName
+        );
+    }
+
+    public void set(Object value, String targetPlayerName, String variableName){
+        YamlConfiguration cfg = loadCfg(targetPlayerName);
+        cfg.set(variableName, value);
+        safeFile(cfg, targetPlayerName);
+    }
+
+    public boolean isActive(String targetPlayerName, String variableName){
+        YamlConfiguration cfg = loadCfg(targetPlayerName);
+        return cfg.getBoolean(variableName);
     }
 }

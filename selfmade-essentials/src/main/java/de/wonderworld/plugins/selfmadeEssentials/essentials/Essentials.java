@@ -8,6 +8,7 @@ import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_DE;
 import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -30,6 +31,7 @@ public class Essentials extends JavaPlugin {
     private CommandFly commandFly;
     private CommandInvsee commandInvsee;
     private CommandWarp commandWarp;
+    private CommandUnlimited commandUnlimited;
     private CommandSetwarp commandSetwarp;
     private CommandDelwarp commandDelwarp;
     private CommandWarplist commandWarplist;
@@ -67,6 +69,7 @@ public class Essentials extends JavaPlugin {
     private WarpYMLManager warpYMLManager;
     private PlayerYMLManager playerYMLManager;
     private EventEntityDamage eventEntityDamage;
+    private EventBlockPlace eventBlockPlace;
 
 
 
@@ -120,6 +123,7 @@ public class Essentials extends JavaPlugin {
         commandBack = new CommandBack(playerYMLManager);
         commandTphere = new CommandTphere();
         commandSpawn = new CommandSpawn(warpYMLManager);
+        commandUnlimited = new CommandUnlimited(playerYMLManager);
         commandHome = new CommandHome(playerYMLManager);
         commandSethome = new CommandSethome(playerYMLManager);
         commandDelhome = new CommandDelhome(playerYMLManager);
@@ -129,16 +133,21 @@ public class Essentials extends JavaPlugin {
         eventPlayerQuit = new EventPlayerQuit();
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
         eventEntityDamage = new EventEntityDamage();
+        eventBlockPlace = new EventBlockPlace();
     }
 
     @Override
     public void onEnable() {
         board = this.getServer().getScoreboardManager().getNewScoreboard();
-        this.getServer().getPluginManager().registerEvents(eventWeatherChange, this);
-        this.getServer().getPluginManager().registerEvents(eventPlayerJoin, this);
-        this.getServer().getPluginManager().registerEvents(eventPlayerQuit, this);
-        this.getServer().getPluginManager().registerEvents(eventAsyncPlayerPreLogin, this);
-        this.getServer().getPluginManager().registerEvents(eventEntityDamage, this);
+
+        PluginManager pluginManager = this.getServer().getPluginManager();
+        pluginManager.registerEvents(eventWeatherChange, this);
+        pluginManager.registerEvents(eventPlayerJoin, this);
+        pluginManager.registerEvents(eventPlayerQuit, this);
+        pluginManager.registerEvents(eventAsyncPlayerPreLogin, this);
+        pluginManager.registerEvents(eventEntityDamage, this);
+        pluginManager.registerEvents(eventBlockPlace, this);
+
         this.getCommand("msg").setExecutor(commandMsg);
         this.getCommand("heal").setExecutor(commandHeal);
         this.getCommand("feed").setExecutor(commandFeed);
@@ -170,6 +179,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("speed").setExecutor(commandSpeed);
         this.getCommand("god").setExecutor(commandGod);
         this.getCommand("top").setExecutor(commandTop);
+        getCommand("unlimited").setExecutor(commandUnlimited);
         this.getCommand("back").setExecutor(commandBack);
         this.getCommand("tphere").setExecutor(commandTphere);
         this.getCommand("spawn").setExecutor(commandSpawn);

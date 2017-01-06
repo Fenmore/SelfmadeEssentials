@@ -3,7 +3,7 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
+/*@RunWith(MockitoJUnitRunner.class)*/
 public class CommandBackTest {
 
 }

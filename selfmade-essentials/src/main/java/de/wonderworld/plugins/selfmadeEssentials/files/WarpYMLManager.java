@@ -6,29 +6,16 @@ import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class WarpYMLManager {
+public class WarpYMLManager extends BaseYMLManager {
 
-    private File getWarpFile() {
+    @Override
+    protected File getYMLFile() {
         return new File(Essentials.dirStats.toString() + "\\Warps.yml");
     }
-
-    private YamlConfiguration loadCfg() {
-        return YamlConfiguration.loadConfiguration(getWarpFile());
-    }
-
-    private void safeFile(YamlConfiguration cfg) {
-        try {
-            cfg.save(this.getWarpFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public Location getWarp(String str) {
         YamlConfiguration cfg = loadCfg();

@@ -3,7 +3,7 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.wonderworld.plugins.selfmadeEssentials.files.YMLVariable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -52,9 +52,9 @@ public class CommandGod extends CustomCommand {
     }
 
     private void toggleGodMode(Player targetPlayer) {
-        modYMLManager.toggleGodmode(targetPlayer.getName());
+        modYMLManager.toggleVariable(targetPlayer.getName(), YMLVariable.GOD_MODE);
 
-        if (modYMLManager.isGodmodeActive(targetPlayer.getName())) {
+        if (modYMLManager.isVariableActive(targetPlayer.getName(), YMLVariable.GOD_MODE)) {
             LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_ON");
         } else {
             LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_OFF");

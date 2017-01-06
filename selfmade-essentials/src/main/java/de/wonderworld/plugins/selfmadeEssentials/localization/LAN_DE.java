@@ -70,5 +70,7 @@ public class LAN_DE {
     public static final String ITEM_REPAIRED = "&6Gegenstand &arepariert&6.";
     public static final String NUMBER_EXPECTED_FORMAT = "&cDas Argument &f%s&c muss eine Zahl sein.";
     public static final String PLAYERS_NOT_TELEPORTED_FORMAT = "&6Die Spieler &f%s&6 wurden nicht teleportiert, da sie nicht berechtigt sind zu fliegen.";
+    public static final String UNLIMITED_IS_NOW_ON = "Unlimited wurde aktiviert.";
+    public static final String UNLIMITED_IS_NOW_OFF = "Unlimited wurde deaktiviert.";
     public static final String QUICK_RESPONSE_NOT_AVAILABLE = "&cEs hat dir noch kein Spieler geschrieben. &6Beginne eine Konversation mit: \"&f/msg&6\".";
 }

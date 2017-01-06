@@ -4,41 +4,36 @@ import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModYMLManager {
+public class ModYMLManager extends BaseYMLManager {
 
-    private File getModFile() {
+    @Override
+    protected File getYMLFile() {
         return new File(Essentials.dirStats.toString() + "\\Moderator.yml");
-    }
-
-    private YamlConfiguration loadCfg() {
-        return YamlConfiguration.loadConfiguration(getModFile());
-    }
-
-    private void safeFile(YamlConfiguration cfg) {
-        try {
-            cfg.save(getModFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
      * NUR GÜLTIG BEI EINFACHEN LISTEN
      */
     public void handlePlayerNameChange(String playerBefore, String playerNow) {
+
         YamlConfiguration cfg = loadCfg();
-        for (String key : cfg.getKeys(false)) {
-            if (cfg.getStringList(key).contains(playerBefore)) {
-                List<String> list = cfg.getStringList(key);
-                list.remove(playerBefore);
-                list.add(playerNow);
-                cfg.set(key, list);
-            }
-        }
+        cfg.getKeys(false)
+                .stream()
+                .filter(
+                        key ->
+                                cfg.getStringList(key).contains(playerBefore)
+                )
+                .forEach(
+                        key -> {
+                            List<String> list = cfg.getStringList(key);
+                            list.remove(playerBefore);
+                            list.add(playerNow);
+                            cfg.set(key, list);
+                        }
+                );
     }
 
 
@@ -128,33 +123,5 @@ public class ModYMLManager {
         safeFile(cfg);
     }*/
 
-    public boolean isGodmodeActive(String name) {
-        YamlConfiguration cfg = loadCfg();
-        List<String> list = cfg.getStringList("godmode");
-        if (list == null)
-            return false;
-        else {
-            if (list.contains(name))
-                return true;
-            else
-                return false;
-        }
-    }
 
-      public void toggleGodmode(String name) {
-        YamlConfiguration cfg = loadCfg();
-        List<String> list = cfg.getStringList("godmode");
-        if (list == null) {
-            list = new ArrayList<>();
-            list.add(name);
-        }
-        else {
-            if(list.contains(name))
-                list.remove(name);
-            else
-                list.add(name);
-        }
-        cfg.set("godmode", list);
-        safeFile(cfg);
-    }
 }

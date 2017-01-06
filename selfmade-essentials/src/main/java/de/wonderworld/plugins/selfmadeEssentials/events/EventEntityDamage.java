@@ -1,4 +1,5 @@
 package de.wonderworld.plugins.selfmadeEssentials.events;
+import de.wonderworld.plugins.selfmadeEssentials.files.YMLVariable;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,6 +11,7 @@ public class EventEntityDamage implements Listener {
     private ModYMLManager modYMLManager;
 
     public EventEntityDamage() {
+
         this.modYMLManager = new ModYMLManager();
     }
 
@@ -17,7 +19,7 @@ public class EventEntityDamage implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
-            if (modYMLManager.isGodmodeActive(event.getEntity().getName())) {
+            if (modYMLManager.isVariableActive(event.getEntity().getName(), YMLVariable.GOD_MODE)) {
                 event.setCancelled(true);
             }
         }
