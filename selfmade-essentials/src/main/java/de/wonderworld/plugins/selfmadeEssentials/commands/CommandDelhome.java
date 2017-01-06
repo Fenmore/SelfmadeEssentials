@@ -1,18 +1,20 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 public class CommandDelhome extends PlayerCommand {
 
     private PlayerYMLManager playerYMLManager;
+    private LocalizedMessenger localizedMessenger;
 
-    public CommandDelhome(PlayerYMLManager playerYMLManager) {
+    public CommandDelhome(PlayerYMLManager playerYMLManager, LocalizedMessenger localizedMessenger) {
 
+        super(localizedMessenger);
         this.playerYMLManager = playerYMLManager;
+        this.localizedMessenger = localizedMessenger;
     }
 
     @Override
@@ -34,9 +36,9 @@ public class CommandDelhome extends PlayerCommand {
 
         if (playerYMLManager.getHomeList(name).contains(arg)) {
             playerYMLManager.remHomeLocation(name, arg);
-            LocaleHandler.sendLocalizedMessage(sender, "DELHOME_SUCCESS_FORMAT", arg);
+            localizedMessenger.sendLocalizedMessage(sender, "DELHOME_SUCCESS_FORMAT", arg);
         } else {
-            LocaleHandler.sendLocalizedMessage(sender, "HOME_NOT_FOUND_FORMAT", arg);
+            localizedMessenger.sendLocalizedMessage(sender, "HOME_NOT_FOUND_FORMAT", arg);
         }
     }
 
@@ -44,7 +46,7 @@ public class CommandDelhome extends PlayerCommand {
 
         String name = sender.getName();
 
-        LocaleHandler.sendLocalizedMessage(sender, "DELHOME_INFO");
+        localizedMessenger.sendLocalizedMessage(sender, "DELHOME_INFO");
         sender.sendMessage(playerYMLManager.getHomeList(name).toString());
     }
 }

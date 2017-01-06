@@ -1,17 +1,25 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandGamemode extends CustomCommand {
+
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandGamemode(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
+
+
     @Override
     public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) throws NotInstanceOfPlayerException, InvalidPlayerNameException, PlayerNotFoundException {
         Player p;
@@ -57,12 +65,12 @@ public class CommandGamemode extends CustomCommand {
                                 mode = GameMode.SPECTATOR;
                                 break;
                             default: {
-                                LocaleHandler.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
+                                localizedMessenger.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
                                 return true;
                             }
                         }
                     } catch (NumberFormatException e) {
-                        LocaleHandler.sendLocalizedMessage(sender, "ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT", args[0]);
+                        localizedMessenger.sendLocalizedMessage(sender, "ARGUMENT_HAS_TO_BE_INTEGER_OR_LESS_ARGUMENTS_FORMAT", args[0]);
                         return true;
                     }
                 }
@@ -92,7 +100,7 @@ public class CommandGamemode extends CustomCommand {
                     mode = GameMode.SPECTATOR;
                     break;
                 default: {
-                    LocaleHandler.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
+                    localizedMessenger.sendLocalizedMessage(sender, "GAMEMODE_BIGGER_3", args[0]);
                     return true;
                 }
 
@@ -100,7 +108,7 @@ public class CommandGamemode extends CustomCommand {
         }
 
         p.setGameMode(mode);
-        LocaleHandler.sendLocalizedMessage(p, "GAMEMODE_SET_FORMAT", mode.toString());
+        localizedMessenger.sendLocalizedMessage(p, "GAMEMODE_SET_FORMAT", mode.toString());
 
         return true;
     }

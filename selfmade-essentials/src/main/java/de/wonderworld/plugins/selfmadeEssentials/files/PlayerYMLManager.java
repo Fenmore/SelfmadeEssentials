@@ -112,6 +112,9 @@ public class PlayerYMLManager {
     public List<String> getHomeList(String name) {
         YamlConfiguration cfg = loadCfg(name);
         ConfigurationSection section = cfg.getConfigurationSection("homes");
+        if(section == null) {
+            return new ArrayList<>();
+        }
         Map<String, Object> sectionValues = section.getValues(false);
         List<String> list = new ArrayList<>();
         for (String key : sectionValues.keySet()) {

@@ -1,9 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.json.*;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -15,29 +14,36 @@ import java.util.Map;
 
 public class CommandPtime extends PlayerCommand {
 
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandPtime(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
+
     @Override
-    public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
-        //sender.sendMessage("Fulltime (Absolute): " + ((Player) sender).getWorld().getFullTime() + ", time (relative): " + ((Player) sender).getWorld().getTime());
+    public boolean onPlayerCommand(Player player, Command cmd, String label, String[] args) {
 
         if(args.length == 0) {
-            if(((Player) sender).isPlayerTimeRelative() && ((Player) sender).getPlayerTime() == ((Player) sender).getWorld().getFullTime()) {
-                LocaleHandler.sendLocalizedMessage(sender, "PTIME_EQUAL_TO_SERVER_FORMAT");
+            if(player.isPlayerTimeRelative() && player.getPlayerTime() == player.getWorld().getFullTime()) {
+                localizedMessenger.sendLocalizedMessage(player, "PTIME_EQUAL_TO_SERVER_FORMAT");
                 return true;
             }
-            else if(!((Player) sender).isPlayerTimeRelative()) {
-                LocaleHandler.sendLocalizedMessage(sender, "PTIME_ABSOLUTE_FORMAT", ((Player) sender).getPlayerTime());
+            else if(!player.isPlayerTimeRelative()) {
+                localizedMessenger.sendLocalizedMessage(player, "PTIME_ABSOLUTE_FORMAT", player.getPlayerTime());
                 return true;
             }
-            else if(((Player) sender).getPlayerTimeOffset() > 0) {
-                LocaleHandler.sendLocalizedMessage(sender, "PTIME_RELATIVE_AHEAD_FORMAT", ((Player) sender).getPlayerTimeOffset());
+            else if(player.getPlayerTimeOffset() > 0) {
+                localizedMessenger.sendLocalizedMessage(player, "PTIME_RELATIVE_AHEAD_FORMAT", player.getPlayerTimeOffset());
             }
-            else if(((Player) sender).getPlayerTimeOffset() < 0) {
-                LocaleHandler.sendLocalizedMessage(sender, "PTIME_RELATIVE_BEHIND_FORMAT", ((Player) sender).getPlayerTimeOffset());
+            else if(((Player) player).getPlayerTimeOffset() < 0) {
+                localizedMessenger.sendLocalizedMessage(player, "PTIME_RELATIVE_BEHIND_FORMAT", ((Player) player).getPlayerTimeOffset());
             }
         }
         else if(args[0].equalsIgnoreCase("list")){
-            sender.sendMessage(EssentialCommands.message(LAN_EN.PTIME_INTRO));
-            JsonWrapper json = new JsonWrapper().wrapJsonTellraw(sender.getName());
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_INTRO");
+            JsonWrapper json = new JsonWrapper().wrapJsonTellraw(player.getName());
             Map<String, List<String>> ptimeMap = getCommandMap();
             for(String key : ptimeMap.keySet()) {
                 json.addText(key, JsonColor.GOLD, JsonFormat.UNDERLINED).addHoverEvent(HoverAction.SHOW_TEXT, ptimeMap.get(key).get(0), JsonColor.GOLD)
@@ -46,29 +52,29 @@ public class CommandPtime extends PlayerCommand {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), json.toString());
         }
         else if(args[0].equalsIgnoreCase("reset")) {
-            ((Player) sender).resetPlayerTime();
-            new PlayerYMLManager().remPtime(sender.getName());
-            LocaleHandler.sendLocalizedMessage(sender, "PTIME_RESET");
+            ((Player) player).resetPlayerTime();
+            new PlayerYMLManager().remPtime(player.getName());
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_RESET");
         }
         else if(args[0].equalsIgnoreCase("day")){
-            ((Player) sender).setPlayerTime(6000, false);
-            new PlayerYMLManager().setPtime(sender.getName(), 6000, false);
-            LocaleHandler.sendLocalizedMessage(sender, "PTIME_CONSTANT_FORMAT", 6000);
+            ((Player) player).setPlayerTime(6000, false);
+            new PlayerYMLManager().setPtime(player.getName(), 6000, false);
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_CONSTANT_FORMAT", 6000);
         }
         else if(args[0].equalsIgnoreCase("night")){
-            ((Player) sender).setPlayerTime(18000, false);
-            new PlayerYMLManager().setPtime(sender.getName(), 18000, false);
-            LocaleHandler.sendLocalizedMessage(sender, "PTIME_CONSTANT_FORMAT", 18000);
+            ((Player) player).setPlayerTime(18000, false);
+            new PlayerYMLManager().setPtime(player.getName(), 18000, false);
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_CONSTANT_FORMAT", 18000);
         }
         else if(args[0].equalsIgnoreCase("dawn")){
-            ((Player) sender).setPlayerTime(0, false);
-            new PlayerYMLManager().setPtime(sender.getName(), 0, false);
-            LocaleHandler.sendLocalizedMessage(sender, "PTIME_CONSTANT_FORMAT", 0);
+            ((Player) player).setPlayerTime(0, false);
+            new PlayerYMLManager().setPtime(player.getName(), 0, false);
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_CONSTANT_FORMAT", 0);
         }
         else if(args[0].equalsIgnoreCase("sunset")){
-            ((Player) sender).setPlayerTime(12000, false);
-            new PlayerYMLManager().setPtime(sender.getName(), 12000, false);
-            LocaleHandler.sendLocalizedMessage(sender, "PTIME_CONSTANT_FORMAT", 12000);
+            ((Player) player).setPlayerTime(12000, false);
+            new PlayerYMLManager().setPtime(player.getName(), 12000, false);
+            localizedMessenger.sendLocalizedMessage(player, "PTIME_CONSTANT_FORMAT", 12000);
         }
         else {
             long l = 0;
@@ -76,20 +82,20 @@ public class CommandPtime extends PlayerCommand {
                 l = Long.valueOf(args[0]);
             }
             catch (NumberFormatException e) {
-                LocaleHandler.sendLocalizedMessage(sender, "PTIME_NOT_NUMBER_FORMAT", args[0]);
+                localizedMessenger.sendLocalizedMessage(player, "PTIME_NOT_NUMBER_FORMAT", args[0]);
             }
             if(args.length == 1) {
-                ((Player) sender).setPlayerTime(l, false);
-                new PlayerYMLManager().setPtime(sender.getName(), l, false);
+                ((Player) player).setPlayerTime(l, false);
+                new PlayerYMLManager().setPtime(player.getName(), l, false);
             }
             else {
                 try {
                     boolean b = Boolean.valueOf(args[1]);
-                    ((Player) sender).setPlayerTime(l, b);
-                    new PlayerYMLManager().setPtime(sender.getName(), l, b);
+                    ((Player) player).setPlayerTime(l, b);
+                    new PlayerYMLManager().setPtime(player.getName(), l, b);
                 }
                 catch (NumberFormatException e) {
-                    LocaleHandler.sendLocalizedMessage(sender, "PTIME_NOT_BOOLEAN_FORMAT", args[1]);
+                    localizedMessenger.sendLocalizedMessage(player, "PTIME_NOT_BOOLEAN_FORMAT", args[1]);
                 }
             }
         }

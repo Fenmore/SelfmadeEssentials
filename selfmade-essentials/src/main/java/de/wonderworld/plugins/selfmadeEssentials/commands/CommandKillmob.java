@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
@@ -12,6 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandKillmob extends PlayerCommand {
+
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandKillmob(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
@@ -25,7 +32,7 @@ public class CommandKillmob extends PlayerCommand {
 
         for (String mob : args) {
             if (!mobList.contains(mob.toUpperCase())) {
-                LocaleHandler.sendLocalizedMessage(sender, "MOB_NOT_FOUND_FORMAT, mob");
+                localizedMessenger.sendLocalizedMessage(sender, "MOB_NOT_FOUND_FORMAT", mob);
                 return true;
             }
         }

@@ -30,10 +30,6 @@ public class EssentialCommands {
         return bldr.toString();
     }
 
-    public static String message(String string, Object... args) {
-        return ChatColor.translateAlternateColorCodes('&', String.format(string, args));
-    }
-
     public static List<Block> getLineOfSight(Player player) {
         List<Block> list = player.getLineOfSight((Set) null, 100);
         Block lastBlock = list.get(list.size() - 1);

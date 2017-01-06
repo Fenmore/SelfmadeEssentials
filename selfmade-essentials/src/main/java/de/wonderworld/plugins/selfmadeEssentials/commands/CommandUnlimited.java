@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -20,6 +20,10 @@ public class CommandUnlimited extends PlayerCommand {
         this.playerYMLManager = playerYMLManager;
     }
 
+
+    public CommandUnlimited(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+    }
 
     @Override
     public boolean onPlayerCommand(Player sender, Command command, String label, String[] args) throws PlayerNotFoundException, InvalidPlayerNameException, NotInstanceOfPlayerException {

@@ -1,9 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -18,10 +17,13 @@ public class CommandVanish extends PlayerCommand {
 
     private ModYMLManager modYMLManager;
     private Essentials plugin;
+    private LocalizedMessenger localizedMessenger;
 
-    public CommandVanish(ModYMLManager modYMLManager, Essentials plugin) {
+    public CommandVanish(ModYMLManager modYMLManager, Essentials plugin, LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
         this.modYMLManager = modYMLManager;
         this.plugin = plugin;
+        this.localizedMessenger = localizedMessenger;
     }
 
     @Override
@@ -35,32 +37,32 @@ public class CommandVanish extends PlayerCommand {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (!Essentials.board.getTeam("vanishVisible").getEntries().contains(player.getName())) {
                             player.hidePlayer((Player) sender);
-                            LocaleHandler.sendLocalizedMessage(player, "PLAYER_FAKE_QUIT_FORMAT", sender.getName());
+                            localizedMessenger.sendLocalizedMessage(player, "PLAYER_FAKE_QUIT_FORMAT", sender.getName());
                         } else {
-                            LocaleHandler.sendLocalizedMessage(player, "PLAYER_ENTERED_VANISH", sender.getName());
+                            localizedMessenger.sendLocalizedMessage(player, "PLAYER_ENTERED_VANISH", sender.getName());
                         }
                     }
                     modYMLManager.setVanish(sender.getName());
                     Player pSender = (Player) sender;
                     pSender.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
-                    LocaleHandler.sendLocalizedMessage(sender, "VANISH_ACTIVE");
+                    localizedMessenger.sendLocalizedMessage(sender, "VANISH_ACTIVE");
                 } else {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (!Essentials.board.getTeam("vanishVisible").getEntries().contains(player.getName())) {
                             player.showPlayer((Player) sender);
-                            LocaleHandler.sendLocalizedMessage(player, "PLAYER_FAKE_JOIN_FORMAT", sender.getName());
+                            localizedMessenger.sendLocalizedMessage(player, "PLAYER_FAKE_JOIN_FORMAT", sender.getName());
                         } else {
-                            LocaleHandler.sendLocalizedMessage(player, "PLAYER_LEFT_VANISH_FORMAT", sender.getName());
+                            localizedMessenger.sendLocalizedMessage(player, "PLAYER_LEFT_VANISH_FORMAT", sender.getName());
                         }
                     }
                     modYMLManager.remVanish(sender.getName());
                     Player pSender = (Player) sender;
                     pSender.removePotionEffect(PotionEffectType.INVISIBILITY);
-                    LocaleHandler.sendLocalizedMessage(sender, "VANISH_INACTIVE");
+                    localizedMessenger.sendLocalizedMessage(sender, "VANISH_INACTIVE");
                 }
             }
             else {
-                LocaleHandler.sendLocalizedMessage(sender, "VANISH_NOT_PERMITTED");
+                localizedMessenger.sendLocalizedMessage(sender, "VANISH_NOT_PERMITTED");
             }
         }
         else if(args[0].equalsIgnoreCase("see")) {
@@ -72,7 +74,7 @@ public class CommandVanish extends PlayerCommand {
                     }
                 }
                 addPlayerToBoard(sender.getName());
-                LocaleHandler.sendLocalizedMessage(sender, "ENTERED_VANISH_VISIBLE");
+                localizedMessenger.sendLocalizedMessage(sender, "ENTERED_VANISH_VISIBLE");
             }
             else {
                 for(PermissionAttachmentInfo info : sender.getEffectivePermissions()) {
@@ -83,7 +85,7 @@ public class CommandVanish extends PlayerCommand {
                     modYMLManager.remVanish(sender.getName());
                     Player pSender = (Player) sender;
                     pSender.removePotionEffect(PotionEffectType.INVISIBILITY);
-                    LocaleHandler.sendLocalizedMessage(sender, "VANISH_INACTIVE");
+                    localizedMessenger.sendLocalizedMessage(sender, "VANISH_INACTIVE");
                 }
                 for(Player player : Bukkit.getOnlinePlayers()) {
                     if(vanishActiveList.contains(player.getName())) {
@@ -91,7 +93,7 @@ public class CommandVanish extends PlayerCommand {
                     }
                 }
                 removePlayerFromBoard(sender.getName());
-                LocaleHandler.sendLocalizedMessage(sender, "LEFT_VANISH_VISIBLE");
+                localizedMessenger.sendLocalizedMessage(sender, "LEFT_VANISH_VISIBLE");
             }
         }
         else if(args[0].equalsIgnoreCase("list")) {
@@ -100,7 +102,7 @@ public class CommandVanish extends PlayerCommand {
                 if(player.hasPermission("selfmadeEssentials.vanish"))
                     list.add(player.getName());
             }
-            LocaleHandler.sendLocalizedMessage(sender, "VANISH_LIST_INTRO");
+            localizedMessenger.sendLocalizedMessage(sender, "VANISH_LIST_INTRO");
             sender.sendMessage(list.toString());
             //sender.sendMessage(vanishActiveList.toString() + "       " + vanishSeeList.toString() + "         " + Essentials.board.getTeam("vanishVisible").getEntries().toString());
         }

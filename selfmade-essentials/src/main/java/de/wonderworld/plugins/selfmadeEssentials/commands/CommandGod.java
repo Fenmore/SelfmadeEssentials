@@ -1,6 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.YMLVariable;
@@ -12,9 +12,12 @@ import org.bukkit.entity.Player;
 public class CommandGod extends CustomCommand {
 
     private ModYMLManager modYMLManager;
+    private LocalizedMessenger localizedMessenger;
 
-    public CommandGod(ModYMLManager modYMLManager) {
+    public CommandGod(ModYMLManager modYMLManager, LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
         this.modYMLManager = modYMLManager;
+        this.localizedMessenger = localizedMessenger;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CommandGod extends CustomCommand {
 
     private void sendMessagePlayerNotFound(CommandSender sender, String[] args) throws NotInstanceOfPlayerException {
         if (sender instanceof Player) {
-            LocaleHandler.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT", getPlayerName(args));
+            localizedMessenger.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT", getPlayerName(args));
         } else {
             throw new NotInstanceOfPlayerException();
         }
@@ -57,7 +60,7 @@ public class CommandGod extends CustomCommand {
         if (modYMLManager.isVariableActive(targetPlayer.getName(), YMLVariable.GOD_MODE)) {
             LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_ON");
         } else {
-            LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_OFF");
+            localizedMessenger.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_OFF");
         }
     }
 

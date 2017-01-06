@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -9,7 +10,8 @@ public class CommandBack extends PlayerCommand {
 
     private PlayerYMLManager playerYMLManager;
 
-    public CommandBack(PlayerYMLManager playerYMLManager) {
+    public CommandBack(LocalizedMessenger localizedMessenger, PlayerYMLManager playerYMLManager) {
+        super(localizedMessenger);
         this.playerYMLManager = playerYMLManager;
     }
 

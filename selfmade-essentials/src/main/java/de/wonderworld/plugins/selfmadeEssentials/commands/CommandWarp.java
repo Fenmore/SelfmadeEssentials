@@ -1,9 +1,8 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -11,8 +10,11 @@ import org.bukkit.entity.Player;
 public class CommandWarp extends PlayerCommand {
 
     private WarpYMLManager warpYMLManager;
-    public CommandWarp(WarpYMLManager warpYMLManager) {
+    private LocalizedMessenger localizedMessenger;
+    public CommandWarp(WarpYMLManager warpYMLManager, LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
         this.warpYMLManager = warpYMLManager;
+        this.localizedMessenger = localizedMessenger;
     }
 
 
@@ -23,7 +25,7 @@ public class CommandWarp extends PlayerCommand {
 
         Location warp = warpYMLManager.getWarp(args[0]);
         if(warp == null) {
-            LocaleHandler.sendLocalizedMessage(sender, "WARP_DOES_NOT_EXIST_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "WARP_DOES_NOT_EXIST_FORMAT", args[0]);
             return true;
         }
 
@@ -32,7 +34,7 @@ public class CommandWarp extends PlayerCommand {
             sender.teleport(warp);
         }
         else
-            LocaleHandler.sendLocalizedMessage(sender, "WARP_WORLD_NOT_LOADED");
+            localizedMessenger.sendLocalizedMessage(sender, "WARP_WORLD_NOT_LOADED");
 
 
         return true;

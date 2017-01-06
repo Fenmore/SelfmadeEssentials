@@ -1,6 +1,5 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import org.bukkit.Location;
 import org.bukkit.Material;

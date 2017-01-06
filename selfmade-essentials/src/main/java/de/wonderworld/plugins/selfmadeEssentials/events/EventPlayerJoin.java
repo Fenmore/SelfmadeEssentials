@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.events;
 
-import de.wonderworld.plugins.selfmadeEssentials.commands.EssentialCommands;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
@@ -16,8 +15,10 @@ import java.util.List;
 public class EventPlayerJoin implements Listener {
 
     private ModYMLManager modYMLManager;
+    private LocalizedMessenger localizedMessenger;
 
-    public EventPlayerJoin() {
+    public EventPlayerJoin(LocalizedMessenger localizedMessenger) {
+        this.localizedMessenger = localizedMessenger;
         this.modYMLManager = new ModYMLManager();
     }
 
@@ -39,7 +40,7 @@ public class EventPlayerJoin implements Listener {
                     if (!p.hasPermission("selfmadeEssentials.vanish")) {
                         p.hidePlayer(event.getPlayer());
                     } else {
-                        p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_JOINED_VANISH_FORMAT, event.getPlayer().getName()));
+                        localizedMessenger.sendLocalizedMessage(p, "PLAYER_JOINED_VANISH_FORMAT", event.getPlayer().getName());
                     }
                 }
                 event.setJoinMessage(null);

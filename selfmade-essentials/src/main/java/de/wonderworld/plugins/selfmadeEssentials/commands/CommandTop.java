@@ -1,11 +1,17 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 public class CommandTop extends PlayerCommand {
+
+
+    public CommandTop(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+    }
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {

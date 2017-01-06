@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ListYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.json.*;
@@ -9,15 +8,20 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class CommandList implements CommandExecutor{
 
     private Essentials plugin;
     private ListYMLManager listYMLManager ;
-    public CommandList(Essentials plugin, ListYMLManager listYMLManager) {
+    private LocalizedMessenger localizedMessenger;
+    public CommandList(Essentials plugin, ListYMLManager listYMLManager, LocalizedMessenger localizedMessenger) {
         this.plugin = plugin;
         this.listYMLManager = listYMLManager;
+        this.localizedMessenger = localizedMessenger;
     }
 
     @Override
@@ -58,13 +62,13 @@ public class CommandList implements CommandExecutor{
 
         Map<String, Object> attributeMap = commandMap.get(args[0].toLowerCase());
         if(attributeMap == null) {
-            LocaleHandler.sendLocalizedMessage(sender, "COMMAND_NOT_FOUND_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "COMMAND_NOT_FOUND_FORMAT", args[0]);
             return true;
         }
 
         if(args.length == 1) {
             List<String> comments = listYMLManager.getComments(args[0].toLowerCase());
-            LocaleHandler.sendLocalizedMessage(sender, "COMMENT_INTRO");
+            localizedMessenger.sendLocalizedMessage(sender, "COMMENT_INTRO");
             for(String comment : comments)
                 sender.sendMessage("- " + comment);
             return true;
@@ -73,26 +77,26 @@ public class CommandList implements CommandExecutor{
         if(args.length > 2) {
             String comment = EssentialCommands.mergeArgs(args, 1);
             listYMLManager.addComment(comment, args[0].toLowerCase());
-            LocaleHandler.sendLocalizedMessage(sender, "COMMENT_SET");
+            localizedMessenger.sendLocalizedMessage(sender, "COMMENT_SET");
             return true;
         }
 
         if(!args[1].equalsIgnoreCase("alpha") && !args[1].equalsIgnoreCase("beta") && !args[1].equalsIgnoreCase("stable")) {
-            LocaleHandler.sendLocalizedMessage(sender, "AVAILABLE_COMMAND_STAGES");
+            localizedMessenger.sendLocalizedMessage(sender, "AVAILABLE_COMMAND_STAGES");
             return true;
         }
 
         if(args[1].equalsIgnoreCase("alpha")) {
             listYMLManager.setStage(args[0].toLowerCase(), "alpha");
-            LocaleHandler.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_ALPHA_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_ALPHA_FORMAT", args[0]);
         }
         else if(args[1].equalsIgnoreCase("beta")) {
             listYMLManager.setStage(args[0].toLowerCase(), "beta");
-            LocaleHandler.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_BETA_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_BETA_FORMAT", args[0]);
         }
         else if(args[1].equalsIgnoreCase("stable")) {
             listYMLManager.setStage(args[0].toLowerCase(), "stable");
-            LocaleHandler.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_STABLE_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "COMMAND_CHANGED_TO_STABLE_FORMAT", args[0]);
         }
         return true;
     }

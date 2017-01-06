@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.events;
 
-import de.wonderworld.plugins.selfmadeEssentials.commands.EssentialCommands;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
 import org.bukkit.Bukkit;
@@ -15,8 +14,10 @@ import java.util.List;
 public class EventPlayerQuit implements Listener {
 
     private ModYMLManager modYMLManager;
+    private LocalizedMessenger localizedMessenger;
 
-    public EventPlayerQuit() {
+    public EventPlayerQuit(LocalizedMessenger localizedMessenger) {
+        this.localizedMessenger = localizedMessenger;
         this.modYMLManager = new ModYMLManager();
     }
 
@@ -33,7 +34,7 @@ public class EventPlayerQuit implements Listener {
     private void informPlayer(PlayerQuitEvent event) {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.hasPermission("selfmadeEssentials.vanish")) {
-                p.sendMessage(EssentialCommands.message(LAN_EN.PLAYER_LEFT_VANISH_FORMAT, event.getPlayer().getName()));
+                localizedMessenger.sendLocalizedMessage(p, "PLAYER_LEFT_VANISH_FORMAT", event.getPlayer().getName());
             }
         }
     }

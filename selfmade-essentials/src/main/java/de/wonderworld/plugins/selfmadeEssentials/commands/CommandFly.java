@@ -1,16 +1,37 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
+import de.fenmore.localization.Translations;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
 public class CommandFly extends CustomCommand {
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandFly(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
 
 
     @Override
@@ -30,10 +51,10 @@ public class CommandFly extends CustomCommand {
 
         if (!p.getAllowFlight()) {
             p.setAllowFlight(true);
-            LocaleHandler.sendLocalizedMessage(p, "FLY_MODE_ON");
+            localizedMessenger.sendLocalizedMessage(p, "FLY_MODE_ON");
         } else {
             p.setAllowFlight(false);
-            LocaleHandler.sendLocalizedMessage(p, "FLY_MODE_OFF");
+            localizedMessenger.sendLocalizedMessage(p, "FLY_MODE_OFF");
         }
         return true;
     }

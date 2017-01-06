@@ -1,13 +1,20 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandSudo extends CustomCommand{
+
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandSudo(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
 
     @Override
     public boolean onCustomCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -17,12 +24,12 @@ public class CommandSudo extends CustomCommand{
 
         Player p = Bukkit.getPlayer(args[0]);
         if(p == null) {
-            LocaleHandler.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT");
+            localizedMessenger.sendLocalizedMessage(sender, "PLAYER_NOT_FOUND_FORMAT");
             return true;
         }
 
         if(args[1].equalsIgnoreCase("msg") || args[1].equalsIgnoreCase("r")) {
-            LocaleHandler.sendLocalizedMessage(sender, "SUDO_COMMAND_NOT_ALLOWED");
+            localizedMessenger.sendLocalizedMessage(sender, "SUDO_COMMAND_NOT_ALLOWED");
             return true;
         }
 

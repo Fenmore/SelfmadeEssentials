@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.WarpYMLManager;
 import org.bukkit.Location;
@@ -10,9 +11,11 @@ public class CommandSpawn extends PlayerCommand {
 
     private WarpYMLManager warpYMLManager;
 
-    public CommandSpawn(WarpYMLManager warpYMLManager) {
+    public CommandSpawn(LocalizedMessenger localizedMessenger, WarpYMLManager warpYMLManager) {
+        super(localizedMessenger);
         this.warpYMLManager = warpYMLManager;
     }
+
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {

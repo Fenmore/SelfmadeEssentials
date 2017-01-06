@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
@@ -7,6 +8,11 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 public class CommandTphere extends PlayerCommand {
+
+
+    public CommandTphere(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+    }
 
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) throws InvalidPlayerNameException, PlayerNotFoundException, PlayersNotTeleportedException {

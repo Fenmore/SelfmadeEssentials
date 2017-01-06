@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.essentials.Essentials;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
@@ -8,15 +9,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CommandFeed extends CustomCommand {
 
     private Essentials plugin;
 
-    public CommandFeed(Essentials plugin) {
+    public CommandFeed(LocalizedMessenger localizedMessenger, Essentials plugin) {
+        super(localizedMessenger);
         this.plugin = plugin;
     }
 

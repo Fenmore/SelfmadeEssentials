@@ -1,7 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.fenmore.localization.LocalizedMessenger;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -9,7 +9,8 @@ public class CommandR extends CustomCommand {
 
     private PlayerYMLManager playerYMLManager;
 
-    public CommandR(PlayerYMLManager playerYMLManager) {
+    public CommandR(LocalizedMessenger localizedMessenger, PlayerYMLManager playerYMLManager) {
+        super(localizedMessenger);
         this.playerYMLManager = playerYMLManager;
     }
 

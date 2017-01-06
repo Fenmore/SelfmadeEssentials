@@ -1,7 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
-import de.fenmore.localizationHandler.LocaleHandler;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
+import de.fenmore.localization.LocalizedMessenger;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -14,6 +13,14 @@ import java.util.Set;
 
 public class CommandSpawnmob extends PlayerCommand{
 
+
+    private LocalizedMessenger localizedMessenger;
+
+    public CommandSpawnmob(LocalizedMessenger localizedMessenger) {
+        super(localizedMessenger);
+        this.localizedMessenger = localizedMessenger;
+    }
+
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if(args.length == 0)
@@ -24,7 +31,7 @@ public class CommandSpawnmob extends PlayerCommand{
             mobList.add(type.toString());
 
         if(!mobList.contains(args[0].toUpperCase())) {
-            LocaleHandler.sendLocalizedMessage(sender, "MOB_NOT_FOUND_FORMAT", args[0]);
+            localizedMessenger.sendLocalizedMessage(sender, "MOB_NOT_FOUND_FORMAT", args[0]);
             return true;
         }
 
@@ -36,7 +43,7 @@ public class CommandSpawnmob extends PlayerCommand{
                 else
                     max = 20;
             } catch (NumberFormatException e) {
-                LocaleHandler.sendLocalizedMessage(sender, "ARGUMENT_HAS_TO_BE_INTEGER_FORMAT", args[1]);
+                localizedMessenger.sendLocalizedMessage(sender, "ARGUMENT_HAS_TO_BE_INTEGER_FORMAT", args[1]);
                 return true;
             }
         }

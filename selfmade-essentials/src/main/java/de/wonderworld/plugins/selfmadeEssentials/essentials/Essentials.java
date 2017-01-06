@@ -1,11 +1,10 @@
 package de.wonderworld.plugins.selfmadeEssentials.essentials;
 
-import de.fenmore.localizationHandler.LocaleHandler;
+import de.fenmore.localization.LocalizedMessenger;
+import de.fenmore.localization.Translations;
 import de.wonderworld.plugins.selfmadeEssentials.commands.*;
 import de.wonderworld.plugins.selfmadeEssentials.events.*;
 import de.wonderworld.plugins.selfmadeEssentials.files.*;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_DE;
-import de.wonderworld.plugins.selfmadeEssentials.localization.LAN_EN;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -14,6 +13,9 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Essentials extends JavaPlugin {
 
@@ -69,13 +71,12 @@ public class Essentials extends JavaPlugin {
     private WarpYMLManager warpYMLManager;
     private PlayerYMLManager playerYMLManager;
     private EventEntityDamage eventEntityDamage;
+    private LocalizedMessenger localizedMessenger;
     private EventBlockPlace eventBlockPlace;
 
 
 
     public Essentials() {
-        LocaleHandler.setLocaleClass("en", LAN_EN.class);
-        LocaleHandler.setLocaleClass("de", LAN_DE.class);
         dir = new File(getDataFolder().toString());
         dirStats = new File(getDataFolder(), "Stats");
         dirPlayer = new File(dirStats, "Player");
@@ -89,48 +90,48 @@ public class Essentials extends JavaPlugin {
         warpYMLManager = new WarpYMLManager();
         modYMLManager = new ModYMLManager();
         listYMLManager = new ListYMLManager(this);
-        commandMsg = new CommandMsg(modYMLManager, playerYMLManager);
-        commandHeal = new CommandHeal();
-        commandFeed = new CommandFeed(this);
-        commandSocialspy = new CommandSocialspy(modYMLManager);
-        commandKillmob = new CommandKillmob();
-        commandSpawnmob = new CommandSpawnmob();
-        commandClearinventory = new CommandClearInventory();
-        commandFly = new CommandFly();
-        commandInvsee = new CommandInvsee();
-        commandWarp = new CommandWarp(warpYMLManager);
-        commandSetwarp = new CommandSetwarp(warpYMLManager);
-        commandDelwarp = new CommandDelwarp(warpYMLManager);
+        localizedMessenger = Translations.getLocalizedMessenger(this);
+        commandMsg = new CommandMsg(modYMLManager, localizedMessenger);
+        commandHeal = new CommandHeal(localizedMessenger);
+        commandFeed = new CommandFeed(localizedMessenger, this);
+        commandSocialspy = new CommandSocialspy(modYMLManager, localizedMessenger);
+        commandKillmob = new CommandKillmob(localizedMessenger);
+        commandSpawnmob = new CommandSpawnmob(localizedMessenger);
+        commandClearinventory = new CommandClearInventory(localizedMessenger);
+        commandFly = new CommandFly(localizedMessenger);
+        commandInvsee = new CommandInvsee(localizedMessenger);
+        commandWarp = new CommandWarp(warpYMLManager, localizedMessenger);
+        commandSetwarp = new CommandSetwarp(warpYMLManager, localizedMessenger);
+        commandDelwarp = new CommandDelwarp(warpYMLManager, localizedMessenger);
         commandWarplist = new CommandWarplist(warpYMLManager);
-        commandRepair = new CommandRepair();
-        commandSudo = new CommandSudo();
-        commandEnderchest = new CommandEnderchest();
-        commandList = new CommandList(this, listYMLManager);
-        commandTree = new CommandTree();
-        commandVanish = new CommandVanish(modYMLManager, this);
-        commandBurn = new CommandBurn();
-        commandPtime = new CommandPtime();
-        commandWorkbench = new CommandWorkbench();
+        commandRepair = new CommandRepair(localizedMessenger);
+        commandSudo = new CommandSudo(localizedMessenger);
+        commandEnderchest = new CommandEnderchest(localizedMessenger);
+        commandList = new CommandList(this, listYMLManager, localizedMessenger);
+        commandTree = new CommandTree(localizedMessenger);
+        commandVanish = new CommandVanish(modYMLManager, this, localizedMessenger);
+        commandBurn = new CommandBurn(localizedMessenger);
+        commandPtime = new CommandPtime(localizedMessenger);
+        commandWorkbench = new CommandWorkbench(localizedMessenger);
         commandTp = new CommandTp();
-        commandSuicide = new CommandSuicide();
+        commandSuicide = new CommandSuicide(localizedMessenger);
         commandFb = new CommandFb(this);
-        commandEffect = new CommandEffect();
-        commandGamemode = new CommandGamemode();
-        commandExtinguish = new CommandExtinguish();
-        commandSpeed = new CommandSpeed();
-        commandGod = new CommandGod(modYMLManager);
-        commandTop = new CommandTop();
-        commandBack = new CommandBack(playerYMLManager);
-        commandTphere = new CommandTphere();
-        commandSpawn = new CommandSpawn(warpYMLManager);
-        commandUnlimited = new CommandUnlimited(playerYMLManager);
-        commandHome = new CommandHome(playerYMLManager);
-        commandSethome = new CommandSethome(playerYMLManager);
-        commandDelhome = new CommandDelhome(playerYMLManager);
-        commandTppos = new CommandTppos();
+        commandEffect = new CommandEffect(localizedMessenger);
+        commandGamemode = new CommandGamemode(localizedMessenger);
+        commandExtinguish = new CommandExtinguish(localizedMessenger);
+        commandSpeed = new CommandSpeed(localizedMessenger);
+        commandGod = new CommandGod(modYMLManager, localizedMessenger);
+        commandTop = new CommandTop(localizedMessenger);
+        commandBack = new CommandBack(localizedMessenger, playerYMLManager);
+        commandTphere = new CommandTphere(localizedMessenger);
+        commandSpawn = new CommandSpawn(localizedMessenger, warpYMLManager);
+        commandHome = new CommandHome(playerYMLManager, localizedMessenger);
+        commandSethome = new CommandSethome(playerYMLManager, localizedMessenger);
+        commandDelhome = new CommandDelhome(playerYMLManager, localizedMessenger);
+        commandTppos = new CommandTppos(localizedMessenger);
         eventWeatherChange = new EventWeatherChange();
-        eventPlayerJoin = new EventPlayerJoin();
-        eventPlayerQuit = new EventPlayerQuit();
+        eventPlayerJoin = new EventPlayerJoin(localizedMessenger);
+        eventPlayerQuit = new EventPlayerQuit(localizedMessenger);
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
         eventEntityDamage = new EventEntityDamage();
         eventBlockPlace = new EventBlockPlace();
@@ -138,6 +139,7 @@ public class Essentials extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        localizedMessenger.sendLocalizedMessage("NOT_INSTANCEOF_PLAYER");
         board = this.getServer().getScoreboardManager().getNewScoreboard();
 
         PluginManager pluginManager = this.getServer().getPluginManager();
@@ -179,7 +181,7 @@ public class Essentials extends JavaPlugin {
         this.getCommand("speed").setExecutor(commandSpeed);
         this.getCommand("god").setExecutor(commandGod);
         this.getCommand("top").setExecutor(commandTop);
-        getCommand("unlimited").setExecutor(commandUnlimited);
+        this.getCommand("unlimited").setExecutor(commandUnlimited);
         this.getCommand("back").setExecutor(commandBack);
         this.getCommand("tphere").setExecutor(commandTphere);
         this.getCommand("spawn").setExecutor(commandSpawn);
@@ -194,7 +196,7 @@ public class Essentials extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        Translations.clear();
     }
 
 
