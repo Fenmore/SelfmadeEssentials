@@ -1,6 +1,5 @@
 package de.wonderworld.plugins.selfmadeEssentials.events;
 
-import de.fenmore.localizationHandler.LocaleHandler;
 import de.wonderworld.plugins.selfmadeEssentials.files.PlayerYMLManager;
 import de.wonderworld.plugins.selfmadeEssentials.files.YMLVariable;
 import org.bukkit.event.EventHandler;

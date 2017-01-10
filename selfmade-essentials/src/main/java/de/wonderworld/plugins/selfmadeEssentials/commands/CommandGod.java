@@ -58,14 +58,13 @@ public class CommandGod extends CustomCommand {
         modYMLManager.toggleVariable(targetPlayer.getName(), YMLVariable.GOD_MODE);
 
         if (modYMLManager.isVariableActive(targetPlayer.getName(), YMLVariable.GOD_MODE)) {
-            LocaleHandler.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_ON");
+            localizedMessenger.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_ON");
         } else {
             localizedMessenger.sendLocalizedMessage(targetPlayer, "GODMODE_IS_NOW_OFF");
         }
     }
 
-    private Player getPlayerByName(String arg) {
-        String playerName = arg;
+    private Player getPlayerByName(String playerName) {
         return Bukkit.getServer().getPlayer(playerName);
     }
 }

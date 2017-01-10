@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by David on 05.01.2017.
- */
 public abstract class BaseYMLManager {
 
     protected abstract File getYMLFile();
