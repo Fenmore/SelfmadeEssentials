@@ -30,7 +30,7 @@ permissions:
     description: Allows you to set a tree.
     default: false
   selfmadeEssentials.vanish:
-    description: Allows you to vanish yourself.
+    description: Allows you to vanish yourself and see vanished players.
     default: false
   selfmadeEssentials.sudo:
     description: Allows you to perform a command.
