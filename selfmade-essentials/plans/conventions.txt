@@ -9,4 +9,4 @@
 
 
 - Events
--- Event classes should always be named Event<NAME-OF-EVENT> (e.g. EventBlockPlace)
+-- Event classes should always be named Event<NAME-OF-EVENT-WITHOUT-"EVENT"> (e.g. EventBlockPlace)

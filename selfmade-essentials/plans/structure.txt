@@ -18,7 +18,7 @@ Wonderland Plugin:
             + /r , um schnell direkt antworten zu können
                 + Was soll /r tun?
                     + Da man nicht abfragen kann, wann der /r Befehl angefangen wurde zu schreiben, könnte es passieren, dass Nachrichten mit /r an eine
-                        andere Person gesendet werden, die zwischendurch diesem Spielen mit /msg kontaktiert hat
+                        andere Person gesendet werden, die zwischendurch diesen Spielen mit /msg kontaktiert hat
             + /recipe , um wie NEI eine klare Übersicht aller crafting Rezepte zu haben
             + /rules , um Regeln auf dem Server anzuzeigen
             + /seen , um zu sehen, wann eine Person zuletzt online war
@@ -75,7 +75,7 @@ Wonderland Plugin:
             + /pweather , um das Wetter clientside zu ändern
             - /repair , um Items mit Durability zu reparieren
             - /speed , um die Geschwindigkeit beim Laufen/Fliegen zu ändern
-            + /unlimited , um den Gegenstand in der Hand endlos nutzen zu können
+            + /unlimited , um Gegenstände endlos nutzen zu können
             - /workbench , um ein Workbenchinventar zu öffnen
             - /gamemode , um seinen Gamemode zu verändern
                 - Kein Argument -> switch zwischen gamemode 0 und 1
@@ -109,7 +109,6 @@ Wonderland Plugin:
         + lokal
         + worldwide
         + serverwide
-        + serverwide
 
 + Currency Plugin
 
@@ -127,5 +126,5 @@ Wonderland Plugin:
 + Haustiere
     + Creatures als "Haustiere" definieren
 
-+ TOOLS (Dependecies, keine Plugins)
-    + Localization Handler
+- TOOLS (Dependecies, keine Plugins)
+    - Localization Handler
