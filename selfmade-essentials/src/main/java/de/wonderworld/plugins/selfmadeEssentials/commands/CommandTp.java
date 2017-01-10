@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -43,7 +44,7 @@ public class CommandTp extends CustomCommand {
         } else {
             Player[] players = new Player[args.length - 1];
             for (int i = 0; i <= args.length - 2; i++) {
-                players[i] = EssentialCommands.getPlayer(args[i]);
+                players[i] = Utilities.getPlayer(args[i]);
             }
             return players;
         }

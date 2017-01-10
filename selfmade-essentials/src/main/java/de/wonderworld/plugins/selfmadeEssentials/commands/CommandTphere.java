@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayersNotTeleportedException;
@@ -30,7 +31,7 @@ public class CommandTphere extends PlayerCommand {
     private Player[] getPlayersToTeleport(String[] args) throws InvalidPlayerNameException, PlayerNotFoundException {
         Player[] players = new Player[args.length];
         for (int i = 0; i < args.length; i++) {
-            players[i] = EssentialCommands.getPlayer(args[i]);
+            players[i] = Utilities.getPlayer(args[i]);
         }
         return players;
     }

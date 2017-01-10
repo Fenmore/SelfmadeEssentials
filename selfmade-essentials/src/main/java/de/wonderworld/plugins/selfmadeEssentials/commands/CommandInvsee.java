@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import org.bukkit.command.Command;
@@ -17,7 +18,7 @@ public class CommandInvsee extends PlayerCommand {
         if (args.length == 0)
             return false;
 
-        Player p = EssentialCommands.getPlayer(args[0]);
+        Player p = Utilities.getPlayer(args[0]);
 
         sender.openInventory(p.getInventory());
         return true;

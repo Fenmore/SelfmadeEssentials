@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -56,7 +57,7 @@ public class CommandBurn extends CustomCommand {
         List<Player> players = new ArrayList<>();
 
         for (String name : args) {
-            Player p = EssentialCommands.getPlayer(name);
+            Player p = Utilities.getPlayer(name);
             players.add(p);
         }
 

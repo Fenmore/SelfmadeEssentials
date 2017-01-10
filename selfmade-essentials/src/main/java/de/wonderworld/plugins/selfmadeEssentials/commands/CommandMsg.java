@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
 import de.wonderworld.plugins.selfmadeEssentials.files.ModYMLManager;
@@ -55,7 +56,7 @@ public class CommandMsg extends CustomCommand{
         if(args[0].equalsIgnoreCase("console"))
             reciever = Bukkit.getConsoleSender();
         else
-            reciever = EssentialCommands.getPlayer(args[0]);
+            reciever = Utilities.getPlayer(args[0]);
         return reciever;
     }
 

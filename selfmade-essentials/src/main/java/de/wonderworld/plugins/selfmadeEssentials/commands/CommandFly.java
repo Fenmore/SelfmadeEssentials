@@ -2,6 +2,7 @@ package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
 import de.fenmore.localization.Translations;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -46,7 +47,7 @@ public class CommandFly extends CustomCommand {
             }
         }
         else{
-            p = EssentialCommands.getPlayer(args[0]);
+            p = Utilities.getPlayer(args[0]);
         }
 
         if (!p.getAllowFlight()) {

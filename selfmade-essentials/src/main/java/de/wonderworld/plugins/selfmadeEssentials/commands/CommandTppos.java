@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.ArgumentNumberExpectedException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -19,14 +20,13 @@ public class CommandTppos extends PlayerCommand {
 
     @Override
     public boolean onPlayerCommand(Player sender, Command command, String label, String[] args) throws PlayerNotFoundException, InvalidPlayerNameException, ArgumentNumberExpectedException, PlayersNotTeleportedException {
-        if(neededArgsLength(args)) {
+        if (neededArgsLength(args)) {
             Player[] playersToTeleport = getPlayersToTeleport(sender, args);
             Location destination = getDestination(sender.getLocation().getWorld(), args);
 
             EssentialCommands.teleportPlayers(playersToTeleport, destination);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -64,13 +64,12 @@ public class CommandTppos extends PlayerCommand {
     }
 
     private Player[] getPlayersToTeleport(Player sender, String[] args) throws InvalidPlayerNameException, PlayerNotFoundException {
-        if(args.length == 3) {
+        if (args.length == 3) {
             return new Player[]{sender};
-        }
-        else {
+        } else {
             Player[] players = new Player[args.length - 3];
-            for(int i = 0; i <= args.length - 4; i++) {
-                players[i] = EssentialCommands.getPlayer(args[i]);
+            for (int i = 0; i <= args.length - 4; i++) {
+                players[i] = Utilities.getPlayer(args[i]);
             }
             return players;
         }

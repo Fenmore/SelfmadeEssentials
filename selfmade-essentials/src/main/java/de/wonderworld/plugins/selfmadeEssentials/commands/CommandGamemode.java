@@ -1,6 +1,7 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
 import de.fenmore.localization.LocalizedMessenger;
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -80,11 +81,11 @@ public class CommandGamemode extends CustomCommand {
             int modeInt;
             try{
                 modeInt = Integer.valueOf(args[0]);
-                p = EssentialCommands.getPlayer(args[1]);
+                p = Utilities.getPlayer(args[1]);
             }
             catch (NumberFormatException e) {
                 modeInt = Integer.valueOf(args[1]);
-                p = EssentialCommands.getPlayer(args[0]);
+                p = Utilities.getPlayer(args[0]);
             }
             switch (modeInt) {
                 case 0:

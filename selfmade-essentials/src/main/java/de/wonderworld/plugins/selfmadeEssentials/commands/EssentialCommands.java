@@ -1,5 +1,6 @@
 package de.wonderworld.plugins.selfmadeEssentials.commands;
 
+import de.wonderworld.plugins.selfmadeEssentials.essentials.Utilities;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.InvalidPlayerNameException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.NotInstanceOfPlayerException;
 import de.wonderworld.plugins.selfmadeEssentials.exceptions.PlayerNotFoundException;
@@ -53,14 +54,6 @@ public class EssentialCommands {
         return loc;
     }
 
-    public static Player getPlayer(String name) throws InvalidPlayerNameException, PlayerNotFoundException {
-        Player p = Bukkit.getPlayer(name);
-        if (p == null) {
-            throw new PlayerNotFoundException(name);
-        }
-        return p;
-    }
-
     public static void teleportPlayers(Player[] playersToTeleport, Location destination) throws PlayersNotTeleportedException {
         PlayerYMLManager playerYMLManager = new PlayerYMLManager();
         Location safeLoc = getSafeLocation(destination);
@@ -103,7 +96,7 @@ public class EssentialCommands {
             }
         } else {
             for (String name : args) {
-                Player p = EssentialCommands.getPlayer(name);
+                Player p = Utilities.getPlayer(name);
                 playersFromArguments.add(p);
             }
         }
