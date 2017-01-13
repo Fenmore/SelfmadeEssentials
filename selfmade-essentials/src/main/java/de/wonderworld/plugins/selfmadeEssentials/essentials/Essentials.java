@@ -6,16 +6,12 @@ import de.wonderworld.plugins.selfmadeEssentials.commands.*;
 import de.wonderworld.plugins.selfmadeEssentials.events.*;
 import de.wonderworld.plugins.selfmadeEssentials.files.*;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Essentials extends JavaPlugin {
 
@@ -23,6 +19,7 @@ public class Essentials extends JavaPlugin {
     public static Scoreboard board;
     public static File dirStats;
     public static File dir;
+    public static String vanishPermission;
     private CommandMsg commandMsg;
     private CommandHeal commandHeal;
     private CommandFeed commandFeed;
@@ -66,17 +63,12 @@ public class Essentials extends JavaPlugin {
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
     private EventAsyncPlayerPreLogin eventAsyncPlayerPreLogin;
-    private ListYMLManager listYMLManager;
-    private ModYMLManager modYMLManager;
-    private WarpYMLManager warpYMLManager;
-    private PlayerYMLManager playerYMLManager;
     private EventEntityDamage eventEntityDamage;
-    private LocalizedMessenger localizedMessenger;
     private EventBlockPlace eventBlockPlace;
 
 
-
     public Essentials() {
+        vanishPermission = this.getCommand("vanish").getPermission();
         dir = new File(getDataFolder().toString());
         dirStats = new File(getDataFolder(), "Stats");
         dirPlayer = new File(dirStats, "Player");
@@ -86,11 +78,11 @@ public class Essentials extends JavaPlugin {
         if (!(dirPlayer.exists())) {
             dirPlayer.mkdir();
         }
-        playerYMLManager = new PlayerYMLManager();
-        warpYMLManager = new WarpYMLManager();
-        modYMLManager = new ModYMLManager();
-        listYMLManager = new ListYMLManager(this);
-        localizedMessenger = Translations.getLocalizedMessenger(this);
+        PlayerYMLManager playerYMLManager = new PlayerYMLManager();
+        WarpYMLManager warpYMLManager = new WarpYMLManager();
+        ModYMLManager modYMLManager = new ModYMLManager();
+        ListYMLManager listYMLManager = new ListYMLManager(this);
+        LocalizedMessenger localizedMessenger = Translations.getLocalizedMessenger(this);
         commandMsg = new CommandMsg(modYMLManager, localizedMessenger);
         commandHeal = new CommandHeal(localizedMessenger);
         commandFeed = new CommandFeed(localizedMessenger, this);
@@ -109,7 +101,7 @@ public class Essentials extends JavaPlugin {
         commandEnderchest = new CommandEnderchest(localizedMessenger);
         commandList = new CommandList(this, listYMLManager, localizedMessenger);
         commandTree = new CommandTree(localizedMessenger);
-        commandVanish = new CommandVanish(modYMLManager, this, localizedMessenger);
+        commandVanish = new CommandVanish(modYMLManager, localizedMessenger);
         commandBurn = new CommandBurn(localizedMessenger);
         commandPtime = new CommandPtime(localizedMessenger);
         commandWorkbench = new CommandWorkbench(localizedMessenger);
@@ -130,7 +122,7 @@ public class Essentials extends JavaPlugin {
         commandDelhome = new CommandDelhome(playerYMLManager, localizedMessenger);
         commandTppos = new CommandTppos(localizedMessenger);
         eventWeatherChange = new EventWeatherChange();
-        eventPlayerJoin = new EventPlayerJoin(localizedMessenger);
+        eventPlayerJoin = new EventPlayerJoin(modYMLManager, localizedMessenger, playerYMLManager);
         eventPlayerQuit = new EventPlayerQuit(localizedMessenger);
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
         eventEntityDamage = new EventEntityDamage();
@@ -139,7 +131,7 @@ public class Essentials extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        localizedMessenger.sendLocalizedMessage("NOT_INSTANCEOF_PLAYER");
+
         board = this.getServer().getScoreboardManager().getNewScoreboard();
 
         PluginManager pluginManager = this.getServer().getPluginManager();
@@ -196,31 +188,48 @@ public class Essentials extends JavaPlugin {
 
     @Override
     public void onDisable() {
+
         Translations.clear();
+    }
+
+    public void vanishPermissionSet(String playerName) {
+
+        Utilities.vanishPermissionSet(playerName);
+    }
+
+    public void vanishPermissionRemoved(String playerName) {
+
+        Utilities.vanishPermissionRemoved(playerName);
     }
 
 
     private void fillUuid() {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            UuidYMLManager.setUuid(p);
-        }
+
+        Bukkit.getOnlinePlayers().forEach(UuidYMLManager::setUuid);
     }
 
     private void fillBoard() {
-        ModYMLManager modYMLManager = new ModYMLManager();
+
+        Team team = getTeam();
+
+        Bukkit.getOnlinePlayers()
+                .stream()
+                .filter(p -> p.hasPermission(vanishPermission))
+                .forEach(p -> {
+                    p.setScoreboard(board);
+                    team.addEntry(p.getName());
+                });
+    }
+
+    private Team getTeam() {
+
         Team team = Essentials.board.getTeam("vanishVisible");
+
         if (team == null) {
             team = Essentials.board.registerNewTeam("vanishVisible");
             team.setCanSeeFriendlyInvisibles(true);
         }
-        for (String vanishSee : modYMLManager.getVanishVisibleList()) {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                if (modYMLManager.getVanishVisibleList().contains(p.getName())) {
-                    p.setScoreboard(board);
-                }
-            }
-            team.addEntry(vanishSee);
-        }
+        return team;
     }
 
 }

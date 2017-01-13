@@ -16,17 +16,19 @@ public class EventPlayerJoin implements Listener {
 
     private ModYMLManager modYMLManager;
     private LocalizedMessenger localizedMessenger;
+    private PlayerYMLManager playerYMLManager;
 
-    public EventPlayerJoin(LocalizedMessenger localizedMessenger) {
+    public EventPlayerJoin(ModYMLManager modYMLManager, LocalizedMessenger localizedMessenger, PlayerYMLManager playerYMLManager) {
+        this.modYMLManager = modYMLManager;
         this.localizedMessenger = localizedMessenger;
-        this.modYMLManager = new ModYMLManager();
+        this.playerYMLManager = playerYMLManager;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         List<String> vanishActiveList = modYMLManager.getVanishActiveList();
-        if (!event.getPlayer().hasPermission("selfmadeEssentials.vanish")) {
+        if (!event.getPlayer().hasPermission(Essentials.vanishPermission)) {
             for (String name : vanishActiveList) {
                 Player playerToHide = Bukkit.getPlayer(name);
                 if (playerToHide != null)
@@ -37,7 +39,7 @@ public class EventPlayerJoin implements Listener {
             event.getPlayer().setScoreboard(Essentials.board);
             if (vanishActiveList.contains(event.getPlayer().getName())) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (!p.hasPermission("selfmadeEssentials.vanish")) {
+                    if (!p.hasPermission(Essentials.vanishPermission)) {
                         p.hidePlayer(event.getPlayer());
                     } else {
                         localizedMessenger.sendLocalizedMessage(p, "PLAYER_JOINED_VANISH_FORMAT", event.getPlayer().getName());
@@ -47,10 +49,8 @@ public class EventPlayerJoin implements Listener {
             }
         }
 
-
-        PlayerYMLManager pym = new PlayerYMLManager();
-        if (pym.hasPtime(event.getPlayer().getName()))
-            event.getPlayer().setPlayerTime(pym.getPtimeTicks(event.getPlayer().getName()), pym.getPtimeState(event.getPlayer().getName()));
+        if (playerYMLManager.hasPtime(event.getPlayer().getName()))
+            event.getPlayer().setPlayerTime(playerYMLManager.getPtimeTicks(event.getPlayer().getName()), playerYMLManager.getPtimeState(event.getPlayer().getName()));
 
     }
 }

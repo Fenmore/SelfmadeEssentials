@@ -67,14 +67,6 @@ public class ModYMLManager extends BaseYMLManager {
         return list;
     }
 
-    public List<String> getVanishVisibleList() {
-        YamlConfiguration cfg = loadCfg();
-        List<String> list = cfg.getStringList("vanishVisible");
-        if (list == null)
-            list = new ArrayList<>();
-        return list;
-    }
-
     public List<String> getVanishActiveList() {
         YamlConfiguration cfg = loadCfg();
         List<String> list = cfg.getStringList("vanish");
@@ -102,26 +94,4 @@ public class ModYMLManager extends BaseYMLManager {
         cfg.set("vanish", list);
         safeFile(cfg);
     }
-
-    /*public void setVanishVisible(String name) {
-        YamlConfiguration cfg = loadCfg();
-        List<String> list = cfg.getStringList("vanishVisible");
-        if(list == null)
-            list = new ArrayList<>();
-        list.add(name);
-        cfg.set("vanishVisible", list);
-        safeFile(cfg);
-    }*/
-
-    /*public void remVanishVisible(String name) {
-        YamlConfiguration cfg = loadCfg();
-        List<String> list = cfg.getStringList("vanishVisible");
-        if(list == null)
-            return;
-        list.remove(name);
-        cfg.set("vanishVisible", list);
-        safeFile(cfg);
-    }*/
-
-
 }
