@@ -17,12 +17,12 @@ public class CommandSpeed extends PlayerCommand {
     @Override
     public boolean onPlayerCommand(Player sender, Command cmd, String label, String[] args) {
         if (args.length == 0) {
-            localizedMessenger.sendLocalizedMessage(sender, "SPEED_INFO_FORMAT", ((Player) sender).getWalkSpeed(), ((Player) sender).getFlySpeed());
+            localizedMessenger.sendLocalizedMessage(sender, "SPEED_INFO_FORMAT", sender.getWalkSpeed(), sender.getFlySpeed());
             return true;
         } else {
             if (args[0].equalsIgnoreCase("reset")) {
-                ((Player) sender).setFlySpeed(0.1f);
-                ((Player) sender).setWalkSpeed(0.2f);
+                sender.setFlySpeed(0.1f);
+                sender.setWalkSpeed(0.2f);
                 localizedMessenger.sendLocalizedMessage(sender, "SPEED_RESET");
                 return true;
             }
@@ -32,8 +32,8 @@ public class CommandSpeed extends PlayerCommand {
                 if (value > 100) {
                     value = 100f;
                 }
-                ((Player) sender).setFlySpeed((1f / 100f) * value);
-                ((Player) sender).setWalkSpeed((1f / 100f) * value);
+                sender.setFlySpeed((1f / 100f) * value);
+                sender.setWalkSpeed((1f / 100f) * value);
                 String stringValue = String.valueOf((1f / 100f) * value);
                 while (true) {
                     if (!stringValue.endsWith("0")) {
@@ -60,12 +60,12 @@ public class CommandSpeed extends PlayerCommand {
                         }
                         switch (args[0]) {
                             case "fly": {
-                                ((Player) sender).setFlySpeed((1f / 100f) * value);
+                                sender.setFlySpeed((1f / 100f) * value);
                                 localizedMessenger.sendLocalizedMessage(sender, "SPEED_FLY_SET_FORMAT", stringValue);
                                 break;
                             }
                             case "walk": {
-                                ((Player) sender).setWalkSpeed((1f / 100f) * value);
+                                sender.setWalkSpeed((1f / 100f) * value);
                                 localizedMessenger.sendLocalizedMessage(sender, "SPEED_WALK_SET_FORMAT", stringValue);
                                 break;
                             }

@@ -39,15 +39,15 @@ public class CommandList implements CommandExecutor{
                     }
                     if (commandMap.get(key1).get("stage").toString().equals("stable")) {
                         json.addText(key1, JsonColor.GREEN, JsonFormat.UNDERLINED)
-                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
                                 .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
                     } else if (commandMap.get(key1).get("stage").toString().equals("beta")) {
                         json.addText(key1, JsonColor.YELLOW, JsonFormat.UNDERLINED)
-                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
                                 .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
                     } else if (commandMap.get(key1).get("stage").toString().equals("alpha")) {
                         json.addText(key1, JsonColor.RED, JsonFormat.UNDERLINED)
-                                .addHoverEvent(HoverAction.SHOW_TEXT, (String) plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
+                                .addHoverEvent(HoverAction.SHOW_TEXT, plugin.getDescription().getCommands().get(key1).get("description") + comments, JsonColor.GOLD)
                                 .addClickEvent(ClickAction.SUGGEST_COMMAND, (String) plugin.getDescription().getCommands().get(key1).get("usage"));
                     }
                     json.addText(" ");

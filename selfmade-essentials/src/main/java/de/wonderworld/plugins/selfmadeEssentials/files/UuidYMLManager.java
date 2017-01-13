@@ -43,10 +43,7 @@ public class UuidYMLManager {
     private static boolean isKnown(Player p) {
         YamlConfiguration cfg = loadCfg();
         Set<String> set = cfg.getKeys(false);
-        if (set.contains(p.getUniqueId().toString()))
-            return true;
-        else
-            return false;
+        return set.contains(p.getUniqueId().toString());
     }
 
     public static void setUuid(Player p) {

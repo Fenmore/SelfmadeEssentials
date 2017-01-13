@@ -48,7 +48,7 @@ public class CommandSpawnmob extends PlayerCommand{
             }
         }
 
-        List<Block> sightList = ((Player) sender).getLineOfSight((Set) null, 100);
+        List<Block> sightList = sender.getLineOfSight((Set) null, 100);
         Location loc = sightList.get(sightList.size() - 1).getLocation();
         loc.setY(loc.getY() + 1);
 

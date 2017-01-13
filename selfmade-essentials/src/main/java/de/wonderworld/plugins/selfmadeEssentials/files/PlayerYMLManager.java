@@ -65,10 +65,7 @@ public class PlayerYMLManager {
 
     public boolean hasPtime(String name) {
         YamlConfiguration cfg = loadCfg(name);
-        if (cfg.get("ptimeTicks") == null)
-            return false;
-        else
-            return true;
+        return cfg.get("ptimeTicks") != null;
     }
 
     public Location getBackLocation(String name) {
@@ -106,7 +103,6 @@ public class PlayerYMLManager {
     public void remHomeLocation(String name, String home) {
         YamlConfiguration cfg = loadCfg(name);
         cfg.set("homes." + home, null);
-        return;
     }
 
     public List<String> getHomeList(String name) {
@@ -117,9 +113,7 @@ public class PlayerYMLManager {
         }
         Map<String, Object> sectionValues = section.getValues(false);
         List<String> list = new ArrayList<>();
-        for (String key : sectionValues.keySet()) {
-            list.add(key);
-        }
+        list.addAll(sectionValues.keySet());
         return list;
     }
 

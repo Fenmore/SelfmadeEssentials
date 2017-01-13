@@ -53,10 +53,7 @@ public class ModYMLManager extends BaseYMLManager {
     public boolean socialSpyIsActive(String playerName) {
         YamlConfiguration cfg = loadCfg();
         List<String> socialSpyList = cfg.getStringList("socialspy");
-        if (socialSpyList.contains(playerName))
-            return true;
-        else
-            return false;
+        return socialSpyList.contains(playerName);
     }
 
     public List<String> getSocialSpyList() {
