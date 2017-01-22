@@ -59,6 +59,7 @@ public class Essentials extends JavaPlugin {
     private CommandSethome commandSethome;
     private CommandDelhome commandDelhome;
     private CommandTppos commandTppos;
+    private EventPlayerItemConsume eventPlayerItemConsume;
     private EventWeatherChange eventWeatherChange;
     private EventPlayerJoin eventPlayerJoin;
     private EventPlayerQuit eventPlayerQuit;
@@ -68,7 +69,6 @@ public class Essentials extends JavaPlugin {
 
 
     public Essentials() {
-        vanishPermission = this.getCommand("vanish").getPermission();
         dir = new File(getDataFolder().toString());
         dirStats = new File(getDataFolder(), "Stats");
         dirPlayer = new File(dirStats, "Player");
@@ -121,22 +121,26 @@ public class Essentials extends JavaPlugin {
         commandSethome = new CommandSethome(playerYMLManager, localizedMessenger);
         commandDelhome = new CommandDelhome(playerYMLManager, localizedMessenger);
         commandTppos = new CommandTppos(localizedMessenger);
+        commandUnlimited = new CommandUnlimited(localizedMessenger, playerYMLManager);
         eventWeatherChange = new EventWeatherChange();
         eventPlayerJoin = new EventPlayerJoin(modYMLManager, localizedMessenger, playerYMLManager);
         eventPlayerQuit = new EventPlayerQuit(localizedMessenger);
         eventAsyncPlayerPreLogin = new EventAsyncPlayerPreLogin();
         eventEntityDamage = new EventEntityDamage();
+        eventPlayerItemConsume = new EventPlayerItemConsume();
         eventBlockPlace = new EventBlockPlace();
     }
 
     @Override
     public void onEnable() {
+        vanishPermission = this.getCommand("vanish").getPermission();
 
         board = this.getServer().getScoreboardManager().getNewScoreboard();
 
         PluginManager pluginManager = this.getServer().getPluginManager();
         pluginManager.registerEvents(eventWeatherChange, this);
         pluginManager.registerEvents(eventPlayerJoin, this);
+        pluginManager.registerEvents(eventPlayerItemConsume, this);
         pluginManager.registerEvents(eventPlayerQuit, this);
         pluginManager.registerEvents(eventAsyncPlayerPreLogin, this);
         pluginManager.registerEvents(eventEntityDamage, this);

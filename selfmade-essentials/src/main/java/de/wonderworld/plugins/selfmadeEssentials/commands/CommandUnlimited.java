@@ -27,11 +27,6 @@ public class CommandUnlimited extends PlayerCommand {
 
         return true;
     }
-
-
-
-
-
     private void toggleUnlimited(Player targetPlayer) {
         playerYMLManager.toggle(targetPlayer.getName(), YMLVariable.UNLIMITED);
 
@@ -42,5 +37,3 @@ public class CommandUnlimited extends PlayerCommand {
         }
     }
 }
-//playerinventory
-//playeritemconsumeevent

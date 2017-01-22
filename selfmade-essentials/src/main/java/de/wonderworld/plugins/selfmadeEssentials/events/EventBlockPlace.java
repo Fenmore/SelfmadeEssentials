@@ -19,6 +19,7 @@ public class EventBlockPlace implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+
         boolean isActive = playerYMLManager.isActive(event.getPlayer().getName(), YMLVariable.UNLIMITED);
 
         if (isActive) {
@@ -26,6 +27,7 @@ public class EventBlockPlace implements Listener {
             ItemStack itemInHand = event.getItemInHand();
             int amount = itemInHand.getAmount();
             itemInHand.setAmount(amount);
+            event.getPlayer().setItemInHand(itemInHand);
         }
     }
 }
