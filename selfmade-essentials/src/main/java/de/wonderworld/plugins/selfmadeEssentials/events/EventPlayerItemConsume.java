@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class EventPlayerItemConsume implements Listener {
 
@@ -19,23 +20,19 @@ public class EventPlayerItemConsume implements Listener {
 
 
     @EventHandler
-    public void onBlockPlace(PlayerItemConsumeEvent event) {
+    public void onPlayerItemConsume(PlayerItemConsumeEvent event) {
 
         boolean isActive = playerYMLManager.isActive(event.getPlayer().getName(), YMLVariable.UNLIMITED);
 
         if(isActive) {
 
             ItemStack itemInMainHand = event.getItem();
-            int oldItemAmount = itemInMainHand.getAmount();
-            int newItemAmount = oldItemAmount + 2;
-            System.out.println("PlayerItemConsumeEvent: oldItemAmount: " + oldItemAmount + " newItemAmount: " + newItemAmount);
 
-            ItemStack newItemStack = new ItemStack(itemInMainHand.getType(), newItemAmount);
-            int slot = event.getPlayer().getInventory().getHeldItemSlot();
+            itemInMainHand.setAmount(itemInMainHand.getAmount() + 1);
 
-            event.getPlayer().getInventory().setItem(slot, newItemStack);
+            event.setItem(itemInMainHand);
 
-            //event.setItem(newItemStack);
+            event.getPlayer().updateInventory();
         }
 
     }
